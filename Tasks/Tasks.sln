@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks 1.1", "Tasks 1.1", "{FE745E29-3E3B-40A0-B874-35EE9FDDD9CC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks_1", "Tasks_1", "{FE745E29-3E3B-40A0-B874-35EE9FDDD9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_1", "Task_1\Task_1.csproj", "{039924B3-DBB3-496F-8165-3378CBA426C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Rectangle", "Task_1\1_Rectangle.csproj", "{039924B3-DBB3-496F-8165-3378CBA426C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_The_Magnificent_Ten", "1_The_Magnificent_Ten", "{178480A5-21E6-4160-A7E5-9ED71A5F5E95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_String,_Not_Sting", "2_String,_Not_Sting", "{A37E3DCA-6591-41F5-BDBA-9A748F9F2DDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,7 +26,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{039924B3-DBB3-496F-8165-3378CBA426C5} = {FE745E29-3E3B-40A0-B874-35EE9FDDD9CC}
+		{039924B3-DBB3-496F-8165-3378CBA426C5} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
+		{178480A5-21E6-4160-A7E5-9ED71A5F5E95} = {FE745E29-3E3B-40A0-B874-35EE9FDDD9CC}
+		{A37E3DCA-6591-41F5-BDBA-9A748F9F2DDE} = {FE745E29-3E3B-40A0-B874-35EE9FDDD9CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F08882-B86E-49C5-96E5-5EC8EAF2F041}
