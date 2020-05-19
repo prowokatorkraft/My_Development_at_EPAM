@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Another_Triangle", "3_Ano
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_X-Mas_Tree", "4_X-Mas_Tree\4_X-Mas_Tree.csproj", "{BFF511CF-E447-4256-854F-6B48CBAF71C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Sum_Of_Numbers", "5_Sum_Of_Numbers\5_Sum_Of_Numbers.csproj", "{7B601A2E-D0D3-438F-8E16-02055926D778}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BFF511CF-E447-4256-854F-6B48CBAF71C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFF511CF-E447-4256-854F-6B48CBAF71C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFF511CF-E447-4256-854F-6B48CBAF71C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B601A2E-D0D3-438F-8E16-02055926D778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B601A2E-D0D3-438F-8E16-02055926D778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B601A2E-D0D3-438F-8E16-02055926D778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B601A2E-D0D3-438F-8E16-02055926D778}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{BE69AA18-F98E-4559-85B7-71F1D3DCC701} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 		{5ECB8129-0B4A-4B28-AAB3-A6220E70C979} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 		{BFF511CF-E447-4256-854F-6B48CBAF71C1} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
+		{7B601A2E-D0D3-438F-8E16-02055926D778} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F08882-B86E-49C5-96E5-5EC8EAF2F041}
