@@ -21,22 +21,38 @@ namespace _3_Another_Triangle
             {
                 Console.WriteLine(new string('-', 20));
 
-                int size = 1;
+                int size;
 
-                // Узнаем максимальное колличество символов
-                for (int i = 1; i < length; i++)
-                    size += 2;
+                size = GetMaxSimbol(length, 1);
 
-                for (int spaces = size/2, simbol = 1 ; spaces >= 0 ; spaces--, simbol += 2)
-                {
-                    Console.WriteLine(new string(' ', spaces) + new string('*', simbol));
-                }
+                DrawTriangle(size);
 
                 Console.WriteLine(new string('-', 20));
             }
             else Console.WriteLine("Incorrect enter!");
 
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Возвращает максимальное колличетсво символов в строке
+        /// </summary>
+        static int GetMaxSimbol(int length, int size)
+        {
+            for (int i = 1; i < length; i++)
+                size += 2;
+
+            return size;
+        }
+        /// <summary>
+        /// Рисует треугольник в консоли
+        /// </summary>
+        static void DrawTriangle(int size)
+        {
+            for (int spaces = size / 2, simbol = 1; spaces >= 0; spaces--, simbol += 2)
+            {
+                Console.WriteLine(new string(' ', spaces) + new string('*', simbol));
+            }
         }
     }
 }
