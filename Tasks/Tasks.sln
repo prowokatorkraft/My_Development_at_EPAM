@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5_Sum_Of_Numbers", "5_Sum_O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6_Font_Adjustment", "6_Font_Adjustment\6_Font_Adjustment.csproj", "{72AF6CB3-60F2-4976-8F09-E042DE2783BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7_Array_Processing", "7_Array_Processing\7_Array_Processing.csproj", "{244478D5-08AC-44C6-AA98-C170EEAAD349}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{72AF6CB3-60F2-4976-8F09-E042DE2783BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72AF6CB3-60F2-4976-8F09-E042DE2783BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72AF6CB3-60F2-4976-8F09-E042DE2783BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244478D5-08AC-44C6-AA98-C170EEAAD349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244478D5-08AC-44C6-AA98-C170EEAAD349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244478D5-08AC-44C6-AA98-C170EEAAD349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244478D5-08AC-44C6-AA98-C170EEAAD349}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{BFF511CF-E447-4256-854F-6B48CBAF71C1} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 		{7B601A2E-D0D3-438F-8E16-02055926D778} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 		{72AF6CB3-60F2-4976-8F09-E042DE2783BE} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
+		{244478D5-08AC-44C6-AA98-C170EEAAD349} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F08882-B86E-49C5-96E5-5EC8EAF2F041}
