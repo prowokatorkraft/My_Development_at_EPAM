@@ -30,8 +30,6 @@ namespace _5_Sum_Of_Numbers
                 {
                     if ((iSum % numbers[iNumbers]) == 0 && iSum != number)
                     {
-                        Console.WriteLine(" " + iSum);
-                        
                         sum += number = iSum;
                     }
                 }
