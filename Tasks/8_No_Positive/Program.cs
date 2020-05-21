@@ -29,6 +29,9 @@ namespace _8_No_Positive
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Инициализирует массив
+        /// </summary>
         static void GetArray(out int[][][] array, int LenghtArray1, int LenghtArray2, int LenghtArray3, params int[] elements)
         {
             if (LenghtArray3 != elements.Length)
@@ -52,6 +55,9 @@ namespace _8_No_Positive
             }
         }
 
+        /// <summary>
+        /// Выводит элементы массива в консоль
+        /// </summary>
         static void OutArray(int[][][] array)
         {
             for (int i1 = 0; i1 < array.Length; i1++)
@@ -67,6 +73,9 @@ namespace _8_No_Positive
             }
         }
 
+        /// <summary>
+        /// Устанавливает значение 0 положительным элементам массива
+        /// </summary>
         static void SetElementsIn0(ref int[][][] array)
         {
             for (int i1 = 0; i1 < array.Length; i1++)

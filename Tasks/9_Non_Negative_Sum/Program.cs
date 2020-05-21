@@ -28,6 +28,11 @@ namespace _9_Non_Negative_Sum
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Возвращает сумму положительных элементов массива
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
         static int SumPositiveElements(int[] array)
         {
             int sum = 0;

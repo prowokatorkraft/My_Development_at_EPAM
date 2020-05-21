@@ -42,6 +42,9 @@ namespace _6_Font_Adjustment
             }
         }
 
+        /// <summary>
+        /// Возвращает строку с активированными начертаниями
+        /// </summary>
         static string GetFonts(Font font)
         {
             if (font.bold)
@@ -70,6 +73,8 @@ namespace _6_Font_Adjustment
             
             return "none";
         }
+        /// <summary>
+        /// Изменяет состояние начертания
         static void ChangeFonts(int setFont, ref Font font)
         {
             switch (setFont)
