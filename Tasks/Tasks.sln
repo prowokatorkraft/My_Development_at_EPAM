@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7_Array_Processing", "7_Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8_No_Positive", "8_No_Positive\8_No_Positive.csproj", "{D55A3C55-F047-4D6B-ABE7-EBB996646F05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9_Non_Negative_Sum", "9_Non_Negative_Sum\9_Non_Negative_Sum.csproj", "{007C33FD-AADF-4A10-8430-84493D0869A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{D55A3C55-F047-4D6B-ABE7-EBB996646F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D55A3C55-F047-4D6B-ABE7-EBB996646F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D55A3C55-F047-4D6B-ABE7-EBB996646F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007C33FD-AADF-4A10-8430-84493D0869A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007C33FD-AADF-4A10-8430-84493D0869A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007C33FD-AADF-4A10-8430-84493D0869A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007C33FD-AADF-4A10-8430-84493D0869A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{72AF6CB3-60F2-4976-8F09-E042DE2783BE} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 		{244478D5-08AC-44C6-AA98-C170EEAAD349} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 		{D55A3C55-F047-4D6B-ABE7-EBB996646F05} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
+		{007C33FD-AADF-4A10-8430-84493D0869A1} = {178480A5-21E6-4160-A7E5-9ED71A5F5E95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F08882-B86E-49C5-96E5-5EC8EAF2F041}
