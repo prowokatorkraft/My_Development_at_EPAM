@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Doubler", "2_Doubler\2_Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Lowercase", "3_Lowercase\3_Lowercase.csproj", "{3872BEFD-B9A0-43DF-88C4-12B7EC3815FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_Validator", "4_Validator\4_Validator.csproj", "{F4C0CB7F-EA18-4922-8B6D-9AF7BC157786}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{3872BEFD-B9A0-43DF-88C4-12B7EC3815FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3872BEFD-B9A0-43DF-88C4-12B7EC3815FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3872BEFD-B9A0-43DF-88C4-12B7EC3815FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C0CB7F-EA18-4922-8B6D-9AF7BC157786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C0CB7F-EA18-4922-8B6D-9AF7BC157786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C0CB7F-EA18-4922-8B6D-9AF7BC157786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C0CB7F-EA18-4922-8B6D-9AF7BC157786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{E859C5D2-E521-4FCC-90AB-00AFD2F7A725} = {A37E3DCA-6591-41F5-BDBA-9A748F9F2DDE}
 		{3CE78C93-C326-43B4-A4C5-1382A65ED3E8} = {A37E3DCA-6591-41F5-BDBA-9A748F9F2DDE}
 		{3872BEFD-B9A0-43DF-88C4-12B7EC3815FE} = {A37E3DCA-6591-41F5-BDBA-9A748F9F2DDE}
+		{F4C0CB7F-EA18-4922-8B6D-9AF7BC157786} = {A37E3DCA-6591-41F5-BDBA-9A748F9F2DDE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F08882-B86E-49C5-96E5-5EC8EAF2F041}
