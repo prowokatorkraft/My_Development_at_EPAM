@@ -31,12 +31,13 @@ namespace _1_Averages
 
             // Деление на слова
             int Count = 0;
-            foreach (var item in str.Split(simbols))
+            foreach (var item in str.Split(simbols, StringSplitOptions.RemoveEmptyEntries))
             {
                 if (string.IsNullOrWhiteSpace(item)) continue;
 
                 list.Add(new StringBuilder());
-
+                
+                // Устранение знаков припинаний
                 foreach (char simbol in item)
                 {
                     if(char.IsSeparator(simbol)) break;
@@ -46,8 +47,7 @@ namespace _1_Averages
 
                 Count++;
             }
-
-            // Устранение знаков припинаний
+            
             Count = 0;
             foreach (var item in list)
             {
