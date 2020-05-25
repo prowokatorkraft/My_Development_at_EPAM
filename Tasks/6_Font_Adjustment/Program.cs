@@ -9,102 +9,89 @@ namespace _6_Font_Adjustment
     // Предложите способ хранения информации о форматировании текста надписи
     // и напишите программу, которая позволяет устанавливать и изменять начертание:
 
+    [Flags]
+    enum Font
+    {
+        None = 0,
+        Bold = 1,
+        Italic = 2,
+        Underline = 4
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Font Adjustment");
-            
-            Font font = new Font(false, false, false);
+
+            Font font = Font.None;
             int enter;
 
             while (true)
             {
                 Console.WriteLine(new string('-', 40));
 
-                Console.WriteLine("Параметры надписи: " + GetFonts(font));
+                Console.WriteLine("Параметры надписи: " + font.ToString());
 
                 Console.WriteLine(
                                    "Введите:" +
                                    "\n\t1: bold" +
                                    "\n\t2: italic" +
-                                   "\n\t3: bold"
+                                   "\n\t3: underline"
                                   );
 
                 if (int.TryParse(Console.ReadLine(), out enter) && enter < 4)
                 {
                     if (enter == 0) return;  // Для выхода из приложения
+                    if (enter == 3) enter++;
 
-                    ChangeFonts(enter, ref font);
+                    ChangeFonts((Font)enter, ref font);
                 }
                 else Console.WriteLine("Incorrect enter!");
             }
         }
 
         /// <summary>
-        /// Возвращает строку с активированными начертаниями
-        /// </summary>
-        static string GetFonts(Font font)
-        {
-            if (font.bold)
-            {
-                if (font.italic)
-                {
-                    if (font.underline)
-                        return "bold, italic, underline";
-                    else
-                        return "bold, italic";
-                }
-                else if (font.underline)
-                    return "bold, underline";
-                else
-                    return "bold";
-            }
-            else if (font.italic)
-            {
-                if (font.underline)
-                    return "italic, underline";
-                else
-                    return "italic";
-            }
-            else if (font.underline)
-                return "underline";
-            
-            return "none";
-        }
-        /// <summary>
         /// Изменяет состояние начертания
-        static void ChangeFonts(int setFont, ref Font font)
+        static void ChangeFonts(Font setFont, ref Font font)
         {
+            int fontInt = (int)font; // Во избегание множественных приведений
+
             switch (setFont)
             {
-                case 1:
-                    font.bold = !font.bold;
+                // Добавления Font.Bold
+                case Font.Bold when fontInt == 0 || fontInt == 2 || fontInt == 4 || fontInt == 6:
+                    font = fontInt + Font.Bold;
                     break;
-                case 2:
-                    font.italic = !font.italic;
+
+                // Удаление Font.Bold
+                case Font.Bold when fontInt == 1 || fontInt == 3 || fontInt == 5 || fontInt == 7:
+                    font = fontInt - Font.Bold;
                     break;
-                case 3:
-                    font.underline = !font.underline;
+
+                // Добавления Font.Italic
+                case Font.Italic when fontInt == 0 || fontInt == 1 || fontInt == 4 || fontInt == 5:
+                    font = fontInt + Font.Italic;
                     break;
+
+                // Удаление Font.Italic
+                case Font.Italic when fontInt == 2 || fontInt == 3 || fontInt == 6 || fontInt == 7:
+                    font = fontInt - Font.Italic;
+                    break;
+
+                // Добавления Font.Underline
+                case Font.Underline when fontInt == 0 || fontInt == 1 || fontInt == 2 || fontInt == 3:
+                    font = fontInt + Font.Underline;
+                    break;
+
+                // Удаление Font.Underline
+                case Font.Underline when fontInt == 4 || fontInt == 5 || fontInt == 6 || fontInt == 7:
+                    font = fontInt - Font.Underline;
+                    break;
+
                 default:
-                    throw new ArgumentException("Incorrect argument setFont! (1-3)");
+                    throw new ArgumentException("Incorrect argument setFont!");
             }
-        }
-    }
-
-    struct Font
-    {
-        public bool bold { get; set; }
-        public bool italic { get; set; }
-        public bool underline { get; set; }
-
-        public Font(bool bold, bool italic, bool underline)
-        {
-            this.bold = bold;
-            this.italic = italic;
-            this.underline = underline;
         }
     }
 }
