@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace _6_Font_Adjustment
 {
@@ -53,6 +52,7 @@ namespace _6_Font_Adjustment
 
         /// <summary>
         /// Изменяет состояние начертания
+        /// </summary>
         static void ChangeFonts(Font setFont, ref Font font)
         {
             int fontInt = (int)font; // Во избегание множественных приведений
