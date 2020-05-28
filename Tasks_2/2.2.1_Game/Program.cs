@@ -1,12 +1,14 @@
 ﻿using System;
+using Game.Logic;
 
 
-namespace _2._2._1_Game
+namespace Game
 {
     class Program
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }
