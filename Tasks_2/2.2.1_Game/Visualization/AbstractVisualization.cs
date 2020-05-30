@@ -2,7 +2,10 @@
 
 namespace Game.Visualization
 {
-    class Class1
+    interface IVisual
     {
+        ConsoleKey ConsoleSimbol { get; }
+
+        void ShowMatrix(Logic.Space[,] spaces);
     }
 }

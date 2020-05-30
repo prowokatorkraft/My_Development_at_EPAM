@@ -1,10 +1,16 @@
 ﻿
 namespace Game.Logic
 {
-    abstract class Personage : ILocation
+    abstract class Space
     {
-        public int X { get; protected set; }
-        public int Y { get; protected set; }
+        public int X { get; }
+        public int Y { get; }
+    }
+
+    abstract class Personage : Space
+    {
+        public new int X { get; protected set; }
+        public new int Y { get; protected set; }
 
         public int Energy { get; protected set; }
 
@@ -15,31 +21,16 @@ namespace Game.Logic
     {
         public int Live { get; protected set; }
 
-        public abstract void Step(Direction direction);
+        public abstract void Step(System.ConsoleKey direction);
     }
 
 
-    abstract class Object : ILocation
-    {
-        public int X { get; }
-        public int Y { get; }
-    }
 
-    abstract class Bonus : Object
+    abstract class Bonus : Space
     {
+        public new int X { get; protected set; }
+        public new int Y { get; protected set; }
+
         public int Energy { get; }
-    }
-
-
-
-    public interface ILocation
-    {
-        int X { get; }
-        int Y { get; }
-    }
-
-    enum Direction
-    {
-        Up, Down, Left, Right
     }
 }
