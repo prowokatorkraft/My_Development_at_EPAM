@@ -14,12 +14,13 @@ namespace Game.Visualization
             get { return consoleSimbol; }
         }
 
-        private int healf;
+        private int healfPlayer;
+        private int energyPlayer;
 
         public void ShowMatrix(Space[,] spaces)
         {
             Console.Clear();
-            Console.WriteLine($"Healf: {healf}");
+            Console.WriteLine($"Healf: {healfPlayer}, Energy: {energyPlayer}");
 
             Console.WriteLine(new string('-', spaces.GetLength(0) * 2));
 
@@ -30,7 +31,8 @@ namespace Game.Visualization
                     switch (spaces[iX,iY])
                     {
                         case Victim spase:      Console.Write("()");
-                                                healf = (spaces[iX, iY] as Victim).Live;
+                                                healfPlayer = spase.Live;
+                                                energyPlayer = spase.Energy;
                                                 break;
 
                         case Personage spase:   Console.Write("<>"); break;
@@ -56,7 +58,7 @@ namespace Game.Visualization
             secondThread = new Thread(ConsoleReader);
             secondThread.Start();
 
-            healf = 0;
+            healfPlayer = 0;
         }
 
         private static void ConsoleReader()

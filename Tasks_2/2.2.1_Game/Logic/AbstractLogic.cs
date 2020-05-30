@@ -31,6 +31,6 @@ namespace Game.Logic
         public new int X { get; protected set; }
         public new int Y { get; protected set; }
 
-        public int Energy { get; }
+        public int Energy { get; protected set; }
     }
 }

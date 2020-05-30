@@ -42,6 +42,9 @@ namespace Game
             while (true)
             {
                 StepPersonage(victim[0]);
+                StepPersonage(personage[0]);
+                StepPersonage(personage[1]);
+                StepPersonage(personage[2]);
 
                 visualisation.ShowMatrix(matrix);
 
@@ -69,7 +72,7 @@ namespace Game
             victim = new List<Victim>() { new Player(9, 9, matrix) };
             matrix[9, 9] = victim[0];
             
-            personage = new List<Personage>() { new Hunter(0, 0), new Hunter(9, 0), new Hunter(19, 0) };
+            personage = new List<Personage>() { new Hunter(0, 0, matrix, victim[0]), new Hunter(9, 0, matrix, victim[0]), new Hunter(19, 0, matrix, victim[0]) };
             matrix[0, 0] = personage[0];
             matrix[9, 0] = personage[1];
             matrix[19, 0] = personage[2];
@@ -86,6 +89,10 @@ namespace Game
             {
                 case Victim victim:
                     victim.Step(visualisation.ConsoleSimbol);
+                    break;
+
+                case Hunter person:
+                    person.Step();
                     break;
 
                 default:
