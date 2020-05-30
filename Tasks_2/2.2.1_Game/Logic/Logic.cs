@@ -23,9 +23,9 @@ namespace Game.Logic
 
                     if (IsStepTo(ConsoleKey.UpArrow))
                     {
-                        if (matrix[X, Y - 1] is Bonus)
+                        if (matrix[X, Y - 1] is Victim)
                         {
-                            Energy += (matrix[X, Y - 1] as Bonus).Energy;
+                            Environment.Exit(0);
                         }
 
                         matrix[X, --Y] = matrix[X, Y + 1];
@@ -37,9 +37,9 @@ namespace Game.Logic
 
                     if (IsStepTo(ConsoleKey.DownArrow))
                     {
-                        if (matrix[X, Y + 1] is Bonus)
+                        if (matrix[X, Y + 1] is Victim)
                         {
-                            Energy += (matrix[X, Y + 1] as Bonus).Energy;
+                            Environment.Exit(0);
                         }
 
                         matrix[X, ++Y] = matrix[X, Y - 1];
@@ -51,9 +51,9 @@ namespace Game.Logic
 
                     if (IsStepTo(ConsoleKey.LeftArrow))
                     {
-                        if (matrix[X - 1, Y] is Bonus)
+                        if (matrix[X - 1, Y] is Victim)
                         {
-                            Energy += (matrix[X - 1, Y] as Bonus).Energy;
+                            Environment.Exit(0);
                         }
 
                         matrix[--X, Y] = matrix[X + 1, Y];
@@ -65,9 +65,9 @@ namespace Game.Logic
 
                     if (IsStepTo(ConsoleKey.RightArrow))
                     {
-                        if (matrix[X + 1, Y] is Bonus)
+                        if (matrix[X + 1, Y] is Victim)
                         {
-                            Energy += (matrix[X + 1, Y] as Bonus).Energy;
+                            Environment.Exit(0);
                         }
 
                         matrix[++X, Y] = matrix[X - 1, Y];
