@@ -49,6 +49,10 @@ namespace Game.Visualization
             }
 
             Console.WriteLine(new string('-', spaces.GetLength(0) * 2));
+
+            Console.WriteLine(" () - Player");
+            Console.WriteLine(" <> - Hunter");
+            Console.WriteLine(" oo - Fruct");
         }
 
         public Visualisation()
