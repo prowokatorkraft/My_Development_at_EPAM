@@ -104,11 +104,12 @@ namespace Game.Logic
                     switch (matrix[X, Y - 1])
                     {
                         case Victim victim:
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
 
@@ -122,11 +123,12 @@ namespace Game.Logic
                     switch (matrix[X, Y + 1])
                     {
                         case Victim victim:
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
                 case ConsoleKey.LeftArrow:
@@ -139,11 +141,12 @@ namespace Game.Logic
                     switch (matrix[X - 1, Y])
                     {
                         case Victim victim:
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
                 case ConsoleKey.RightArrow:
@@ -156,11 +159,12 @@ namespace Game.Logic
                     switch (matrix[X + 1, Y])
                     {
                         case Victim victim:
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
                 default:
@@ -170,8 +174,8 @@ namespace Game.Logic
 
         private ConsoleKey DirectToVictim()
         {
-            int differentX = X - victim.X;////
-            int differentY = Y - victim.Y;////
+            int differentX = X - victim.X;
+            int differentY = Y - victim.Y;
 
             int differ = 0;
 
@@ -284,6 +288,7 @@ namespace Game.Logic
         {
             X = x;
             Y = y;
+
             Live = 5;
 
             this.matrix = matrix;
@@ -303,6 +308,7 @@ namespace Game.Logic
                     switch (matrix[X, Y - 1])
                     {
                         case Bonus bonus:           return true;
+
                         case Personage personage:
                         case Space space:           return false;
 
@@ -312,18 +318,19 @@ namespace Game.Logic
 
                 case ConsoleKey.DownArrow:
 
-                    if (Y == 9) ////
+                    if (Y == matrix.GetLength(1) - 1)
                     {
                         return false;
                     }
 
                     switch (matrix[X, Y + 1])
                     {
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
                 case ConsoleKey.LeftArrow:
@@ -335,27 +342,29 @@ namespace Game.Logic
 
                     switch (matrix[X - 1, Y])
                     {
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
                 case ConsoleKey.RightArrow:
 
-                    if (X == 19)
+                    if (X == matrix.GetLength(0) - 1)
                     {
                         return false;
                     }
 
                     switch (matrix[X + 1, Y])
                     {
-                        case Bonus bonus: return true;
-                        case Personage personage:
-                        case Space space: return false;
+                        case Bonus bonus:           return true;
 
-                        default: return true;
+                        case Personage personage:
+                        case Space space:           return false;
+
+                        default:                    return true;
                     }
 
                 default:
@@ -370,6 +379,7 @@ namespace Game.Logic
         {
             X = x;
             Y = y;
+
             Energy = 100;
         }
     }

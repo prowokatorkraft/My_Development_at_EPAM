@@ -41,10 +41,15 @@ namespace Game
         {
             while (true)
             {
-                StepPersonage(victim[0]);
-                StepPersonage(personage[0]);
-                StepPersonage(personage[1]);
-                StepPersonage(personage[2]);
+                foreach (var item in victim)
+                {
+                    StepPersonage(item);
+                }
+
+                foreach (var item in personage)
+                {
+                    StepPersonage(item);
+                }
 
                 visualisation.ShowMatrix(matrix);
 
@@ -53,31 +58,60 @@ namespace Game
         }
 
         private void InitializeMatrix()
-        {
-            for (int iX = 1; iX < 9; iX++)      matrix[iX, 1] = new Logic.Barrier();    
-            for (int iX = 11; iX < 19; iX++)    matrix[iX, 1] = new Logic.Barrier();
+        {    
+            for (int iX = 1; iX < 9; iX++)
+            {
+                matrix[iX, 1] = new Logic.Barrier();
+                matrix[iX, 8] = new Logic.Barrier();
+            }
 
-            for (int iY = 2; iY < 4; iY++)      matrix[1, iY] = new Logic.Barrier();
-            for (int iY = 6; iY < 8; iY++)      matrix[1, iY] = new Logic.Barrier();
+            for (int iX = 11; iX < 19; iX++)
+            {
+                matrix[iX, 1] = new Logic.Barrier();
+                matrix[iX, 8] = new Logic.Barrier();
+            }
 
-            for (int iX = 6; iX < 14; iX++)     matrix[iX, 4] = new Logic.Barrier();
-            for (int iX = 6; iX < 14; iX++)     matrix[iX, 5] = new Logic.Barrier();
+            for (int iY = 2; iY < 4; iY++)
+            {
+                matrix[1, iY] = new Logic.Barrier();
+                matrix[18, iY] = new Logic.Barrier();
+            }
 
-            for (int iY = 2; iY < 4; iY++)      matrix[18, iY] = new Logic.Barrier();
-            for (int iY = 6; iY < 8; iY++)      matrix[18, iY] = new Logic.Barrier();
+            for (int iY = 6; iY < 8; iY++)
+            {
+                matrix[1, iY] = new Logic.Barrier();
+                matrix[18, iY] = new Logic.Barrier();
+            }
 
-            for (int iX = 1; iX < 9; iX++)      matrix[iX, 8] = new Logic.Barrier();
-            for (int iX = 11; iX < 19; iX++)    matrix[iX, 8] = new Logic.Barrier();
+            for (int iX = 6; iX < 14; iX++)
+            {
+                matrix[iX, 4] = new Logic.Barrier();
+                matrix[iX, 5] = new Logic.Barrier();
+            }
 
-            victim = new List<Victim>() { new Player(9, 9, matrix) };
+
+            victim = new List<Victim>()
+            {
+                new Player(9, 9, matrix)
+            };
             matrix[9, 9] = victim[0];
             
-            personage = new List<Personage>() { new Hunter(0, 0, matrix, victim[0]), new Hunter(9, 0, matrix, victim[0]), new Hunter(19, 0, matrix, victim[0]) };
+            personage = new List<Personage>()
+            {
+                new Hunter(0, 0, matrix, victim[0]),
+                new Hunter(9, 0, matrix, victim[0]),
+                new Hunter(19, 0, matrix, victim[0])
+            };
             matrix[0, 0] = personage[0];
             matrix[9, 0] = personage[1];
             matrix[19, 0] = personage[2];
 
-            bonus = new List<Bonus>() { new Fruct(2, 6), new Fruct(17, 3), new Fruct(10, 3) };
+            bonus = new List<Bonus>()
+            {
+                new Fruct(2, 6),
+                new Fruct(17, 3),
+                new Fruct(10, 3)
+            };
             matrix[2, 6] = bonus[0];
             matrix[17, 3] = bonus[1];
             matrix[10, 3] = bonus[2];
