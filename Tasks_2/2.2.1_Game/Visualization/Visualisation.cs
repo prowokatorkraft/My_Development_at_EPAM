@@ -4,7 +4,7 @@ using Game.Logic;
 
 namespace Game.Visualization
 {
-    class Visualisation : IVisual
+    internal class Visualisation : IVisual
     {
         private Thread secondThread;
 

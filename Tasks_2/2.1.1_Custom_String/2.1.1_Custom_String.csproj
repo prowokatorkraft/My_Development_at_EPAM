@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CC711C2-3393-41CC-A1DF-DF6E682AC865}</ProjectGuid>
+    <ProjectGuid>{E826B0DF-25BC-48DD-AA9C-20CE76B971B6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_2._2._1_Game</RootNamespace>
-    <AssemblyName>2.2.1_Game</AssemblyName>
+    <RootNamespace>_2._1._1_Custom_String</RootNamespace>
+    <AssemblyName>2.1.1_Custom_String</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,7 +31,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,23 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\AbstractSpace.cs" />
-    <Compile Include="Logic\Barrier\Barrier.cs" />
-    <Compile Include="Logic\Bonus\AbstractBonus.cs" />
-    <Compile Include="Logic\Bonus\Fruct.cs" />
-    <Compile Include="Logic\Hunter\AbstractPersonage.cs" />
-    <Compile Include="Logic\Hunter\Hunter.cs" />
-    <Compile Include="Logic\Player\AbstractVictim.cs" />
-    <Compile Include="Logic\Player\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Visualization\AbstractVisualization.cs" />
-    <Compile Include="Visualization\Visualisation.cs" />
-    <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\2.1.1_Custom_String_%28DLL%29\2.1.1_Custom_String_%28DLL%29.csproj">
+      <Project>{2eba3380-bde6-4076-a174-993ca275d974}</Project>
+      <Name>2.1.1_Custom_String_%28DLL%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

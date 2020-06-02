@@ -2,7 +2,7 @@
 
 namespace Game.Visualization
 {
-    interface IVisual
+    internal interface IVisual
     {
         ConsoleKey ConsoleSimbol { get; }
 
