@@ -5,7 +5,7 @@ namespace MyLibrary
 {
     public sealed class MyString : IComparable<MyString>
     {
-        char[] str;
+        private char[] str;
         public int Length
         {
             get
@@ -71,16 +71,42 @@ namespace MyLibrary
             }
             return false;
         }
-        public int RemoveTo(char simbol)
+        public void Remove(char simbol)
         {
-            StringBuilder builder = new StringBuilder(str.ToString());
+            StringBuilder builder = new StringBuilder(ToString());
 
-            builder.Replace();
+            str = builder.Replace(simbol + "", "").ToString().ToCharArray();
         }
 
         public static MyString operator +(MyString firstString, MyString secondString)
         {
             return new MyString(firstString.ToString() + secondString.ToString());
+        }
+
+        public char this[int index]
+        {
+            get
+            {
+                if (str.Length > index && index > -1)
+                {
+                    return str[index];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException($"Index '{index}' incorrect!");
+                }
+            }
+            set
+            {
+                if (str.Length > index && index > -1)
+                {
+                    str[index] = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException($"Index '{index}' incorrect!");
+                }
+            }
         }
     }
 }
