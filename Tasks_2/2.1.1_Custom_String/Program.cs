@@ -13,6 +13,8 @@ namespace _2._1._1_Custom_String
             Console.WriteLine($"MyString.Compare(): \t{MyString.Compare(myString1, myString2)}");
             Console.WriteLine($"myString1.CompareTo(): \t{myString1.CompareTo(myString2)}");
 
+            Console.WriteLine($"myString1.Equals(): \t{myString1.Equals(myString2)}");
+
             MyString myString3 = myString1 + myString2;
             Console.WriteLine($"myString3.Remove(): \t{myString3.ToString()}");
 

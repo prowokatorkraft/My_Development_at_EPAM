@@ -30,6 +30,21 @@ namespace MyLibrary
 
             return temp.ToString();
         }
+        public override bool Equals(object obj)
+        {
+            MyString myString = obj as MyString;
+
+            if (myString != null)
+            {
+                return ToString() == myString.ToString();
+            }
+
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public static int Compare(MyString firstString, MyString secondString)
         {
             if (firstString.Length > secondString.Length)
