@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1.1_Custom_String", "2.1.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1.1_Custom_String_(DLL)", "2.1.1_Custom_String_(DLL)\2.1.1_Custom_String_(DLL).csproj", "{2EBA3380-BDE6-4076-A174-993CA275D974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1.2_Custom_Paint", "2.1.2_Custom_Paint\2.1.2_Custom_Paint.csproj", "{751F9829-03B1-4785-91EE-7B2412966151}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1.2_Custom_Paint", "2.1.2_Custom_Paint\2.1.2_Custom_Paint.csproj", "{AACB9B26-2DCA-485F-86D8-B4F2FAB36E42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{2EBA3380-BDE6-4076-A174-993CA275D974}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EBA3380-BDE6-4076-A174-993CA275D974}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EBA3380-BDE6-4076-A174-993CA275D974}.Release|Any CPU.Build.0 = Release|Any CPU
-		{751F9829-03B1-4785-91EE-7B2412966151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{751F9829-03B1-4785-91EE-7B2412966151}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{751F9829-03B1-4785-91EE-7B2412966151}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{751F9829-03B1-4785-91EE-7B2412966151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AACB9B26-2DCA-485F-86D8-B4F2FAB36E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AACB9B26-2DCA-485F-86D8-B4F2FAB36E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AACB9B26-2DCA-485F-86D8-B4F2FAB36E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AACB9B26-2DCA-485F-86D8-B4F2FAB36E42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
