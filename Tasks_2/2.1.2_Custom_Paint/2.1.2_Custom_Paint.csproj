@@ -46,6 +46,7 @@
     <Compile Include="Figure\AbstractFigure.cs" />
     <Compile Include="Figure\Circle\AbstractCircle.cs" />
     <Compile Include="Figure\Circle\Circle.cs" />
+    <Compile Include="Figure\Circle\Ring.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,14 +7,12 @@ namespace _2._1._2_Custom_Paint
     {
         static void Main(string[] args)
         {
-            Circle circle;
+            Ring ring;
 
-            for (int i = 1; i < 15; i++)
-            {
-                circle = new Circle(i);
-                
-                Console.WriteLine(circle);
-            }
+            ring = new Ring(new Circle(8), new Circle(4));
+
+            Console.WriteLine(ring);
+
 
             Console.ReadKey();
         }
