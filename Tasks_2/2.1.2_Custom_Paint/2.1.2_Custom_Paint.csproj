@@ -47,14 +47,16 @@
     <Compile Include="Figure\Circle\AbstractCircle.cs" />
     <Compile Include="Figure\Circle\Circle.cs" />
     <Compile Include="Figure\Circle\Ring.cs" />
+    <Compile Include="Figure\Side\AbstractPoligon.cs" />
+    <Compile Include="Figure\Side\AbstractSide.cs" />
+    <Compile Include="Figure\Side\Poligon.cs" />
+    <Compile Include="Figure\Side\Side.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Figure\Side\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

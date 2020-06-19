@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using System;
 
@@ -70,71 +69,5 @@ namespace _2._1._2_Custom_Paint.Figure.Circle
 
             return builder.ToString();
         }
-
-
-        //public override string ToString()
-        //{
-        //    string[] outStr = _outCircle.ToString().Split('\n');
-        //    string[] inStr = _inCircle.ToString().Split('\n');
-
-        //    int interSize = (outStr[7].Length - inStr[3].Length) / 2;
-
-        //    outStr[7] = Regex.Replace(outStr[7], 
-        //        "(?<a>\\D{" + interSize + "})(?<b>\\D{" + inStr[3].Length + "})(?<c>\\D{" + interSize + "})", 
-        //        "${a}" + inStr[3].TrimEnd('\r') + "${c}"
-        //        );
-
-        //    Console.WriteLine($"out: {outStr[7].Length}, in: {inStr[3].Length}");
-
-
-        //    return outStr[7];
-        //}
-
-        //public override string ToString()
-        //{
-        //    string[] outStr = _outCircle.ToString().Split('\n');
-        //    string[] inStr = _inCircle.ToString().Split('\n');
-
-        //    StringBuilder builder = new StringBuilder();
-
-        //    int inStrToOutStrIndex = (outStr.Length / 2) - (inStr.Length / 2);
-
-        //    for (int iY = 0; iY < outStr.Length; iY++)
-        //    {
-        //        for (int iX = 0; iX < outStr[iY].Length; iX++)
-        //        {
-        //            if ((iY >= inStrToOutStrIndex && iY < inStr.Length) && (iX >= inStrToOutStrIndex && iX < inStr.Length))
-        //            {
-        //                string s1 = outStr[iY].Substring(0);
-        //                string s2 = inStr[iY - inStrToOutStrIndex];
-
-        //                builder.Append(s1);
-
-        //                builder.Append(s2);
-
-        //                continue;
-
-        //                //builder.Append(inStr[iY - inStrToOutStrIndex] + outStr[iY].Substring(inStr[iY - inStrToOutStrIndex].Length));
-        //            }
-        //            else if (iY >= inStrToOutStrIndex && iY < inStr.Length)
-        //            {
-
-        //            }
-        //            else if (iX >= inStrToOutStrIndex && iX < inStr.Length)
-        //            {
-
-        //            }
-        //            else
-        //            {
-        //                builder.Append(outStr[iY]);
-        //                continue;
-        //            }
-        //        }
-
-        //        builder.Append(Environment.NewLine);
-        //    }
-
-        //    return builder.ToString();
-        //}
     }
 }
