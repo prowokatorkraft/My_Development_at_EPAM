@@ -32,7 +32,8 @@ namespace _2._1._2_Custom_Paint
                     "1. Круг \n" +
                     "2. Кольцо \n" +
                     "3. Трехугольник \n" +
-                    "4. Четырехугольник \n"
+                    "4. Четырехугольник \n" +
+                    "5. Квадрат \n"
                     );
 
                         int enter1 = 0;
@@ -42,7 +43,7 @@ namespace _2._1._2_Custom_Paint
                         {
                             case ConsoleKey.NumPad1:
                             case ConsoleKey.D1:
-                                
+
                                 while (true)
                                 {
                                     Console.WriteLine("Фигура Круг");
@@ -54,7 +55,7 @@ namespace _2._1._2_Custom_Paint
                                         break;
                                     }
                                 }
-                                
+
                                 break;
 
                             case ConsoleKey.NumPad2:
@@ -67,7 +68,7 @@ namespace _2._1._2_Custom_Paint
 
                                     if (int.TryParse(Console.ReadLine(), out enter1))
                                     {
-                                        
+
                                     }
 
                                     Console.WriteLine("Введите внутренний радиус: ");
@@ -88,20 +89,12 @@ namespace _2._1._2_Custom_Paint
                                 while (true)
                                 {
                                     Console.WriteLine("Фигура Трехугольник");
-                                    Console.WriteLine("Введите колличество длинн сторон через запятую (1-2): ");
+                                    Console.WriteLine("Введите длинну стороны: ");
 
-                                    string[] str = Console.ReadLine().Split(',');
-
-                                    if (str.Length > 0 && int.TryParse(str[0], out enter1))
+                                    if (int.TryParse(Console.ReadLine(), out enter1))
                                     {
-                                        if (str.Length > 1 && int.TryParse(str[1], out enter2))
-                                        {
-                                            figure.Add(new Triangle(new Side(enter1), new Side(enter2)));
-                                        }
-                                        else
-                                        {
-                                            figure.Add(new Triangle(new Side(enter1)));
-                                        }
+                                        figure.Add(new Triangle(enter1));
+
                                         break;
                                     }
                                 }
@@ -114,20 +107,35 @@ namespace _2._1._2_Custom_Paint
                                 while (true)
                                 {
                                     Console.WriteLine("Фигура Четырехугольник");
-                                    Console.WriteLine("Введите колличество длинн сторон через запятую (1-2): ");
+                                    Console.WriteLine("Введите ширину: ");
 
-                                    string[] str = Console.ReadLine().Split(',');
-
-                                    if (str.Length > 0 && int.TryParse(str[0], out enter1))
+                                    if (int.TryParse(Console.ReadLine(), out enter1))
                                     {
-                                        if (str.Length > 1 && int.TryParse(str[1], out enter2))
+                                        Console.WriteLine("Введите высоту: ");
+
+                                        if (int.TryParse(Console.ReadLine(), out enter2))
                                         {
-                                            figure.Add(new Quadrangle(new Side(enter1), new Side(enter2)));
+                                            figure.Add(new Quadrangle(enter1, enter2));
                                         }
-                                        else
-                                        {
-                                            figure.Add(new Quadrangle(new Side(enter1)));
-                                        }
+
+                                        break;
+                                    }
+                                }
+
+                                break;
+
+                            case ConsoleKey.NumPad5:
+                            case ConsoleKey.D5:
+
+                                while (true)
+                                {
+                                    Console.WriteLine("Фигура Квадрат");
+                                    Console.WriteLine("Введите длинну стороны: ");
+
+                                    if (int.TryParse(Console.ReadLine(), out enter1))
+                                    {
+                                        figure.Add(new Square(enter1));
+
                                         break;
                                     }
                                 }
@@ -138,7 +146,7 @@ namespace _2._1._2_Custom_Paint
                                 break;
                         }
 
-                                break;
+                        break;
                     case ConsoleKey.NumPad2:
                     case ConsoleKey.D2:
 

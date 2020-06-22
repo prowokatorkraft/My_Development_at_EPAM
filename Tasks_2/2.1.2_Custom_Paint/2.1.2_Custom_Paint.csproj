@@ -51,6 +51,7 @@
     <Compile Include="Figure\Side\AbstractSide.cs" />
     <Compile Include="Figure\Side\Quadrangle.cs" />
     <Compile Include="Figure\Side\Side.cs" />
+    <Compile Include="Figure\Side\Square.cs" />
     <Compile Include="Figure\Side\Triangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

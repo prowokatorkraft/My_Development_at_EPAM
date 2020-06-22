@@ -3,30 +3,29 @@ using System.Text;
 
 namespace _2._1._2_Custom_Paint.Figure.Side
 {
-    internal class Quadrangle : AbstractPoligon
+    internal class Square : AbstractPoligon
     {
-        public Quadrangle(int hight, int weight) : this(0, 0, hight, weight)
+        public Square(int size) : this(0, 0, size)
         {
 
         }
-        public Quadrangle(int centreX, int centreY, int hight, int weight)
+        public Square(int centreX, int centreY, int size)
         {
             _centreX = centreX;
             _centreY = centreY;
 
             _sides = new System.Collections.Generic.List<AbstractSide>();
 
-            _sides.Add(new Side(hight));
-            _sides.Add(new Side(weight));
+            _sides.Add(new Side(size));
         }
 
         public override int Aria
         {
-            get => _sides[0].Long * _sides[1].Long;
+            get => (int)Math.Pow(_sides[0].Long, 2);
         }
         public override int Circumference
         {
-            get => (int)(Math.Pow(_sides[0].Long + _sides[1].Long, 2) * Math.PI);
+            get => (int)(Math.PI * _sides[0].Long);
         }
 
         public override string ToString()
@@ -36,9 +35,9 @@ namespace _2._1._2_Custom_Paint.Figure.Side
 
             StringBuilder builder = new StringBuilder();
 
-            for (int iY = 0; iY < _sides[1].Long; iY++)
+            for (int iY = 0; iY < _sides[0].Long; iY++)
             {
-                if (iY == 0 || iY == _sides[1].Long - 1)
+                if (iY == 0 || iY == _sides[0].Long - 1)
                 {
                     builder.Append(new string(point, _sides[0].Long * 2));
                     builder.Append(Environment.NewLine);
