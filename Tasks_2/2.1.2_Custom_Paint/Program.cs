@@ -96,11 +96,11 @@ namespace _2._1._2_Custom_Paint
                                     {
                                         if (str.Length > 1 && int.TryParse(str[1], out enter2))
                                         {
-                                            figure.Add(new Poligon(TypeFigure.Triangle, new Side(enter1), new Side(enter2)));
+                                            figure.Add(new Triangle(new Side(enter1), new Side(enter2)));
                                         }
                                         else
                                         {
-                                            figure.Add(new Poligon(TypeFigure.Triangle, new Side(enter1)));
+                                            figure.Add(new Triangle(new Side(enter1)));
                                         }
                                         break;
                                     }
@@ -122,11 +122,11 @@ namespace _2._1._2_Custom_Paint
                                     {
                                         if (str.Length > 1 && int.TryParse(str[1], out enter2))
                                         {
-                                            figure.Add(new Poligon(TypeFigure.Quadrangle, new Side(enter1), new Side(enter2)));
+                                            figure.Add(new Quadrangle(new Side(enter1), new Side(enter2)));
                                         }
                                         else
                                         {
-                                            figure.Add(new Poligon(TypeFigure.Quadrangle, new Side(enter1)));
+                                            figure.Add(new Quadrangle(new Side(enter1)));
                                         }
                                         break;
                                     }
