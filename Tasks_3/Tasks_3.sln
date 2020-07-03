@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.2.1_Dynamic_Array", "3.2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.2.1_Dynamic_Array_(DLL)", "3.2.1_Dynamic_Array_(DLL)\3.2.1_Dynamic_Array_(DLL).csproj", "{976BDE14-9ABA-4E27-9E49-B12F14B51A9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.1.1_Weakest_Link", "3.1.1_Weakest_Link\3.1.1_Weakest_Link.csproj", "{D1D2F37F-9A26-4D38-A840-7604E774201A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{976BDE14-9ABA-4E27-9E49-B12F14B51A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{976BDE14-9ABA-4E27-9E49-B12F14B51A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{976BDE14-9ABA-4E27-9E49-B12F14B51A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
