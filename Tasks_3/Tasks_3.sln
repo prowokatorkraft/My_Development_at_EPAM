@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.2.1_Dynamic_Array_(DLL)",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.1.1_Weakest_Link", "3.1.1_Weakest_Link\3.1.1_Weakest_Link.csproj", "{D1D2F37F-9A26-4D38-A840-7604E774201A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.1.2_Text_Analysis", "3.1.2_Text_Analysis\3.1.2_Text_Analysis.csproj", "{0A01BD41-BA11-40B5-910C-F110AD073720}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1D2F37F-9A26-4D38-A840-7604E774201A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A01BD41-BA11-40B5-910C-F110AD073720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A01BD41-BA11-40B5-910C-F110AD073720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A01BD41-BA11-40B5-910C-F110AD073720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A01BD41-BA11-40B5-910C-F110AD073720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
