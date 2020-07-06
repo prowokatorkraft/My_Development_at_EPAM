@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace _3._1._2_Text_Analysis
@@ -14,43 +15,8 @@ namespace _3._1._2_Text_Analysis
         {
             _words = new Dictionary<string, int>();
 
-            string[] array = str.ToLower().Split(
-                new string[] { Environment.NewLine, " ", ".", ",", "!", "?", "<", ">", "(", ")", "'", "\"", },
-                StringSplitOptions.RemoveEmptyEntries
-                );
-
-            foreach (var item in array)
-            {
-                if (_words.ContainsKey(item))
-                {
-                    _words[item]++;
-                }
-                else
-                {
-                    _words[item] = 1;
-                }
-            }
-
-            double _count = 0;
-
-            foreach (var item in _words.Values)
-            {
-                _count += item;
-            }
-
-
-            if (_count / _words.Count < 1.2)
-            {
-                Condition = EnumСondition.Manifold;
-            }
-            else if (_count / _words.Count > 1.2)
-            {
-                Condition = EnumСondition.Monotony;
-            }
-            else if (_count / _words.Count <= 0)
-            {
-                Condition = EnumСondition.None;
-            }
+            GroupWords(str);
+            СalculateCondition();
         }
 
         public override string ToString()
@@ -68,6 +34,43 @@ namespace _3._1._2_Text_Analysis
             builder.AppendLine($"Condition: {Condition}");
 
             return builder.ToString();
+        }
+
+        private void GroupWords(string str)
+        {
+            string[] array = str.ToLower().Split(
+                new string[] { Environment.NewLine, " ", ".", ",", "!", "?", "<", ">", "(", ")", "'", "\"", },
+                StringSplitOptions.RemoveEmptyEntries
+                );
+
+            foreach (var item in array)
+            {
+                if (_words.ContainsKey(item))
+                {
+                    _words[item]++;
+                }
+                else
+                {
+                    _words[item] = 1;
+                }
+            }
+        }
+        private void СalculateCondition()
+        {
+            double _count = _words.Sum(d => d.Value);
+
+            if (_count / _words.Count < 1.2)
+            {
+                Condition = EnumСondition.Manifold;
+            }
+            else if (_count / _words.Count > 1.2)
+            {
+                Condition = EnumСondition.Monotony;
+            }
+            else if (_count / _words.Count <= 0)
+            {
+                Condition = EnumСondition.None;
+            }
         }
     }
 }
