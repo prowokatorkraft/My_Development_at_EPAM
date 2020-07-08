@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DynamicArray
 {
-    public class DynamicArray<T> : IList<T>, IEnumerator<T>, ICloneable
+    public class DynamicArray<T> : ICollection<T>, IEnumerator<T>, ICloneable
     {
         protected T[] _array;
 
@@ -158,7 +158,7 @@ namespace DynamicArray
             return -1;
         }
         /// <exception cref="ArgumentOutOfRangeException"> Index go beyond the scope of the array! </exception>
-        public void Insert(int index, T item)
+        public bool Insert(int index, T item)
         {
             if (index < 0 || index >= Count)
             {
@@ -166,6 +166,8 @@ namespace DynamicArray
             }
 
             _array[index] = item;
+
+            return true;
         }
         public bool Remove(T item)
         {
