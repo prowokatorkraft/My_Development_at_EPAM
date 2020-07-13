@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.3.1_Super_Array", "3.3.1_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.3.2_Super_String", "3.3.2_Super_String\3.3.2_Super_String.csproj", "{80BF0247-EA76-4053-A0AE-EF5892579CC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.3.3_Pizza_Time", "3.3.3_Pizza_Time\3.3.3_Pizza_Time.csproj", "{7CCDD0E1-CAF6-4F40-8056-296216424F12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{80BF0247-EA76-4053-A0AE-EF5892579CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80BF0247-EA76-4053-A0AE-EF5892579CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80BF0247-EA76-4053-A0AE-EF5892579CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CCDD0E1-CAF6-4F40-8056-296216424F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CCDD0E1-CAF6-4F40-8056-296216424F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CCDD0E1-CAF6-4F40-8056-296216424F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CCDD0E1-CAF6-4F40-8056-296216424F12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
