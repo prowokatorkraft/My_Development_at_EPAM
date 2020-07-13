@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using _3._3._3_Pizza_Time.Сustomer;
 using _3._3._3_Pizza_Time.Vendor;
@@ -11,12 +12,12 @@ namespace _3._3._3_Pizza_Time
         static void Main(string[] args)
         {
             Pizzeria pizzeria = new Pizzeria(5000);
-            Customer customer = new Customer(200);
+            List<Customer> customers = new List<Customer>() { new Customer("Andrey", 200) };
 
-            Console.WriteLine("Customer did order");
-            customer.OrderToPizza(pizzeria, TypePizza.NeapolitanPizza);
+            Console.WriteLine($"{customers[0].Name} did order");
+            customers[0].OrderToPizza(pizzeria, TypePizza.NeapolitanPizza);
             
-            Console.WriteLine("Customer got product: " + MonitorCustomerProduct(customer).Product.ToString());
+            Console.WriteLine($"{customers[0].Name} got product: " + MonitorCustomerProduct(customers[0]).Product.ToString());
 
             Console.ReadKey();
         }

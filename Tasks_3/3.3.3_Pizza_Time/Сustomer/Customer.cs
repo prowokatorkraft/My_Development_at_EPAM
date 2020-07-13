@@ -6,12 +6,15 @@ namespace _3._3._3_Pizza_Time.Сustomer
 {
     internal class Customer
     {
+        public string Name { get; }
+
         protected decimal _money;
 
         public AbstractProduct Product { get; protected set; }
 
-        public Customer(decimal money)
+        public Customer(string name, decimal money)
         {
+            Name = name;
             _money = money;
         }
 
