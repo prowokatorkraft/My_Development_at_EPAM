@@ -43,11 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ExtensionsDecimalArray.cs" />
-    <Compile Include="Extensions\ExtensionsDoubleArray.cs" />
-    <Compile Include="Extensions\ExtensionsFloatArray.cs" />
-    <Compile Include="Extensions\ExtensionsIntArray.cs" />
-    <Compile Include="Extensions\ExtensionsLongArray.cs" />
+    <Compile Include="NumberExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
