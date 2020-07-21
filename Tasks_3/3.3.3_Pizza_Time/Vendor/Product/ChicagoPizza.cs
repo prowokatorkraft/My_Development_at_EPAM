@@ -2,6 +2,9 @@
 {
     class ChicagoPizza : AbstractPizza
     {
-        
+        public ChicagoPizza(AbstractRestaurant manufacturer)
+        {
+            Manufacturer = manufacturer;
+        }
     }
 }

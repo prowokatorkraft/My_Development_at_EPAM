@@ -9,7 +9,7 @@ namespace _3._3._3_Pizza_Time.Vendor
     {
         protected decimal _money;
 
-        protected Queue<Order<TypePizza, Action<Func<AbstractPizza>>>> Orders;
+        protected Queue<Order<TypePizza>> Orders;
         protected event Action<Func<AbstractPizza>> EventOrderCompleted;
         protected List<AbstractWorker> _worker;
 
@@ -17,12 +17,12 @@ namespace _3._3._3_Pizza_Time.Vendor
         {
             _money = money;
 
-            Orders = new Queue<Order<TypePizza, Action<Func<AbstractPizza>>>>();
+            Orders = new Queue<Order<TypePizza>>();
             EventOrderCompleted = new Action<Func<AbstractPizza>>((d) => { });
-            _worker = new List<AbstractWorker>() { new Cashier(Orders), new Cook(Orders), new Cook(Orders) };
+            _worker = new List<AbstractWorker>() { new Cashier(this, Orders), new Cook(this, Orders, InvokeDeliveryPizza), new Cook(this, Orders, InvokeDeliveryPizza) };
         }
 
-        public override bool OrderTo(TypePizza menu, ref decimal money, Action<Func<AbstractPizza>> CallBackPizza)
+        public override int OrderTo(TypePizza menu, ref decimal money)
         {
             AbstractCashier cashier = null;
 
@@ -31,15 +31,17 @@ namespace _3._3._3_Pizza_Time.Vendor
                 if (item is AbstractCashier)
                 {
                     cashier = (AbstractCashier) item;
+                    break;
                 }
             }
 
             if (cashier != null)
             {
-                return cashier.TakeOrder(menu, ref money, ref _money, CallBackPizza);
+                // TODO: ????
+                return cashier.TakeOrder(menu, ref money, ref _money);
             }
 
-            return false;
+            return -1;
         }
     }
 }

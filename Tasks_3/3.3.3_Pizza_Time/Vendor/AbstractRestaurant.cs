@@ -5,6 +5,12 @@ namespace _3._3._3_Pizza_Time.Vendor
 {
     internal abstract class AbstractRestaurant
     {
-        public abstract bool OrderTo(TypePizza menu, ref decimal money, Action<Func<AbstractPizza>> CollBackPizza);
+        public event Action<Func<int, AbstractPizza>> DeliveryProductEvent;
+
+        public abstract int OrderTo(TypePizza menu, ref decimal money);
+        protected void InvokeDeliveryPizza(Func<int, AbstractPizza> TryOrder)
+        {
+            DeliveryProductEvent.Invoke(TryOrder);
+        }
     }
 }

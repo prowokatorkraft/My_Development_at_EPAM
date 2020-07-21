@@ -2,6 +2,9 @@
 {
     class CaliforniaPizza : AbstractPizza
     {
-        
+        public CaliforniaPizza(AbstractRestaurant manufacturer)
+        {
+            Manufacturer = manufacturer;
+        }
     }
 }

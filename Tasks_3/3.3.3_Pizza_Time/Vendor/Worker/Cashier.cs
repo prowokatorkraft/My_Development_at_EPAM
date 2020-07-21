@@ -6,25 +6,27 @@ namespace _3._3._3_Pizza_Time.Vendor.Worker
 {
     internal class Cashier : AbstractCashier
     {
-        protected readonly Queue<Order<TypePizza, Action<Func<AbstractPizza>>>> Orders;
+        protected readonly Queue<Order<TypePizza>> Orders;
 
-        public Cashier(Queue<Order<TypePizza, Action<Func<AbstractPizza>>>> orders)
+        public Cashier(AbstractRestaurant work, Queue<Order<TypePizza>> orders)
         {
+            Work = work;
             Orders = orders;
         }
 
-        public override bool TakeOrder(TypePizza menu, ref decimal customerMoney, ref decimal companyMoney, Action<Func<AbstractPizza>> CollBackPizza)
+        public override int TakeOrder(TypePizza menu, ref decimal customerMoney, ref decimal companyMoney)
         {
             if (menu == TypePizza.None || CheckMoney(menu, ref customerMoney, ref companyMoney) == -1)
             {
-                return false;
+                return -1;
             }
 
-            Orders.Enqueue(new Order<TypePizza, Action<Func<AbstractPizza>>>(menu, CollBackPizza));
+            var order = new Order<TypePizza>(menu);
+            
+            Orders.Enqueue(order);
 
-            return true;
+            return order.GetHashCode();
         }
-
         private int CheckMoney(TypePizza menu, ref decimal customerMoney, ref decimal companyMoney)
         {
             if (((int)menu) <= customerMoney)

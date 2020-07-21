@@ -15,9 +15,10 @@ namespace _3._3._3_Pizza_Time
             List<Customer> customers = new List<Customer>() { new Customer("Andrey", 200) };
 
             Console.WriteLine($"{customers[0].Name} did order");
-            customers[0].OrderToPizza(pizzeria, TypePizza.NeapolitanPizza);
+
+            customers[0].OrderToPizza(pizzeria, TypePizza.ChicagoPizza);
             
-            Console.WriteLine($"{customers[0].Name} got product: " + MonitorCustomerProduct(customers[0]).Product.ToString());
+            Console.WriteLine($"{customers[0].Name} got product: " + MonitorCustomerProduct(customers[0])?.Product.ToString());
 
             Console.ReadKey();
         }

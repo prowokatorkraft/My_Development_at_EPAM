@@ -2,6 +2,6 @@
 {
     internal abstract class AbstractWorker
     {
-
+        public AbstractRestaurant Work { get; protected set; }
     }
 }

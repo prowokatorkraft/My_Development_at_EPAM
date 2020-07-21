@@ -2,6 +2,9 @@
 {
     class NeapolitanPizza : AbstractPizza
     {
-        
+        public NeapolitanPizza(AbstractRestaurant manufacturer)
+        {
+            Manufacturer = manufacturer;
+        }
     }
 }

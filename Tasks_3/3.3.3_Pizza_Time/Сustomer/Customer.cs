@@ -12,6 +12,8 @@ namespace _3._3._3_Pizza_Time.Сustomer
 
         public AbstractProduct Product { get; protected set; }
 
+        private int _orderNumber = -1;
+
         public Customer(string name, decimal money)
         {
             Name = name;
@@ -20,12 +22,27 @@ namespace _3._3._3_Pizza_Time.Сustomer
 
         public bool OrderToPizza(Pizzeria pizzeria, TypePizza pizza)
         {
-            return pizzeria.OrderTo(pizza, ref _money, GetPizza);
+            _orderNumber = pizzeria.OrderTo(pizza, ref _money);
+
+            if (_orderNumber < 0)
+            {
+                return false;
+            }
+
+            pizzeria.DeliveryProductEvent += GetPizza;
+            
+            return true;
         }
 
-        protected void GetPizza(Func<AbstractPizza> CallBack)
+        private void GetPizza(Func<int, AbstractPizza> obj)
         {
-            Product = CallBack();
+            var temp = obj(_orderNumber);
+
+            if (temp != null)
+            {
+                Product = temp;
+                temp.Manufacturer.DeliveryProductEvent -= GetPizza;
+            }
         }
     }
 }

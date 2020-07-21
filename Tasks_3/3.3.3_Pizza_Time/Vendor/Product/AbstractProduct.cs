@@ -2,6 +2,8 @@
 {
     internal abstract class AbstractProduct
     {
+        public AbstractRestaurant Manufacturer { get; protected set; }
+
         public override string ToString()
         {
             return GetType().Name;

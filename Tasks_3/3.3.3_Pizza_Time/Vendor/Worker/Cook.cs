@@ -8,19 +8,23 @@ namespace _3._3._3_Pizza_Time.Vendor.Worker
     internal class Cook : AbstractCook
     {
         protected static object LokerOrder = new object();
+        protected Action<Func<int, AbstractPizza>> InvokeDeliveryPizza;
+        protected readonly Queue<Order<TypePizza>> Orders;
 
-        protected readonly Queue<Order<TypePizza, Action<Func<AbstractPizza>>>> Orders;
-
-        public Cook(Queue<Order<TypePizza, Action<Func<AbstractPizza>>>> orders)
+        public Cook(AbstractRestaurant work, Queue<Order<TypePizza>> orders, Action<Func<int, AbstractPizza>> invokeDeliveryPizza)
         {
+            Work = work;
             Orders = orders;
+            InvokeDeliveryPizza = invokeDeliveryPizza;
 
             new Thread(MonitorOrder).Start();
         }
 
         protected void MonitorOrder()
         {
-            Order<TypePizza, Action<Func<AbstractPizza>>> order;
+            Thread.CurrentThread.IsBackground = true;
+
+            Order<TypePizza> order;
 
             while (true)
             {
@@ -30,11 +34,17 @@ namespace _3._3._3_Pizza_Time.Vendor.Worker
                     {
                         order = Orders.Dequeue();
 
-                        EventOrderCompleted += order.CallBackPizza;
-
                         Thread.Sleep(3000);
 
-                        CompleteOrder(() => FactoryPizza(order.Menu));
+                        InvokeDeliveryPizza((orderNumber) =>
+                        {
+                            if (orderNumber == order.GetHashCode())
+                            {
+                                return FactoryPizza(order.Menu);
+                            }
+
+                            return null;
+                        });
                     }
                     else
                     {
@@ -43,14 +53,13 @@ namespace _3._3._3_Pizza_Time.Vendor.Worker
                 }
             }
         }
-
         protected AbstractPizza FactoryPizza(TypePizza menu)
         {
             switch (menu)
             {
-                case TypePizza.CaliforniaPizza: return new CaliforniaPizza();
-                case TypePizza.ChicagoPizza: return new ChicagoPizza();
-                case TypePizza.NeapolitanPizza: return new NeapolitanPizza();
+                case TypePizza.CaliforniaPizza: return new CaliforniaPizza(Work);
+                case TypePizza.ChicagoPizza: return new ChicagoPizza(Work);
+                case TypePizza.NeapolitanPizza: return new NeapolitanPizza(Work);
                 default: return null;
             }
         }
