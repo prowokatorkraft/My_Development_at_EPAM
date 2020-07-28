@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace FileManagementSystem.Data.VersionStore
 {
-    internal interface IVersionStore
+    internal class VersionStore
     {
-        ResourceEventArgs GetVersions(DateTime time);
-        void AddVersion();
+
     }
 }

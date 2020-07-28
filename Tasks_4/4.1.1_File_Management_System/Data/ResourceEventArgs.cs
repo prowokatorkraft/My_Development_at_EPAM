@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileManagementSystem.Data.Resource.Monitor
+namespace FileManagementSystem.Data
 {
     internal class ResourceEventArgs : EventArgs
     {
@@ -12,12 +12,15 @@ namespace FileManagementSystem.Data.Resource.Monitor
 
         public DateTime Time { get; }
 
-        public ResourceEventArgs(TypeActionResource typeActionResource, string[] names, string[] paths, DateTime time)
+        public byte[] Value { get; }
+
+        public ResourceEventArgs(TypeActionResource typeActionResource, string[] names, string[] paths, DateTime time, byte[] value)
         {
             TypeActionResource = typeActionResource;
             Names = names;
             Paths = paths;
             Time = time;
+            Value = value;
         }
     }
 }

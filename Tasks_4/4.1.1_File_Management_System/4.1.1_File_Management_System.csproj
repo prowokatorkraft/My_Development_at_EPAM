@@ -46,11 +46,12 @@
     <Compile Include="Data\Resource\Changer\IChangeResource.cs" />
     <Compile Include="Data\Resource\Monitor\IMonitorResource.cs" />
     <Compile Include="Data\Resource\Monitor\MonitorResource.cs" />
-    <Compile Include="Data\Resource\Monitor\ResourceEventArgs.cs" />
-    <Compile Include="Data\Resource\Monitor\TypeActionResourceEnum.cs" />
+    <Compile Include="Data\ResourceEventArgs.cs" />
+    <Compile Include="Data\TypeActionResourceEnum.cs" />
     <Compile Include="Data\Tracer\AbstractTrace.cs" />
     <Compile Include="Data\Tracer\Tracer.cs" />
     <Compile Include="Data\VersionStore\IVersionStore.cs" />
+    <Compile Include="Data\VersionStore\VersionStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

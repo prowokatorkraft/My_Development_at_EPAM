@@ -73,7 +73,8 @@ namespace FileManagementSystem.Data.Resource.Monitor
                                                              TypeActionResource.Change,
                                                              new string[] { arg.Name },
                                                              new string[] { arg.FullPath },
-                                                             DateTime.Now
+                                                             DateTime.Now,
+                                                             GetFileByte(arg.FullPath)
                                                             ));
         }
         protected void CreatedResource(object o, FileSystemEventArgs arg)
@@ -82,7 +83,8 @@ namespace FileManagementSystem.Data.Resource.Monitor
                                                              TypeActionResource.Create,
                                                              new string[] { arg.Name },
                                                              new string[] { arg.FullPath },
-                                                             DateTime.Now
+                                                             DateTime.Now,
+                                                             GetFileByte(arg.FullPath)
                                                             ));
         }
         protected void DeletedResource(object o, FileSystemEventArgs arg)
@@ -91,7 +93,8 @@ namespace FileManagementSystem.Data.Resource.Monitor
                                                              TypeActionResource.Delete,
                                                              new string[] { arg.Name },
                                                              new string[] { arg.FullPath },
-                                                             DateTime.Now
+                                                             DateTime.Now,
+                                                             GetFileByte(arg.FullPath)
                                                             ));
         }
         protected void RenamedResource(object o, RenamedEventArgs arg)
@@ -100,13 +103,28 @@ namespace FileManagementSystem.Data.Resource.Monitor
                                                              TypeActionResource.Rename,
                                                              new string[] { arg.OldName, arg.Name },
                                                              new string[] { arg.OldFullPath, arg.FullPath },
-                                                             DateTime.Now
+                                                             DateTime.Now,
+                                                             GetFileByte(arg.FullPath)
                                                             ));
         }
 
         protected void InvokeDetectActionEvent(object o, ResourceEventArgs arg)
         {
             DetectActionEvent.Invoke(this, arg);
+        }
+
+        protected byte[] GetFileByte(string path)
+        {
+            byte[] values;
+
+            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open, FileAccess.Read)))
+            {
+                values = new byte[reader.BaseStream.Length];
+
+                reader.Read(values, 0, (int)reader.BaseStream.Length);
+            }
+
+            return values;
         }
     }
 }

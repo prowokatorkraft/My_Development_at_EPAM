@@ -1,6 +1,4 @@
-﻿using FileManagementSystem.Data.Resource.Monitor;
-
-namespace FileManagementSystem.Data.Tracer
+﻿namespace FileManagementSystem.Data.Tracer
 {
     internal abstract class AbstractTrace
     {

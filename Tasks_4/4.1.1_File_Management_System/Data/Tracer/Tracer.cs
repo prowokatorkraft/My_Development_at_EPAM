@@ -2,8 +2,6 @@
 using System.IO;
 using System.Diagnostics;
 
-using FileManagementSystem.Data.Resource.Monitor;
-
 namespace FileManagementSystem.Data.Tracer
 {
     internal class Tracer : AbstractTrace
