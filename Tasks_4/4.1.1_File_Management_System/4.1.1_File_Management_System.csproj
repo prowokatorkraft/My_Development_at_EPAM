@@ -49,6 +49,8 @@
     <Compile Include="Data\Resource\MonitorResource.cs" />
     <Compile Include="Data\Resource\ResourceEventArgs.cs" />
     <Compile Include="Data\Resource\TypeActionResourceEnum.cs" />
+    <Compile Include="Data\Tracer\AbstractTrace.cs" />
+    <Compile Include="Data\Tracer\Tracer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,7 +58,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\Trace\" />
     <Folder Include="Data\VersionStore\" />
     <Folder Include="Logic\Monitoring\" />
     <Folder Include="Logic\Recovery\" />

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 
 using FileManagementSystem.Data.Resource;
+using FileManagementSystem.Data.Tracer;
 
 namespace FileManagementSystem
 {
@@ -10,32 +12,32 @@ namespace FileManagementSystem
     {
         static void Main(string[] args)
         {
+            Tracer tracer = new Tracer("Log.txt");
 
+            tracer.TraceEvent(new ResourceEventArgs(
+                TypeActionResource.Create, 
+                new string[] { "test.txt" },
+                new string[] { @".\test.txt" },
+                DateTime.Now));
+            tracer.TraceEvent(new ResourceEventArgs(
+                TypeActionResource.Delete,
+                new string[] { "test.txt" },
+                new string[] { @".\test.txt" },
+                DateTime.Now));
+            tracer.TraceEvent(new ResourceEventArgs(
+                TypeActionResource.Change,
+                new string[] { "test.txt" },
+                new string[] { @".\test.txt" },
+                DateTime.Now));
+            tracer.TraceEvent(new ResourceEventArgs(
+                TypeActionResource.Rename,
+                new string[] { "test.txt", "test1.txt" },
+                new string[] { @".\test.txt", @".\test1.txt" },
+                DateTime.Now));
+
+            tracer.Close();
 
             Console.ReadKey();
-        }
-
-
-
-        static void Method(object o, ResourceEventArgs arg)
-        {
-            switch (arg.TypeActionResource)
-            {
-                case TypeActionResource.Create:
-                    Console.WriteLine($"Created: {arg.Paths[0]}, {arg.Time}");
-                    break;
-                case TypeActionResource.Delete:
-                    Console.WriteLine($"Deleted: {arg.Paths[0]}, {arg.Time}");
-                    break;
-                case TypeActionResource.Change:
-                    Console.WriteLine($"Change: {arg.Paths[0]}, {arg.Time}");
-                    break;
-                case TypeActionResource.Rename:
-                    Console.WriteLine($"Rename: {arg.Paths[0]} in {arg.Paths[1]}, {arg.Time}");
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }
