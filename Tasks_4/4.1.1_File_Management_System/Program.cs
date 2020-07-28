@@ -12,30 +12,7 @@ namespace FileManagementSystem
     {
         static void Main(string[] args)
         {
-            Tracer tracer = new Tracer("Log.txt");
-
-            tracer.TraceEvent(new ResourceEventArgs(
-                TypeActionResource.Create, 
-                new string[] { "test.txt" },
-                new string[] { @".\test.txt" },
-                DateTime.Now));
-            tracer.TraceEvent(new ResourceEventArgs(
-                TypeActionResource.Delete,
-                new string[] { "test.txt" },
-                new string[] { @".\test.txt" },
-                DateTime.Now));
-            tracer.TraceEvent(new ResourceEventArgs(
-                TypeActionResource.Change,
-                new string[] { "test.txt" },
-                new string[] { @".\test.txt" },
-                DateTime.Now));
-            tracer.TraceEvent(new ResourceEventArgs(
-                TypeActionResource.Rename,
-                new string[] { "test.txt", "test1.txt" },
-                new string[] { @".\test.txt", @".\test1.txt" },
-                DateTime.Now));
-
-            tracer.Close();
+            
 
             Console.ReadKey();
         }

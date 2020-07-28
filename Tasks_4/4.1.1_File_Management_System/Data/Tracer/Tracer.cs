@@ -2,7 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 
-using FileManagementSystem.Data.Resource;
+using FileManagementSystem.Data.Resource.Monitor;
 
 namespace FileManagementSystem.Data.Tracer
 {

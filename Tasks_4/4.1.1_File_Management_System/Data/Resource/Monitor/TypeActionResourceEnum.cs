@@ -1,4 +1,4 @@
-﻿namespace FileManagementSystem.Data.Resource
+﻿namespace FileManagementSystem.Data.Resource.Monitor
 {
     internal enum TypeActionResource
     {

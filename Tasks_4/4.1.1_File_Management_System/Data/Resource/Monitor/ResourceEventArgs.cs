@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileManagementSystem.Data.Resource
+namespace FileManagementSystem.Data.Resource.Monitor
 {
     internal class ResourceEventArgs : EventArgs
     {

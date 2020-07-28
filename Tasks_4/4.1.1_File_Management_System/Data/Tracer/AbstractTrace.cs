@@ -1,4 +1,4 @@
-﻿using FileManagementSystem.Data.Resource;
+﻿using FileManagementSystem.Data.Resource.Monitor;
 
 namespace FileManagementSystem.Data.Tracer
 {

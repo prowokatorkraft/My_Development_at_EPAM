@@ -43,14 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Resource\AbstractResource.cs" />
-    <Compile Include="Data\Resource\AbstractChangeResource.cs" />
-    <Compile Include="Data\Resource\AbstractMonitorResource.cs" />
-    <Compile Include="Data\Resource\MonitorResource.cs" />
-    <Compile Include="Data\Resource\ResourceEventArgs.cs" />
-    <Compile Include="Data\Resource\TypeActionResourceEnum.cs" />
+    <Compile Include="Data\Resource\Changer\IChangeResource.cs" />
+    <Compile Include="Data\Resource\Monitor\IMonitorResource.cs" />
+    <Compile Include="Data\Resource\Monitor\MonitorResource.cs" />
+    <Compile Include="Data\Resource\Monitor\ResourceEventArgs.cs" />
+    <Compile Include="Data\Resource\Monitor\TypeActionResourceEnum.cs" />
     <Compile Include="Data\Tracer\AbstractTrace.cs" />
     <Compile Include="Data\Tracer\Tracer.cs" />
+    <Compile Include="Data\VersionStore\IVersionStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,7 +58,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\VersionStore\" />
     <Folder Include="Logic\Monitoring\" />
     <Folder Include="Logic\Recovery\" />
     <Folder Include="UI\" />

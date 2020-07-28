@@ -4,11 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace FileManagementSystem.Data.Resource
+namespace FileManagementSystem.Data.Resource.Monitor
 {
-    internal class MonitorResource : AbstractMonitorResource
+    internal class MonitorResource : IMonitorResource
     {
-        public override event EventHandler<ResourceEventArgs> DetectActionEvent;
+        public event EventHandler<ResourceEventArgs> DetectActionEvent;
         public string PathResource { get; }
         public string FilterResource { get; }
 
@@ -27,7 +27,7 @@ namespace FileManagementSystem.Data.Resource
             FilterResource = filter;
         }
 
-        public override async Task MonitorAsync(CancellationToken token)
+        public async Task MonitorAsync(CancellationToken token)
         {
             Task task = new Task(Run, token);
             task.Start();
