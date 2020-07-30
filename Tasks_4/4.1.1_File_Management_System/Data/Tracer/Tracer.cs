@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace FileManagementSystem.Data.Tracer
 {
-    internal class Tracer : AbstractTrace
+    internal class Tracer : ITrace
     {
         TraceListener[] listeners;
 
@@ -26,7 +26,7 @@ namespace FileManagementSystem.Data.Tracer
             Trace.Indent();
         }
 
-        public override void Close()
+        public void Close()
         {
             Trace.Unindent();
             Trace.WriteLine($"Trace Finished: {DateTime.Now}");
@@ -38,7 +38,7 @@ namespace FileManagementSystem.Data.Tracer
         }
 
         /// <exception cref="Exception"> Undefined TypeActionResource in ResourceEventArgs </exception>
-        public override void TraceEvent(ResourceEventArgs arg)
+        public void TraceEvent(ResourceEventArgs arg)
         {
             switch (arg.TypeActionResource)
             {

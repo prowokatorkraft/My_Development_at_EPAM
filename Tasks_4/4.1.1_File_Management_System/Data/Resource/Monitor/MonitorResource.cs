@@ -14,6 +14,8 @@ namespace FileManagementSystem.Data.Resource.Monitor
 
         public MonitorResource(string pathFolder, string filter)
         {
+            DetectActionEvent += DetectActionEventNull;
+
             if (!Directory.Exists(pathFolder))
             {
                 throw new ArgumentException("Incorrect path!");
@@ -111,6 +113,9 @@ namespace FileManagementSystem.Data.Resource.Monitor
         protected void InvokeDetectActionEvent(object o, ResourceEventArgs arg)
         {
             DetectActionEvent.Invoke(this, arg);
+        }
+        private void DetectActionEventNull<T>(object o, T arg)
+        {
         }
 
         protected byte[] GetFileByte(string path)

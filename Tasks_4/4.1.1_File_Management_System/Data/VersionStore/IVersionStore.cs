@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileManagementSystem.Data.VersionStore
 {
     internal interface IVersionStore
     {
-        ResourceEventArgs GetVersions(DateTime time);
-        void AddVersion();
+        ResourceEventArgs[] GetVersions(DateTime time);
+        void AddVersion(ResourceEventArgs args);
+        void AddVersions(ResourceEventArgs[] args);
     }
 }
