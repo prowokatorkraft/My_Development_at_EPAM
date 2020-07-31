@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Resource\Changer\ChangeResource.cs" />
     <Compile Include="Data\Resource\Changer\IChangeResource.cs" />
     <Compile Include="Data\Resource\Monitor\IMonitorResource.cs" />
     <Compile Include="Data\Resource\Monitor\MonitorResource.cs" />
@@ -55,6 +56,11 @@
     <Compile Include="Data\Tracer\Tracer.cs" />
     <Compile Include="Data\VersionStore\IVersionStore.cs" />
     <Compile Include="Data\VersionStore\VersionStore.cs" />
+    <Compile Include="Logic\Monitoring\IMonitoring.cs" />
+    <Compile Include="Logic\Monitoring\Monitoring.cs" />
+    <Compile Include="PL\IConsole.cs" />
+    <Compile Include="PL\MonitoringConsole.cs" />
+    <Compile Include="PL\PresentationConsole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,9 +69,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logic\Monitoring\" />
     <Folder Include="Logic\Recovery\" />
-    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

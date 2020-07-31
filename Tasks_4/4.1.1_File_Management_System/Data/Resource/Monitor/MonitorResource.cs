@@ -120,16 +120,28 @@ namespace FileManagementSystem.Data.Resource.Monitor
 
         protected byte[] GetFileByte(string path)
         {
-            byte[] values;
-
-            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open, FileAccess.Read)))
+            if (File.Exists(path))
             {
-                values = new byte[reader.BaseStream.Length];
+                byte[] values;
 
-                reader.Read(values, 0, (int)reader.BaseStream.Length);
+                try
+                {
+                    using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))
+                    {
+                        values = new byte[reader.BaseStream.Length];
+
+                        reader.Read(values, 0, (int)reader.BaseStream.Length);
+                    }
+
+                    return values;
+                }
+                catch (IOException)
+                {
+                    return GetFileByte(path);
+                }
             }
 
-            return values;
+            return new byte[0];
         }
     }
 }

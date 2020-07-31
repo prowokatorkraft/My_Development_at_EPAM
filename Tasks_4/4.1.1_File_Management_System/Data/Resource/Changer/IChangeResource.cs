@@ -2,6 +2,6 @@
 {
     internal interface IChangeResource
     {
-        // Change directory
+        void ChangeAllResource(ResourceEventArgs[] args);
     }
 }
