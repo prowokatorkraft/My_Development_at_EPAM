@@ -1,6 +1,7 @@
 ﻿using System;
 
 using FileManagementSystem.Logic.Monitoring;
+using FileManagementSystem.Logic.Recovery;
 
 namespace FileManagementSystem.PL
 {
@@ -20,7 +21,7 @@ namespace FileManagementSystem.PL
                 case 1:
                     return new MonitoringConsole(new Monitoring());
                 case 2:
-                //return;
+                    return new RecoveryConsole(new Recovery());
                 case 0:
                 default:
                     return null;

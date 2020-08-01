@@ -114,7 +114,7 @@ namespace FileManagementSystem.Data.VersionStore
         {
             using (StreamReader reader = new StreamReader(new FileStream(_storePath, FileMode.Open, FileAccess.Read)))
             {
-                Regex regex = new Regex(@"(?<data>\d{1,2}\/\d{1,2}\/\d{2,4} \d{1,2}:\d{1,2}:\d{1,2})\|(?<type>\b\w+\b)\|(?<names>[A-Za-zА-Яа-яЁё. ]+|[A-Za-zА-Яа-яЁё. ]+,[A-Za-zА-Яа-яЁё. ]+)\|(?<paths>[A-Za-zА-Яа-яЁё. \\]+|[A-Za-zА-Яа-яЁё. \\]+,[A-Za-zА-Яа-яЁё. \\]+)\|(?<value>[0-9,]+)");
+                Regex regex = new Regex(@"(?<data>\d{1,2}\/\d{1,2}\/\d{2,4} \d{1,2}:\d{1,2}:\d{1,2})\|(?<type>\b\w+\b)\|(?<names>[A-Za-zА-Яа-яЁё0-9. ]+|[A-Za-zА-Яа-яЁё0-9. ]+,[A-Za-zА-Яа-яЁё0-9. ]+)\|(?<paths>[A-Za-zА-Яа-яЁё0-9. \\]+|[A-Za-zА-Яа-яЁё0-9. \\]+,[A-Za-zА-Яа-яЁё0-9. \\]+)\|(?<value>[0-9,]+)?");
 
                 TypeActionResource resourceType;
                 DateTime resourceDate;

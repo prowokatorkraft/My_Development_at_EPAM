@@ -11,14 +11,14 @@ namespace FileManagementSystem.Data.Resource.Changer
         {
             if (!Directory.Exists(pathFolder))
             {
-                throw new ArgumentException("Incorrect path!");
+                Directory.CreateDirectory(pathFolder);
             }
             PathResource = pathFolder;
         }
 
         public void ChangeAllResource(ResourceEventArgs[] args)
         {
-            if (Directory.Exists(PathResource))
+            if (Directory.Exists(PathResource) && args.Length > 0)
             {
                 Directory.Delete(PathResource, true);
             }

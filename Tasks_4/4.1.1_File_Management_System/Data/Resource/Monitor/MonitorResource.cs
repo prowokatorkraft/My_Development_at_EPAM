@@ -18,7 +18,7 @@ namespace FileManagementSystem.Data.Resource.Monitor
 
             if (!Directory.Exists(pathFolder))
             {
-                throw new ArgumentException("Incorrect path!");
+                Directory.CreateDirectory(pathFolder);
             }
             PathResource = pathFolder;
 
@@ -48,11 +48,6 @@ namespace FileManagementSystem.Data.Resource.Monitor
 
             using (FileSystemWatcher watcher = new FileSystemWatcher(PathResource, FilterResource))
             {
-                //watcher.NotifyFilter = NotifyFilters.CreationTime
-                //                     | NotifyFilters.LastWrite
-                //                     | NotifyFilters.FileName
-                //                     | NotifyFilters.DirectoryName;
-
                 watcher.IncludeSubdirectories = true;
 
                 watcher.Changed += ChangedResource;
@@ -73,7 +68,7 @@ namespace FileManagementSystem.Data.Resource.Monitor
         {
             InvokeDetectActionEvent(o, new ResourceEventArgs(
                                                              TypeActionResource.Change,
-                                                             new string[] { arg.Name },
+                                                             new string[] { Path.GetFileName(arg.FullPath) },
                                                              new string[] { arg.FullPath },
                                                              DateTime.Now,
                                                              GetFileByte(arg.FullPath)
@@ -83,7 +78,7 @@ namespace FileManagementSystem.Data.Resource.Monitor
         {
             InvokeDetectActionEvent(o, new ResourceEventArgs(
                                                              TypeActionResource.Create,
-                                                             new string[] { arg.Name },
+                                                             new string[] { Path.GetFileName(arg.FullPath) },
                                                              new string[] { arg.FullPath },
                                                              DateTime.Now,
                                                              GetFileByte(arg.FullPath)
@@ -93,7 +88,7 @@ namespace FileManagementSystem.Data.Resource.Monitor
         {
             InvokeDetectActionEvent(o, new ResourceEventArgs(
                                                              TypeActionResource.Delete,
-                                                             new string[] { arg.Name },
+                                                             new string[] { Path.GetFileName(arg.FullPath) },
                                                              new string[] { arg.FullPath },
                                                              DateTime.Now,
                                                              GetFileByte(arg.FullPath)
@@ -103,7 +98,7 @@ namespace FileManagementSystem.Data.Resource.Monitor
         {
             InvokeDetectActionEvent(o, new ResourceEventArgs(
                                                              TypeActionResource.Rename,
-                                                             new string[] { arg.OldName, arg.Name },
+                                                             new string[] { Path.GetFileName(arg.OldFullPath), Path.GetFileName(arg.FullPath) },
                                                              new string[] { arg.OldFullPath, arg.FullPath },
                                                              DateTime.Now,
                                                              GetFileByte(arg.FullPath)

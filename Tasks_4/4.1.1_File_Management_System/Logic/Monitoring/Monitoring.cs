@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Threading.Tasks;
 using System.Threading;
 
 using FileManagementSystem.Data;
 using FileManagementSystem.Data.Resource.Monitor;
 using FileManagementSystem.Data.Tracer;
 using FileManagementSystem.Data.VersionStore;
-
 
 namespace FileManagementSystem.Logic.Monitoring
 {
@@ -21,14 +16,14 @@ namespace FileManagementSystem.Logic.Monitoring
 
         protected CancellationTokenSource _cancellation;
 
-        public Monitoring(string pathDictionary = @".\Test", string filterFile = @"*.txt")
+        public Monitoring(string pathFolder = @".\Test", string filterFile = @"*.txt", string nameLog = "Log.txt", string pathStore = @".\Store.dat")
         {
-            _resource = new MonitorResource(pathDictionary, filterFile);
+            _resource = new MonitorResource(pathFolder, filterFile);
             _resource.DetectActionEvent += CatchEvent;
             _cancellation = new CancellationTokenSource();
 
-            _tracer = new Tracer("Log.txt");
-            _store = new VersionStore(@".\Store.dat");
+            _tracer = new Tracer(nameLog);
+            _store = new VersionStore(pathStore);
         }
         public void Dispose()
         {
