@@ -1,0 +1,9 @@
+{
+  "name": "5.3_mini_crud",
+  "version": "0.0.0",
+  "description": "5.3_Mini_Crud",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}

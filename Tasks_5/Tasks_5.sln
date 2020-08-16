@@ -7,6 +7,8 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "5.1_Char_Remover", "5.1_Cha
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "5.2_Math_Calculator", "5.2_Math_Calculator\5.2_Math_Calculator.njsproj", "{DF6AD6F9-E6B3-48C6-9418-50E604D7E378}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "5.3_Mini_Crud", "5.3_Mini_Crud\5.3_Mini_Crud.njsproj", "{F287F57A-158B-4954-AED9-EA057867EA4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DF6AD6F9-E6B3-48C6-9418-50E604D7E378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF6AD6F9-E6B3-48C6-9418-50E604D7E378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF6AD6F9-E6B3-48C6-9418-50E604D7E378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F287F57A-158B-4954-AED9-EA057867EA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F287F57A-158B-4954-AED9-EA057867EA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F287F57A-158B-4954-AED9-EA057867EA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F287F57A-158B-4954-AED9-EA057867EA4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
