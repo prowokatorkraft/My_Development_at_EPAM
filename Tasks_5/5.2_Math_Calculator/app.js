@@ -1,12 +1,24 @@
-function CalculateExpression(expression) {
+function calculateExpression(expression) {
 
     const expTemplate = /(?<Number>\d+\.\d+|\d+)[ ]{0,}(?<Sign>[-\+\/*=])/g;
 
     let matchArray = expression.match(expTemplate);
 
-    return CalculateElements(matchArray).toFixed(2);
+    let result = calculateElements(matchArray);
 
-    function CalculateElements(matchArray) {
+    if (typeof(result) == "number") {
+
+        return result.toFixed(2);
+    }
+
+    return null;
+
+    function calculateElements(matchArray) {
+
+        if (matchArray == null || matchArray == undefined) {
+
+            return null;
+        }
 
         let element = matchArray.shift();
 
@@ -19,19 +31,16 @@ function CalculateExpression(expression) {
         expTemplate.exec("CoSTÛL");
 
 
-        let temp = CalculateElements(matchArray);
+        let temp = calculateElements(matchArray);
         if (temp !== null) {
 
-            /// test
-            let t1 = Calculate(parseFloat(groups[1]), parseFloat(temp), groups[2]);
-            console.log(t1);
-            return t1;
+            return calculate(parseFloat(groups[1]), parseFloat(temp), groups[2]);
         }
 
         return groups[1];
     }
 
-    function Calculate(numOne, numTwo, sign) {
+    function calculate(numOne, numTwo, sign) {
 
         switch (sign) {
 

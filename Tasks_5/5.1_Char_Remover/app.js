@@ -1,4 +1,4 @@
-function RemoveRepeatingChars(str) {
+function removeRepeatingChars(str) {
 
     if (typeof (str) != "string") {
 
@@ -7,11 +7,11 @@ function RemoveRepeatingChars(str) {
 
     let arrayChar = new Array(0);
 
-    FindRepeatingChar();
+    findRepeatingChar();
 
-    return DeletedChars();
+    return deletedChars();
 
-    function IsRepeatingChar(ch, world, reiteration) {
+    function isRepeatingChar(ch, world, reiteration) {
 
         for (let i in world) {
 
@@ -29,7 +29,7 @@ function RemoveRepeatingChars(str) {
         return false;
     }
 
-    function FindRepeatingChar() {
+    function findRepeatingChar() {
 
         let strArray = str.split(" ");
 
@@ -37,7 +37,7 @@ function RemoveRepeatingChars(str) {
 
             for (let ch in strArray[world]) {
 
-                if (IsRepeatingChar(strArray[world][ch], strArray[world], 1)) {
+                if (isRepeatingChar(strArray[world][ch], strArray[world], 1)) {
 
                     if (-1 == arrayChar.findIndex((value, index, array) => value === strArray[world][ch])) {
 
@@ -48,7 +48,7 @@ function RemoveRepeatingChars(str) {
         }
     }
 
-    function DeletedChars() {
+    function deletedChars() {
 
         let newStr = "";
 
