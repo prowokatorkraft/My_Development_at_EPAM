@@ -1,0 +1,23 @@
+﻿form {
+    width: 350px;
+    height: 230px;
+    background-color: rgb(71, 143, 229);
+    color: white;
+    
+}
+
+.Element {
+    margin: 20px 0px 5px 20px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.Element.Input {
+    margin-top: 1px;
+    border: none;
+}
+#Submit {
+    margin: 20px 20px 5px;
+    background-color: rgb(242, 225, 120);
+    border: none;
+    height: 25px
+}

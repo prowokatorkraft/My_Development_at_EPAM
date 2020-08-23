@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.1_List_Menu", "6.1_List_Menu\6.1_List_Menu.csproj", "{42418245-EB53-49DF-B812-273AA9305DCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.2_Registration_Form", "6.2_Registration_Form\6.2_Registration_Form.csproj", "{8E3C134D-4DD7-4B6F-B050-086C42B25366}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{42418245-EB53-49DF-B812-273AA9305DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42418245-EB53-49DF-B812-273AA9305DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42418245-EB53-49DF-B812-273AA9305DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
