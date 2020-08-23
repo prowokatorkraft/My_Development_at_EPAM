@@ -1,0 +1,17 @@
+﻿ul {
+    margin: 0px;
+    padding: 11px;
+    list-style: none;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+div {
+    width: 200px;
+    overflow-wrap: break-word;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(243, 231, 149);
+    color: rgb(144, 0, 0);
+    box-shadow: rgb(144, 0, 0) 4px 4px;
+}
