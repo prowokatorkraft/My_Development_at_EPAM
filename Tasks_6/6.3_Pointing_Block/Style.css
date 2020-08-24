@@ -1,0 +1,32 @@
+﻿body {
+    background-color:black;
+}
+
+div {
+    background-color: #63b4d4;
+    border: 5px solid #b6e1f2;
+}
+
+#arrow {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    transform: rotate(45deg);
+    z-index: -1;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+}
+
+#block {
+    min-width: 200px;
+    height: 150px;
+    margin: -104px 10px;
+    text-align: center;
+    color: white
+}
+    #block span {
+        display:block;
+        margin-top: 70px;
+        font-size:larger;
+        overflow:hidden;
+    }

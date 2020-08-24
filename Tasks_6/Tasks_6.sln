@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.1_List_Menu", "6.1_List_M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.2_Registration_Form", "6.2_Registration_Form\6.2_Registration_Form.csproj", "{8E3C134D-4DD7-4B6F-B050-086C42B25366}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.3_Pointing_Block", "6.3_Pointing_Block\6.3_Pointing_Block.csproj", "{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E3C134D-4DD7-4B6F-B050-086C42B25366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
