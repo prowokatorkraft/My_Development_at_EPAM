@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.2_Registration_Form", "6.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.3_Pointing_Block", "6.3_Pointing_Block\6.3_Pointing_Block.csproj", "{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.4_Three_Column_Block", "6.4_Three_Column_Block\6.4_Three_Column_Block.csproj", "{0D9FB41B-48D7-4AD4-AB84-95B89386DC8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD160BE1-7853-43DB-9840-F3B49FCDDD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9FB41B-48D7-4AD4-AB84-95B89386DC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9FB41B-48D7-4AD4-AB84-95B89386DC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9FB41B-48D7-4AD4-AB84-95B89386DC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9FB41B-48D7-4AD4-AB84-95B89386DC8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
