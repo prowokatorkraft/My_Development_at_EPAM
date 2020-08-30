@@ -1,0 +1,139 @@
+﻿body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+#header {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 5px 2px;
+    text-align: center;
+}
+
+    #header div {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 0;
+        background-color: #efefef;
+        border-radius: 5px;
+        min-width: 495px;
+    }
+
+        #header div input {
+            box-sizing: content-box;
+            height: 43px;
+            margin: auto 5px;
+            float: left;
+            background-color: #efefef;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+            #header div input[type=image] {
+                width: 25px;
+                height: 25px;
+                padding: 10px;
+            }
+
+            #header div input[type=text] {
+                width: 400px;
+            }
+
+#content {
+    width: 500px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #content div {
+        margin: 5px auto;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        padding: 10px 10px 5px;
+        overflow: auto;
+    }
+
+        #content div pre {
+            margin-top: 0;
+            margin-bottom: 10px;
+            overflow: auto;
+            white-space:pre-line;
+        }
+
+        #content div img {
+            float: right;
+            border: 1px solid lightgrey;
+            border-radius: 5px;
+            height: 20px;
+            width: 20px;
+            padding: 5px;
+        }
+
+#btn-add {
+    position: absolute;
+    right: 80px;
+    bottom: 80px;
+    height: 50px;
+    width: 50px;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.1);
+}
+
+    #modal div {
+        margin: 10% auto;
+        margin-bottom: auto;
+        width: 500px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: #0000008f 0px 5px 20px 2px;
+        overflow: auto;
+        padding: 5px 5px 2px;
+        z-index: 0;
+    }
+
+        #modal div input[id="text-head"] {
+            display: block;
+            margin: 5px;
+            width: 96%;
+            outline: none;
+            border: none;
+        }
+
+        #modal div textarea[id="text-content"] {
+            display: block;
+            resize: none;
+            margin: 5px;
+            width: 96.5%;
+            height: 100px;
+            outline: none;
+            border: none;
+        }
+
+        #modal div button {
+            float: right;
+            margin: 2px;
+            background-color: #efefef;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            padding: 4px 10px;
+        }
+
+            #modal div button[id="btn-close"] {
+                background-color: white;
+            }
