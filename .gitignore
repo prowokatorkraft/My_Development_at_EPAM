@@ -349,3 +349,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /Tasks/4_X-Mas_Tree
+/Tasks_7/Epam.Task_7.TestingConsole/Epam.Task_7.TestingConsole.csproj
+/Tasks_7/Epam.Task_7.TestingConsole/Program.cs
+/Tasks_7/Epam.Task_7.TestingConsole/Properties/AssemblyInfo.cs
+/Tasks_7/Epam.Task_7.TestingConsole/App.config
+/Tasks_7/Epam.Task_7.TestingConsole/packages.config
