@@ -13,7 +13,7 @@ namespace Epam.Task_7.Common
 
         static DependencyResolver()
         {
-            Dao = new ObjectDao(@".\");
+            Dao = new ObjectDao(@"C:\Users\Данил\source\repos\EPAM\My_Development_at_EPAM\Tasks_7\Epam.Task_7.TestingConsole\bin\Debug");
             Bll = new ObjectBll(Dao);
         }
     }

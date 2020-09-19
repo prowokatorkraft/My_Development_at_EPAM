@@ -8,7 +8,13 @@ namespace Epam.Task_7.BLL.Interfaces
     {
         Guid AddAward(Award award);
 
+        int ChangeAward(Award award);
+
+        int ChangeAward(Award award, IBll objectBll);
+
         int RemoveAward(Guid id);
+
+        int RemoveAward(Guid id, IBll objectBll);
 
         bool IsAward(Guid id);
 

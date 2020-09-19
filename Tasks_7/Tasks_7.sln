@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task_7.Common.Entities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task_7.DAL.Json", "Epam.Task_7.DAL.Json\Epam.Task_7.DAL.Json.csproj", "{7F53314D-7D43-4E1F-BBFE-56A82210F53D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task_7.PL.Web", "Epam.Task_7.PL.Web\Epam.Task_7.PL.Web.csproj", "{87C7C3BF-377A-40E8-97DF-142B56865367}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{7F53314D-7D43-4E1F-BBFE-56A82210F53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F53314D-7D43-4E1F-BBFE-56A82210F53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F53314D-7D43-4E1F-BBFE-56A82210F53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C7C3BF-377A-40E8-97DF-142B56865367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C7C3BF-377A-40E8-97DF-142B56865367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C7C3BF-377A-40E8-97DF-142B56865367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C7C3BF-377A-40E8-97DF-142B56865367}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{57B0F5AE-AC7E-4875-9C05-99B1D5E30C1D} = {FE12563D-AE1A-463A-B236-529EE263950F}
 		{EE84B745-930E-4EBD-8CDE-24F8B179913A} = {FE12563D-AE1A-463A-B236-529EE263950F}
 		{7F53314D-7D43-4E1F-BBFE-56A82210F53D} = {71B2BE1A-9AD1-4C2D-83EA-545946CB7963}
+		{87C7C3BF-377A-40E8-97DF-142B56865367} = {6A30EA26-5DC6-4F8C-A78C-ADCE20E5769E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9628AFF3-A91C-4062-B1BD-2511A2E4D85C}

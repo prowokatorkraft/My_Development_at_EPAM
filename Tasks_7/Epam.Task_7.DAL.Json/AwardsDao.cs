@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 using Newtonsoft.Json;
 
@@ -102,6 +103,18 @@ namespace Epam.Task_7.DAL.Json
             {
                 throw new IOException("Data retrieval error!", e);
             }
+            catch
+            {
+                Thread.Sleep(20);
+
+                var stream = File.Open(
+                                GetFilePath(id),
+                                FileMode.Open,
+                                FileAccess.Read
+                            );
+
+                return new StreamReader(stream);
+            }
         }
 
         private TextWriter GetJsonFileForWrite(Guid id)
@@ -119,6 +132,18 @@ namespace Epam.Task_7.DAL.Json
             catch (FileNotFoundException e)
             {
                 throw new IOException("Data retrieval error!", e);
+            }
+            catch
+            {
+                Thread.Sleep(20);
+
+                var stream = File.Open(
+                                GetFilePath(id),
+                                FileMode.Open,
+                                FileAccess.Write
+                            );
+
+                return new StreamWriter(stream);
             }
         }
 
@@ -160,6 +185,18 @@ namespace Epam.Task_7.DAL.Json
             catch (FileNotFoundException e)
             {
                 throw new IOException("The Json file was not found!", e);
+            }
+            catch
+            {
+                Thread.Sleep(20);
+
+                var stream = File.Open(
+                                GetFilePath(id),
+                                FileMode.Create,
+                                FileAccess.Write
+                            );
+
+                return new StreamWriter(stream);
             }
         }
 

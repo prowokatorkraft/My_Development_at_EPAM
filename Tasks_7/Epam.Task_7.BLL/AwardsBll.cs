@@ -26,6 +26,37 @@ namespace Epam.Task_7.BLL
             return _awardsDao.AddAward(award);
         }
 
+        public int ChangeAward(Award award)
+        {
+            if (_awardsDao.ChangeAward(award))
+            {
+                return 0;
+            }
+
+            return 1;
+        }
+
+        public int ChangeAward(Award award, IBll objectBll)
+        {
+            var oldAward = objectBll.Awards.GetAward(award.Id);
+
+            foreach (var item in oldAward.OwnerList)
+            {
+                objectBll.RemoveDependUserAndAwards(item, award.Id);
+            }
+
+            ChangeAward(award);
+
+            foreach (var item in award.OwnerList)
+            {
+                var user = objectBll.Users.GetUser(item);
+                user.AwardList.Add(award.Id);
+                objectBll.Users.ChangeUser(user);
+            }
+
+            return 1;
+        }
+
         public IEnumerable<Award> GetAllAwards()
         {
             foreach (var item in _awardsDao.GetAllAward())
@@ -67,6 +98,28 @@ namespace Epam.Task_7.BLL
             if (Guid.Empty == id)
             {
                 return -1;
+            }
+
+            if (_awardsDao.RemoveAward(id))
+            {
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int RemoveAward(Guid id, IBll objectBll)
+        {
+            if (Guid.Empty == id || objectBll == null)
+            {
+                return -1;
+            }
+
+            foreach (var userId in _awardsDao.GetAward(id).OwnerList)
+            {
+                objectBll.RemoveDependUserAndAwards(userId, id);
             }
 
             if (_awardsDao.RemoveAward(id))

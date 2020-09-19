@@ -1,0 +1,47 @@
+﻿@using Epam.Task_7.BLL;
+@using Epam.Task_7.BLL.Interfaces;
+@using Epam.Task_7.Common;
+@using Epam.Task_7.Common.Entities;
+@{
+    Layout = null;
+
+    IBll bll = DependencyResolver.Bll;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Task 7</title>
+    <link href="~/Styles/StartLayout.css" rel="stylesheet" />
+    <link href="~/Styles/ModalWindow.css" rel="stylesheet" />
+
+    @RenderSection("hendlerSection")
+    <script src="~/Scripts/Xhr.js"></script>
+</head>
+<body>
+    
+    <header></header>
+    <main>
+        <nav id="nav-column">
+            <ul>
+                <li><a id="users" href="~/Pages/UserLayout.cshtml">Пользователи</a></li>
+                <li><a id="awards" href="~/Pages/AwardLayout.cshtml">Награды</a></li>
+            </ul>
+        </nav>
+        <section id="section-column">
+            @RenderBody()
+        </section>
+    </main>
+
+    <form action="" method="post" class="modal">
+        <div id="modal-window">
+            @RenderSection("modalSection")
+        </div>
+    </form>
+
+    <script src="~/Scripts/Constant.js"></script>
+    @RenderSection("constant")
+</body>
+</html>

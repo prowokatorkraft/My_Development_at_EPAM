@@ -8,7 +8,13 @@ namespace Epam.Task_7.BLL.Interfaces
     {
         Guid AddUser(User user);
 
+        int ChangeUser(User user);
+
+        int ChangeUser(User user, IBll objectBll);
+
         int RemoveUser(Guid id);
+
+        int RemoveUser(Guid id, IBll objectBll);
 
         bool IsUser(Guid id);
 

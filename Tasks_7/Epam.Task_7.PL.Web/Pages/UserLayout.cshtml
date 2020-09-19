@@ -1,0 +1,94 @@
+﻿@using Epam.Task_7.BLL;
+@using Epam.Task_7.BLL.Interfaces;
+@using Epam.Task_7.Common;
+@using Epam.Task_7.Common.Entities;
+@using Newtonsoft.Json;
+@{
+    Layout = "~/Pages/_StartLayout.cshtml";
+
+    IBll bll = DependencyResolver.Bll;
+
+    string awardJsonListStr = JsonConvert.SerializeObject(bll.Awards.GetAllAwards());
+
+    if (IsPost)
+    {
+        string formName = Request["name-form"];
+        string id = Request["text-id"];
+        string name = Request["text-name"];
+        string data = Request["dateOfBirth"];
+        string[] awards = Request["select-awards"]?.Split(',');
+
+        DateTime dateOfBirth;
+        if (DateTime.TryParse(Request["dateOfBirth"], out dateOfBirth) && name != "")
+        {
+            switch (formName)
+            {
+                case "Add":
+                    AddUser(name, dateOfBirth, awards);
+                    break;
+
+                case "Change":
+                    ChangeUser(Guid.Parse(id) ,name, dateOfBirth, awards);
+                    break;
+
+                default:
+                    throw new HttpException("Incorrect formName!");
+            }
+        }
+    }
+
+    void AddUser(string name, DateTime dateOfBirth, string[] awards)
+    {
+        var id = bll.Users.AddUser(new User(Guid.NewGuid(), name, dateOfBirth));
+
+        if (awards != null && awards.Length > 0)
+        {
+            foreach (var item in awards)
+            {
+                bll.AddDependUserAndAwards(id, Guid.Parse(item));
+            }
+        }
+    }
+
+    void ChangeUser(Guid id, string name, DateTime dateOfBirth, string[] awards)
+    {
+        var user = new User(id, name, dateOfBirth);
+
+        if (awards != null && awards.Length > 0)
+        {
+            foreach (var item in awards)
+            {
+                user.AwardList.Add(Guid.Parse(item));
+            }
+        }
+
+        bll.Users.ChangeUser(user, bll);
+    }
+}
+
+@section hendlerSection {
+    <script src="~/Scripts/hendlerSectionUser.js"></script>
+}
+@section modalSection {
+    <text id="json-string" hidden="hidden">@awardJsonListStr</text>
+    <input type="text" id="name-form" name="name-form" value="" hidden="hidden" />
+    <input type="text" id="text-id" name="text-id" value="" hidden="hidden" />
+    <input type="text" name="text-name" value="" />
+    <input type="text" name="dateOfBirth" value="" />
+    <select name="select-awards" multiple>
+        <optgroup name="group-awards" label="Выберите награды:"></optgroup>
+    </select>
+    <input type="button" name="btn-close" value="Закрыть" />
+    <button name="btn-submit">Добавить</button>
+}
+@section constant {
+    <script src="~/Scripts/UserConstant.js"></script>
+}
+
+<nav id="nav-user" class="nav-section">
+    <button id="btn-add" name="btn-add">Добавить</button>
+    <button id="btn-update" name="btn-add">Обновить</button>
+</nav>
+
+
+
