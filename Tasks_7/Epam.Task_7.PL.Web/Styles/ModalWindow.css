@@ -21,6 +21,8 @@
         z-index: 0;
     }
 
+        .modal div input[name="login"], 
+        .modal div input[name="password"], 
         .modal div input[name="text-name"], 
         .modal div input[name="text-title"], 
         .modal div input[name="dateOfBirth"] {

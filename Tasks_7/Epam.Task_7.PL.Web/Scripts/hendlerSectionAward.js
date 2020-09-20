@@ -52,7 +52,9 @@ function AddArticle(jsonObject) {
 
     let article = document.createElement("article");
     article.setAttribute("id", Id);
-    article.onclick = onChangeModel;
+    if (userRole.textContent != 'user') {
+        article.onclick = onChangeModel;
+    }
     article.appendChild(h1);
     article.appendChild(paragOwner);
     article.appendChild(list);
@@ -92,7 +94,7 @@ function InitializeElements() {
     for (let i of userObjects) {
         AddSelectOptionUsers(i.Id, i.Name);
     }
-    
+
     btnModalClose.onclick = onCloseModel;
 }
 

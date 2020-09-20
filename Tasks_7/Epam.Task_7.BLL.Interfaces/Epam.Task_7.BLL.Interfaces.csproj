@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAuthentication.cs" />
     <Compile Include="IAwardBll.cs" />
     <Compile Include="IBll.cs" />
     <Compile Include="IUsersBll.cs" />

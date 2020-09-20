@@ -11,6 +11,18 @@
     right: 0;
 }
 
+.sighout {
+    margin: 10px;
+    min-width: 123px;
+    height: auto;
+    border: solid 1px grey;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    overflow: hidden;
+}
+
 header {
     background-image: url(../Images/Header.jpg);
     height: 100px;

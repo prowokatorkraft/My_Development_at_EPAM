@@ -36,6 +36,9 @@ function onFocusText() {
         case "text-title":
             Name = modalTitleValue;
             break;
+        case "login":
+            Name = modalLoginValue;
+            break;
         default:
             throw "Not found tagName!"
     }
@@ -59,6 +62,9 @@ function onBlurText() {
             break;
         case "text-title":
             Name = modalTitleValue;
+            break;
+        case "login":
+            Name = modalLoginValue;
             break;
         default:
             throw "Not found tagName!"

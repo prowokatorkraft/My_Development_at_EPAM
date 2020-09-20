@@ -5,6 +5,22 @@
 @{
     Layout = null;
 
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~/Pages/Authentication/SignInLayout");
+    }
+
+    string userRole = "";
+    if (User.IsInRole("user"))
+    {
+        <link href="~/Styles/Authentication/StyleRoleUser.css" rel="stylesheet" />
+        userRole = "user";
+    }
+    else if (User.IsInRole("admin"))
+    {
+        userRole = "admin";
+    }
+
     IBll bll = DependencyResolver.Bll;
 }
 
@@ -24,7 +40,12 @@
     
     <header></header>
     <main>
+        <text id="userRol" hidden="hidden">@userRole</text>
         <nav id="nav-column">
+            <div class="sighout">
+                Вы вошли как @userRole <strong id="text-login">@User.Identity.Name</strong> <br />
+                <a href="~/Pages/Authentication/SignInLayout.cshtml">Выйти</a>
+            </div>
             <ul>
                 <li><a id="users" href="~/Pages/UserLayout.cshtml">Пользователи</a></li>
                 <li><a id="awards" href="~/Pages/AwardLayout.cshtml">Награды</a></li>

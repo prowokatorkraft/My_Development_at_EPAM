@@ -57,7 +57,9 @@ function AddArticle(jsonObject) {
 
     let article = document.createElement("article");
     article.setAttribute("id", Id);
-    article.onclick = onChangeModel;
+    if (userRole.textContent != 'user') {
+        article.onclick = onChangeModel;
+    }
     article.appendChild(h1);
     article.appendChild(paragDateOfBirth);
     article.appendChild(paragAward);
@@ -87,7 +89,13 @@ function InitializeElements() {
     btnAdd.onclick = onAddModel;
     let btnUpdate = document.getElementById("btn-update");
     btnUpdate.onclick = UpdateSection;
-    
+
+    modalLoginValue = "Введите логин";
+    modalLogin.onfocus = onFocusText;
+    modalLogin.onblur = onBlurText;
+    modalLogin.value = modalLoginValue;
+    modalLogin.style.color = "grey";
+
     modalNameValue = "Введите имя";
     modalName.onfocus = onFocusText;
     modalName.onblur = onBlurText;
@@ -119,8 +127,11 @@ function AddSelectOptionAwards(id, name) {
 function onAddModel() {
     modalFormName.value = "Add";
 
+    modalLogin.style.display = "block";
+    modalPassword.style.display = "block";
+
     modalName.value = "Введите имя";
-    modalName.style.color = "grey"; 
+    modalName.style.color = "grey";
 
     modalDateOfBirth.value = "Введите дату рождения в формате (dd-mm-yyyy):";
     modalDateOfBirth.style.color = "grey";
@@ -133,6 +144,9 @@ function onChangeModel() {
     if (event.target.tagName != "BUTTON") {
         modalFormName.value = "Change";
         modalId.value = event.currentTarget.id;
+
+        modalLogin.style.display = "none";
+        modalPassword.style.display = "none";
 
         modalName.value = event.currentTarget.children.namedItem("name").textContent;
         modalName.style.color = "black";

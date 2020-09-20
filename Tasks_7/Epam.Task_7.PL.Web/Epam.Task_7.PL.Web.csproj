@@ -98,11 +98,14 @@
     <Content Include="Scripts\HendlerSectionUser.js" />
     <Content Include="Scripts\UserConstant.js" />
     <Content Include="Scripts\Xhr.js" />
+    <Content Include="Styles\Authentication\AuthenticationLayout.css" />
+    <Content Include="Styles\Authentication\StyleRoleUser.css" />
     <Content Include="Styles\ModalWindow.css" />
     <Content Include="Styles\StartLayout.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autorisation\Provider.cs" />
     <Compile Include="Hendlers\AwardHandler.ashx.cs">
       <DependentUpon>AwardHandler.ashx</DependentUpon>
     </Compile>
@@ -118,6 +121,9 @@
     <Content Include="Pages\_StartLayout.cshtml" />
     <Content Include="Pages\UserLayout.cshtml" />
     <Content Include="Pages\AwardLayout.cshtml" />
+    <Content Include="Pages\Authentication\_AuthenticationLayout.cshtml" />
+    <Content Include="Pages\Authentication\SignInLayout.cshtml" />
+    <Content Include="Pages\Authentication\RegistrationLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,6 +13,9 @@
     if (IsPost)
     {
         string formName = Request["name-form"];
+        string login = Request["login"];
+        string password = Request["password"];
+        string role = Request["select-role"];
         string id = Request["text-id"];
         string name = Request["text-name"];
         string data = Request["dateOfBirth"];
@@ -24,11 +27,14 @@
             switch (formName)
             {
                 case "Add":
-                    AddUser(name, dateOfBirth, awards);
+                    if (!DependencyResolver.Authentication.IsLogin(login))
+                    {
+                        AddUser(name, dateOfBirth, awards, login, password, role);
+                    }
                     break;
 
                 case "Change":
-                    ChangeUser(Guid.Parse(id) ,name, dateOfBirth, awards);
+                    ChangeUser(Guid.Parse(id), name, dateOfBirth, awards, role);
                     break;
 
                 default:
@@ -37,9 +43,9 @@
         }
     }
 
-    void AddUser(string name, DateTime dateOfBirth, string[] awards)
+    void AddUser(string name, DateTime dateOfBirth, string[] awards, string login, string password, string role)
     {
-        var id = bll.Users.AddUser(new User(Guid.NewGuid(), name, dateOfBirth));
+        var id = bll.Users.AddUser(new User(Guid.NewGuid(), name, dateOfBirth, login, password, role));
 
         if (awards != null && awards.Length > 0)
         {
@@ -50,9 +56,10 @@
         }
     }
 
-    void ChangeUser(Guid id, string name, DateTime dateOfBirth, string[] awards)
+    void ChangeUser(Guid id, string name, DateTime dateOfBirth, string[] awards, string role)
     {
-        var user = new User(id, name, dateOfBirth);
+        var oldUser = bll.Users.GetUser(id);
+        var user = new User(id, name, dateOfBirth, oldUser.Login, oldUser.Password, role);
 
         if (awards != null && awards.Length > 0)
         {
@@ -73,6 +80,12 @@
     <text id="json-string" hidden="hidden">@awardJsonListStr</text>
     <input type="text" id="name-form" name="name-form" value="" hidden="hidden" />
     <input type="text" id="text-id" name="text-id" value="" hidden="hidden" />
+    <input type="text" name="login" value="" />
+    <input type="password" name="password" value="" />
+    <select name="select-role">
+        <option value="user">user</option>
+        <option value="admin">admin</option>
+    </select>
     <input type="text" name="text-name" value="" />
     <input type="text" name="dateOfBirth" value="" />
     <select name="select-awards" multiple>
@@ -87,7 +100,7 @@
 
 <nav id="nav-user" class="nav-section">
     <button id="btn-add" name="btn-add">Добавить</button>
-    <button id="btn-update" name="btn-add">Обновить</button>
+    <button id="btn-update" name="btn-update">Обновить</button>
 </nav>
 
 
