@@ -19,7 +19,7 @@ namespace Epam.Task_7.Common.Entities
 
         public List<Award> AwardList { get; }
 
-        public AwardedUser(Guid id, string name, DateTime dateOfBirth, string login = "", string password = "", string role = "user")
+        public AwardedUser(Guid id, string name, DateTime dateOfBirth, string login, string password, string role)
         {
             Id = id;
             Name = name;

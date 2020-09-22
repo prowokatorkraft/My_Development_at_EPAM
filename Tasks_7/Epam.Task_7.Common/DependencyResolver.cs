@@ -1,4 +1,4 @@
-﻿using Epam.Task_7.DAL.Json;
+﻿using Epam.Task_7.DAL.DataBase;
 using Epam.Task_7.DAL.Interfaces;
 using Epam.Task_7.BLL;
 using Epam.Task_7.BLL.Interfaces;
@@ -15,7 +15,7 @@ namespace Epam.Task_7.Common
 
         static DependencyResolver()
         {
-            Dao = new ObjectDao(@"C:\Users\Данил\source\repos\EPAM\My_Development_at_EPAM\Tasks_7\Epam.Task_7.TestingConsole\bin\Debug");
+            Dao = new ObjectDao();
             Bll = new ObjectBll(Dao);
 
             Authentication = new Authentication(Bll.Users);

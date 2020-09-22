@@ -52,6 +52,7 @@ namespace Epam.Task_7.BLL
                 var user = objectBll.Users.GetUser(item);
                 user.AwardList.Add(award.Id);
                 objectBll.Users.ChangeUser(user);
+                objectBll.AddDependUserAndAwards(item, award.Id);
             }
 
             return 1;

@@ -53,7 +53,10 @@ namespace Epam.Task_7.PL.Web.Hendlers
                 var objUser = new AwardedUser(
                     _enumerable.Current.Id,
                     _enumerable.Current.Name,
-                    _enumerable.Current.DateOfBirth
+                    _enumerable.Current.DateOfBirth,
+                    _enumerable.Current.Login,
+                    _enumerable.Current.Password,
+                    _enumerable.Current.Role
                     );
 
                 foreach (var item in _enumerable.Current.AwardList)

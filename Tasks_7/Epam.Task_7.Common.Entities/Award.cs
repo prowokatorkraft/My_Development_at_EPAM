@@ -11,10 +11,10 @@ namespace Epam.Task_7.Common.Entities
 
         public List<Guid> OwnerList { get; }
 
-        public Award(Guid id, string name)
+        public Award(Guid id, string title)
         {
             Id = id;
-            Title = name;
+            Title = title;
             OwnerList = new List<Guid>();
         }
     }
