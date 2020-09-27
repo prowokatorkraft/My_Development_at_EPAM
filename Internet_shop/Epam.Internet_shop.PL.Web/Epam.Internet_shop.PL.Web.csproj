@@ -135,7 +135,16 @@
     </None>
     <Content Include="Pages\MainPage\_StartMinePage.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Epam.Internet_shop.Logger.Contracts\Epam.Internet_shop.Logger.Contracts.csproj">
+      <Project>{d43e3eda-af14-48d7-95e3-94e14893b887}</Project>
+      <Name>Epam.Internet_shop.Logger.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Logger.Log4net\Epam.Internet_shop.Logger.Log4net.csproj">
+      <Project>{6c919ab5-966d-465a-8f96-0008b5a32fa4}</Project>
+      <Name>Epam.Internet_shop.Logger.Log4net</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
