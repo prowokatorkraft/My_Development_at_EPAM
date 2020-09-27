@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Internet Store</title>
+
+    <script src="~/Scripts/MainPage/StartMainScript.js"></script>
+    <link href="~/Styles/MainPage/StartMinePage.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="control-panel">
+        <ul>
+            <li><a href="~/Pages/ControlWindow/Body/CategoryControlPage.cshtml">Категории</a></li>
+            <li><a href="~/Pages/ControlWindow/Body/ProductControlPage.cshtml">Товары</a></li>
+            <li><a href="~/Pages/ControlWindow/Body/UserControlPage.cshtml">Пользователи</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <img src="~/Images/hotpng.com.png" alt="image" />
+        @RenderPage("/Pages/MainPage/NotAuthenticatedSection.cshtml", null)
+    </header>
+
+    <nav id="nav-startMain" class="nav-bar">
+        <div name="nav-btn" class="nav-btn">
+            <button><strong><a href="~/Pages/MainPage/Body/ShowcasePage.cshtml">Главная</a></strong></button>
+            <button name="catalogue-btn"><strong>Каталог</strong></button>
+        </div>
+
+        <form class="search-container">
+            <input class="search-text" type="text" name="search" value="" placeholder="Поиск ..."/>
+            <button class="search-btn">Поиск</button>
+        </form>
+    </nav>
+
+    <main>
+        <nav id="nav-catalogue" class="nav-catalog">
+            <ul>
+                <li>Категория</li>
+                <li>Категория</li>
+                <li>Категория</li>
+                <li>Категория</li>
+            </ul>
+        </nav>
+        <section class="main-section">
+            @RenderBody()
+        </section>
+    </main>
+
+    <footer>
+        @RenderPage("/Pages/MainPage/FooterSection.cshtml", null)
+    </footer>
+
+    <script src="~/Scripts/MainPage/ConstantStartMain.js"></script>
+    @RenderSection("Body", false)
+</body>
+</html>

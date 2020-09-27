@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Pages/MainPage/_StartMinePage.cshtml";
+}
+
+<link href="~/Styles/MainPage/Body/ShowcasePage.css" rel="stylesheet" />
+
+<section class="showcase">
+    @for (int i = 0; i < 10; i++)
+    {
+        <div class="showcase-element">
+            <img src="~/Images/hotpng.com.png" alt="Alternate Text" />
+            <h4>Заголовок</h4>
+            <h4>Цена</h4>
+            <ul>
+                <li>Какой-то пункт</li>
+                <li>Какой-то пункт</li>
+                <li>Какой-то пункт</li>
+                <li>Какой-то пункт</li>
+            </ul>
+            <form action="" method="get">
+                <button>Купить</button>
+            </form>
+        </div>
+    }
+</section>
+
+<div class="listing">
+    <button>Показать следующие</button>
+</div>
+
+<section id="modal" class="modal">
+    <form id="modal-window" action="" method="get" class="model-window">
+        <img src="~/Images/hotpng.com.png" alt="Alternate Text" />
+        <p>Какой-то текст</p>
+        <p>Какой-то текст</p>
+        <p>Какой-то текст</p>
+        <p>Какой-то текст</p>
+        <div class="btn">
+            <input id="close-btn" type="button" name="close-btn" value="Закрыть" />
+            <button>Купить</button>
+        </div>
+    </form>
+</section>
+
+@section Body {
+    <script src="~/Scripts/MainPage/Body/ConstantShowcaseScript.js"></script>
+    <script src="~/Scripts/MainPage/Body/ShowcaseScript.js"></script>
+}

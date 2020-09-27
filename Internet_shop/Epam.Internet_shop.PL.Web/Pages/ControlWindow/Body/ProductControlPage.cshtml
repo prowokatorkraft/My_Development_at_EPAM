@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/Pages/ControlWindow/_StartControlPage.cshtml";
+
+    Page.Title = "Products";
+    Page.TitleRus = "Товары";
+}
+
+<link href="~/Styles/ControlWindow/Body/ProductControlStyle.css" rel="stylesheet" />
+
+<section>
+
+    <nav class="nav-bar">
+        <button id="addProduct-btn">Добавить</button>
+        <button id="updateProduct-btn">Обновить</button>
+        <form action="" method="get">
+            <input id="search-text" type="text" name="search" value="" />
+            <button id="searchProduct-btn">Найти</button>
+        </form>
+    </nav>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Опции</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            @for (int i = 1; i < 10; i++)
+            {
+                <tr id="@i">
+                    <td name="id">@i</td>
+                    <td name="name">Товар @i</td>
+                    <td name="bnts">
+                        <button name="changeProduct-btn">Изменить</button>
+                        <form action="" method="post">
+                            <button name="removeProduct-btn">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button>Показать следующие</button>
+
+</section>
+
+<section id="modal" class="modal">
+    <form id="modal-window" action="" method="get" class="model-window">
+        <input type="text" id="modal-id" name="id" value="" hidden="hidden" />
+        <input type="text" id="modal-name" name="name" value="" placeholder="Введите имя" required />
+        <div class="btn">
+            <button id="add-btn">Добавить</button>
+            <input id="close-btn" type="button" name="close-btn" value="Закрыть" />
+        </div>
+    </form>
+</section>
+
+<script src="~/Scripts/ControlWindow/Body/ConstantProductControlScript.js"></script>
+<script src="~/Scripts/ControlWindow/Body/ProductControlScript.js"></script>
