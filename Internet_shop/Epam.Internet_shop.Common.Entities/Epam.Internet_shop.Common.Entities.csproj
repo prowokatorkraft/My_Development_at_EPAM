@@ -41,7 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommodityUnit\Category\Category.cs" />
+    <Compile Include="CommodityUnit\CommodityUnit.cs" />
+    <Compile Include="CommodityUnit\Category\CategoryUnits.cs" />
+    <Compile Include="CommodityUnit\Product\Product.cs" />
+    <Compile Include="CommodityUnit\Product\ProductUnits.cs" />
+    <Compile Include="CommodityUnit\Status\Status.cs" />
+    <Compile Include="CommodityUnit\Status\StatusUnits.cs" />
+    <Compile Include="CommodityUnit\Store\Store.cs" />
+    <Compile Include="CommodityUnit\Store\StoreUnits.cs" />
+    <Compile Include="CommodityUnit\Vendor\Vendor.cs" />
+    <Compile Include="CommodityUnit\Vendor\VendorUnits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\Role.cs" />
+    <Compile Include="User\User.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

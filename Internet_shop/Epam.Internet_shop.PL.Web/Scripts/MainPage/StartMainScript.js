@@ -1,8 +1,5 @@
-﻿
-
-window.onload = function () {
+﻿window.onload = function () {
     initialize();
-
 }
 
 function initialize() {
