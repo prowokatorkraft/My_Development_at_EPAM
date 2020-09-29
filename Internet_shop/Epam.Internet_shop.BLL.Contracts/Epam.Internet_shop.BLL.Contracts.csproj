@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICategoryBll.cs" />
+    <Compile Include="ICommodityUnitBll.cs" />
+    <Compile Include="IProductBll.cs" />
+    <Compile Include="IRoleBll.cs" />
+    <Compile Include="IStatusBll.cs" />
+    <Compile Include="IStoreBll.cs" />
+    <Compile Include="IUserBll.cs" />
+    <Compile Include="IVendorBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

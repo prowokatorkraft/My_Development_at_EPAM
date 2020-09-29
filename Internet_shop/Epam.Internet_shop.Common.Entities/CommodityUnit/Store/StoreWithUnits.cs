@@ -2,11 +2,11 @@
 
 namespace Epam.Internet_shop.Common.Entities.CommodityUnit
 {
-    public class StoreUnits : Store
+    public class StoreWithUnits : Store
     {
         public List<CommodityUnit> Units { get; }
 
-        public StoreUnits(int? id, string name, List<CommodityUnit> units) : base(id, name)
+        public StoreWithUnits(int? id, string name, List<CommodityUnit> units) : base(id, name)
         {
             Units = units;
         }

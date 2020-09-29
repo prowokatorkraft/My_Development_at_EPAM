@@ -41,10 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Epam.Internet_shop.BLL.Contracts\Epam.Internet_shop.BLL.Contracts.csproj">
@@ -55,6 +53,10 @@
       <Project>{f84be68f-7d5b-4030-ae33-045e18e5cf87}</Project>
       <Name>Epam.Internet_shop.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Common.Entities\Epam.Internet_shop.Common.Entities.csproj">
+      <Project>{f1865e0c-fd71-4a34-b58a-84ec1c8df7f9}</Project>
+      <Name>Epam.Internet_shop.Common.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epam.Internet_shop.DAL.Contracts\Epam.Internet_shop.DAL.Contracts.csproj">
       <Project>{59827f6b-4637-496e-833e-577d5108dd47}</Project>
       <Name>Epam.Internet_shop.DAL.Contracts</Name>
@@ -62,6 +64,14 @@
     <ProjectReference Include="..\Epam.Internet_shop.DAL.DataBase\Epam.Internet_shop.DAL.DataBase.csproj">
       <Project>{3a647b81-e32a-443c-9e18-19e27046af46}</Project>
       <Name>Epam.Internet_shop.DAL.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Logger.Contracts\Epam.Internet_shop.Logger.Contracts.csproj">
+      <Project>{d43e3eda-af14-48d7-95e3-94e14893b887}</Project>
+      <Name>Epam.Internet_shop.Logger.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Logger.Log4net\Epam.Internet_shop.Logger.Log4net.csproj">
+      <Project>{6c919ab5-966d-465a-8f96-0008b5a32fa4}</Project>
+      <Name>Epam.Internet_shop.Logger.Log4net</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,11 +2,11 @@
 
 namespace Epam.Internet_shop.Common.Entities.CommodityUnit
 {
-    public class StatusUnits : Status
+    public class CategoryWithUnits : Category
     {
         public List<CommodityUnit> Units { get; }
 
-        public StatusUnits(int? id, string name, List<CommodityUnit> units) : base(id, name)
+        public CategoryWithUnits(int? id, string name, List<CommodityUnit> units) : base(id, name)
         {
             Units = units;
         }
