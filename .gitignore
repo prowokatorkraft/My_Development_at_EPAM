@@ -354,3 +354,14 @@ MigrationBackup/
 /Tasks_7/Epam.Task_7.TestingConsole/Properties/AssemblyInfo.cs
 /Tasks_7/Epam.Task_7.TestingConsole/App.config
 /Tasks_7/Epam.Task_7.TestingConsole/packages.config
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/Epam.Internet_shop.BLL.TestForPL.csproj
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/Class1.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/Properties/AssemblyInfo.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestCategoryBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestCommodityUnitBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestProductBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestRoleBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestStatusBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestStoreBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestUserBll.cs
+/Internet_shop/Epam.Internet_shop.BLL.TestForPL/TestVendorBll.cs

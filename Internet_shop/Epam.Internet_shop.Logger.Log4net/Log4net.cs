@@ -4,11 +4,11 @@ using log4net.Config;
 
 namespace Epam.Internet_shop.Logger.Log4net
 {
-    public class Logger : ILogger
+    public class Log4net : ILogger
     {
         private readonly static ILog _log  = LogManager.GetLogger("LOGGER");
 
-        static Logger()
+        static Log4net()
         {
             XmlConfigurator.Configure();
         }

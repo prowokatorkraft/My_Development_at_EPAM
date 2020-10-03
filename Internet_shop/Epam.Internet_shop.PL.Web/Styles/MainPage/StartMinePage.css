@@ -24,6 +24,7 @@ header {
     }
 
 .control-panel {
+    display: none;
     color: white;
     background-color: rgba(4, 4, 4, 0.71);
 }
@@ -122,6 +123,13 @@ main {
             main .nav-catalog ul li {
                 padding: 10px;
                 font-size: larger;
+            }
+
+            .nav-catalog .catalog-btn {
+                border: none;
+                background-color: rgba(255, 255, 255, 0.00);
+                color: white;
+                font-size: medium;
             }
 
     .main-section {

@@ -2,6 +2,7 @@
 const ModalCategory = document.getElementById("modal");
 const ModalCategoryForm = document.getElementById("modal-window");
 const ModalCategoryAdd = document.getElementById("addCategory-btn");
+const ModalCategoryType = document.getElementById("modal-type");
 const ModalCategoryId = document.getElementById("modal-id");
 const ModalCategoryName = document.getElementById("modal-name");
 const ModalCategoryAddBtn = document.getElementById("add-btn");

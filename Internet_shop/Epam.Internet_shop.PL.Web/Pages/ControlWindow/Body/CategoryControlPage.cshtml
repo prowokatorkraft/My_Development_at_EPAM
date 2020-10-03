@@ -1,8 +1,57 @@
-﻿@{
+﻿@using Epam.Internet_shop.Common
+@using Epam.Internet_shop.Common.Entities.CommodityUnit
+@using Epam.Internet_shop.Logger.Contracts
+@using Epam.Internet_shop.BLL.Contracts
+@{
     Layout = "~/Pages/ControlWindow/_StartControlPage.cshtml";
 
     Page.Title = "Categories";
     Page.TitleRus = "Категории";
+
+    ILogger logger = DependencyResolver.Logger;
+    ICategoryBll categoryBll = DependencyResolver.CategoryBll;
+
+    logger.Info("PL: CategoryControlPage request received");
+
+    if (IsPost)
+    {
+        logger.Info("PL: Post request received");
+
+        string modalType = Request["type"];
+        string modalId = Request["id"];
+        string modalName = Request["name"];
+
+        int id;
+
+        logger.Info("PL: modalType \"" + modalType + "\" received");
+
+        switch (modalType)
+        {
+            case "add":
+                id = categoryBll.SetCategory(new Category(null, modalName));
+
+                logger.Info("PL: Category id=" + id + " created");
+                break;
+            case "change":
+                if (int.TryParse(modalId, out id))
+                {
+                    categoryBll.SetCategory(new Category(id, modalName));
+
+                    logger.Info("PL: Category id=" + id + " changed");
+                }
+                else
+                {
+                    logger.Error("PL: Incorrect modalId for change");
+
+                    throw new ArgumentNullException("Incorrect modalId");
+                }
+                break;
+            default:
+                logger.Error("PL: Incorrect modalType");
+
+                throw new ArgumentNullException("Incorrect modalType");
+        }
+    }
 }
 
 <link href="~/Styles/ControlWindow/Body/CategoryControlStyle.css" rel="stylesheet" />
@@ -19,15 +68,17 @@
             <tr>
                 <th>ID</th>
                 <th>Название</th>
+                <th>Колличество товаров</th>
                 <th>Опции</th>
             </tr>
         </thead>
         <tbody id="table-body">
-            @for (int i = 1; i < 10; i++)
+            @foreach (var category in categoryBll.GetAllCategoriesWithUnits())
             {
-                <tr id="@i">
-                    <td name="id">@i</td>
-                    <td name="name">Категория @i</td>
+                <tr id="@category.Id">
+                    <td name="id">@category.Id</td>
+                    <td name="name">@category.Name</td>
+                    <td name="CountUnits">@category.Units.Count</td>
                     <td name="bnts">
                         <button name="changeCategory-btn">Изменить</button>
                         <form action="" method="post">
@@ -42,8 +93,9 @@
 </section>
 
 <section id="modal" class="modal">
-    <form id="modal-window" action="" method="get" class="model-window">
-        <input type="text" id="modal-id" name="id" value="" hidden="hidden"/>
+    <form id="modal-window" action="" method="post" class="model-window">
+        <input type="text" id="modal-type" name="type" value="" hidden="hidden" />
+        <input type="text" id="modal-id" name="id" value="" hidden="hidden" />
         <input type="text" id="modal-name" name="name" value="" placeholder="Введите имя" required />
         <div class="btn">
             <button id="add-btn">Добавить</button>

@@ -1,31 +1,20 @@
-﻿@{
+﻿@using Epam.Internet_shop.Common
+@using Epam.Internet_shop.Logger.Contracts
+
+@{
     Layout = "~/Pages/MainPage/_StartMinePage.cshtml";
+
+    ILogger logger = DependencyResolver.Logger;
 }
 
 <link href="~/Styles/MainPage/Body/ShowcasePage.css" rel="stylesheet" />
 
-<section class="showcase">
-    @for (int i = 0; i < 10; i++)
-    {
-        <div class="showcase-element">
-            <img src="~/Images/hotpng.com.png" alt="Alternate Text" />
-            <h4>Заголовок</h4>
-            <h4>Цена</h4>
-            <ul>
-                <li>Какой-то пункт</li>
-                <li>Какой-то пункт</li>
-                <li>Какой-то пункт</li>
-                <li>Какой-то пункт</li>
-            </ul>
-            <form action="" method="get">
-                <button>Купить</button>
-            </form>
-        </div>
-    }
+<section id="showcase-container" class="showcase">
+
 </section>
 
 <div class="listing">
-    <button>Показать следующие</button>
+    <button id="nextAjax-btn">Показать следующие</button>
 </div>
 
 <section id="modal" class="modal">

@@ -49,6 +49,9 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -90,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Images\hotpng.com.png" />
     <Content Include="Scripts\ControlWindow\Body\CategoryControlScript.js" />
     <Content Include="Scripts\ControlWindow\Body\ConstantCategoryControlScript.js" />
@@ -107,15 +111,24 @@
     <Content Include="Styles\ControlWindow\StartControlStyle.css" />
     <Content Include="Styles\MainPage\AuthenticationSection.css" />
     <Content Include="Styles\MainPage\Body\AuthenticationPage.css" />
+    <Content Include="Styles\MainPage\RoleAdminStyle.css" />
     <Content Include="Styles\MainPage\Body\ShowcasePage.css" />
     <Content Include="Styles\MainPage\StartMinePage.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Provider.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\ShowcaseAjaxHandler.ashx.cs">
+      <DependentUpon>ShowcaseAjaxHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Index.cshtml" />
+    <Content Include="Handlers\ShowcaseAjaxHandler.ashx" />
     <None Include="packages.config" />
     <Content Include="Pages\MainPage\AuthenticatedSection.cshtml" />
     <Content Include="Pages\MainPage\NotAuthenticatedSection.cshtml" />
@@ -136,6 +149,26 @@
     <Content Include="Pages\MainPage\_StartMinePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Epam.Internet_shop.BLL.Contracts\Epam.Internet_shop.BLL.Contracts.csproj">
+      <Project>{ea67bf1f-f800-43f6-9755-384dfee4c957}</Project>
+      <Name>Epam.Internet_shop.BLL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.BLL.TestForPL\Epam.Internet_shop.BLL.TestForPL.csproj">
+      <Project>{6c02dc1b-9847-4004-b96f-4e7f76b06756}</Project>
+      <Name>Epam.Internet_shop.BLL.TestForPL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.BLL\Epam.Internet_shop.BLL.csproj">
+      <Project>{f84be68f-7d5b-4030-ae33-045e18e5cf87}</Project>
+      <Name>Epam.Internet_shop.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Common.Entities\Epam.Internet_shop.Common.Entities.csproj">
+      <Project>{f1865e0c-fd71-4a34-b58a-84ec1c8df7f9}</Project>
+      <Name>Epam.Internet_shop.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Common\Epam.Internet_shop.Common.Dependensy_Resolver.csproj">
+      <Project>{a14a163e-eae8-4a61-84b9-a3f2364a24a1}</Project>
+      <Name>Epam.Internet_shop.Common.Dependensy_Resolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epam.Internet_shop.Logger.Contracts\Epam.Internet_shop.Logger.Contracts.csproj">
       <Project>{d43e3eda-af14-48d7-95e3-94e14893b887}</Project>
       <Name>Epam.Internet_shop.Logger.Contracts</Name>
@@ -148,6 +181,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

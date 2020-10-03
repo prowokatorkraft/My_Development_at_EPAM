@@ -26,3 +26,8 @@
     border: none;
     background-color: rgba(246, 239, 239, 0.58);
 }
+
+.auth .form-info {
+    margin: 0px 5px;
+    color: red;
+}

@@ -1,6 +1,9 @@
-﻿using Epam.Internet_shop.Logger.Contracts;
+﻿using Epam.Internet_shop.Logger.Log4net;
+using Epam.Internet_shop.Logger.Contracts;
 using Epam.Internet_shop.DAL.Contracts;
 using Epam.Internet_shop.BLL.Contracts;
+using Epam.Internet_shop.BLL.TestForPL;
+using Epam.Internet_shop.BLL;
 
 namespace Epam.Internet_shop.Common
 {
@@ -19,6 +22,7 @@ namespace Epam.Internet_shop.Common
 
         public static IRoleBll RoleBll { get; }
         public static IUserBll UserBll { get; }
+        public static IAuthenticationBll AuthenticationBll { get; }
         public static ICategoryBll CategoryBll { get; }
         public static IProductBll ProductBll { get; }
         public static IStoreBll StoreBll { get; }
@@ -28,7 +32,19 @@ namespace Epam.Internet_shop.Common
 
         static DependencyResolver()
         {
-            Logger = new Logger.Log4net.Logger();
+            Logger = new Log4net();
+            
+            RoleBll = new TestRoleBll();
+            UserBll = new TestUserBll();
+
+            AuthenticationBll = new AuthenticationBll(UserBll);
+
+            CategoryBll = new TestCategoryBll();
+            ProductBll = new TestProductBll();
+            StoreBll = new TestStoreBll();
+            VendorBll = new TestVendorBll();
+            StatusBll = new TestStatusBll();
+            CommodityUnitBll = new TestCommodityUnitBll();
         }
     }
 }
