@@ -6,7 +6,7 @@ namespace Epam.Internet_shop.BLL.Contracts
 {
     public interface IVendorBll
     {
-        Vendor GetVendor(int id);
+        Vendor GetVendorOrNull(int id);
 
         VendorWithUnits GetVendorWithUnitsOrNull(int id);
 

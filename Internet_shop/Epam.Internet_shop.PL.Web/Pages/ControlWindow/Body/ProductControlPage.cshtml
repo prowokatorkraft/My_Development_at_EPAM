@@ -1,8 +1,118 @@
-﻿@{
+﻿@using Epam.Internet_shop.PL.Web.Handlers
+@using Epam.Internet_shop.Common
+@using Epam.Internet_shop.Common.Entities.CommodityUnit
+@using Epam.Internet_shop.Logger.Contracts
+@using Epam.Internet_shop.BLL.Contracts
+@{
     Layout = "~/Pages/ControlWindow/_StartControlPage.cshtml";
 
     Page.Title = "Products";
     Page.TitleRus = "Товары";
+
+    ProductAjaxHandler.HttpSession = Session;
+
+    ILogger logger = DependencyResolver.Logger;
+    ICommodityUnitBll commodityUnitBll = DependencyResolver.CommodityUnitBll;
+    IProductBll productBll = DependencyResolver.ProductBll;
+    IStoreBll storeBll = DependencyResolver.StoreBll;
+    IVendorBll vendorBll = DependencyResolver.VendorBll;
+    IStatusBll statusBll = DependencyResolver.StatusBll;
+
+    logger.Info("PL: ProductControlPage request received");
+
+    if (User.IsInRole("admin"))// || !User.IsInRole("manager"))
+    {
+        logger.Warn("PL: No access right " + User.Identity.Name);
+
+        Response.Redirect("~/Pages/MainPage/Body/ShowcasePage.cshtml");
+    }
+
+    #region Form Hendler
+
+    int id;
+
+    if (int.TryParse(Request["id"], out id))
+    {
+        logger.Info("PL: Received data from id = " + id);
+
+        string ProductIdStr = Request["product"];
+        string PriceStr = Request["price"];
+        string StoreIdStr = Request["store"];
+        string VendorIdStr = Request["vendor"];
+        string StatusIdStr = Request["status"];
+
+        int ProductId;
+        Product product = null;
+        if (int.TryParse(ProductIdStr, out ProductId) && ProductId != -1)
+        {
+            product = productBll.GetProductOrNull(ProductId);
+        }
+
+        decimal Price = 0;
+        decimal.TryParse(PriceStr, out Price);
+
+        int StoreId;
+        Store store = null;
+        if (int.TryParse(StoreIdStr, out StoreId))
+        {
+            store = storeBll.GetStoreOrNull(StoreId);
+        }
+
+        int VendorId;
+        Vendor vendor = null;
+        if (int.TryParse(VendorIdStr, out VendorId))
+        {
+            vendor = vendorBll.GetVendorOrNull(VendorId);
+        }
+
+        int StatusId;
+        Status status = null;
+        if (int.TryParse(StatusIdStr, out StatusId))
+        {
+            status = statusBll.GetStatusOrNull(StatusId);
+        }
+
+        if (id == -1)
+        {
+            logger.Info("PL: Adding a unit");
+
+            int idUnit = commodityUnitBll.SetCommodityUnit(new CommodityUnit( null, product, store, vendor, status, Price));
+
+            logger.Info("PL: Added unit id = " + idUnit);
+        }
+        else
+        {
+            logger.Info("PL: Unit change");
+
+            int idUnit = commodityUnitBll.SetCommodityUnit(new CommodityUnit(id, product, store, vendor, status, Price));
+
+            logger.Info("PL: Unit changed id = " + idUnit);
+        }
+    }
+
+    #endregion
+
+    #region Session Data
+
+    string SearchStr = Request["search"] as string ?? "";
+
+    logger.Info("PL: Data acquisition " + nameof(SearchStr));
+
+    Session.Remove("Enumerator");
+
+    if ((Session["Search"] as string) != SearchStr)
+    {
+        Session["Search"] = SearchStr;
+
+        logger.Info("PL: The search has changed to " + SearchStr);
+    }
+
+    #endregion
+
+    IEnumerable<Product> products = productBll.GetAllProducts();
+    IEnumerable<Store> stors = storeBll.GetAllStores();
+    IEnumerable<Vendor> vendors = vendorBll.GetAllVendors();
+    IEnumerable<Status> statuses = statusBll.GetAllStatuses();
 }
 
 <link href="~/Styles/ControlWindow/Body/ProductControlStyle.css" rel="stylesheet" />
@@ -11,9 +121,8 @@
 
     <nav class="nav-bar">
         <button id="addProduct-btn">Добавить</button>
-        <button id="updateProduct-btn">Обновить</button>
         <form action="" method="get">
-            <input id="search-text" type="text" name="search" value="" />
+            <input id="search-text" type="search" name="search" value="@SearchStr" />
             <button id="searchProduct-btn">Найти</button>
         </form>
     </nav>
@@ -23,34 +132,55 @@
             <tr>
                 <th>ID</th>
                 <th>Название</th>
+                <th>Цена</th>
+                <th>Категория</th>
+                <th>Склад</th>
+                <th>Поставщик</th>
+                <th>Статус</th>
                 <th>Опции</th>
             </tr>
         </thead>
         <tbody id="table-body">
-            @for (int i = 1; i < 10; i++)
-            {
-                <tr id="@i">
-                    <td name="id">@i</td>
-                    <td name="name">Товар @i</td>
-                    <td name="bnts">
-                        <button name="changeProduct-btn">Изменить</button>
-                        <form action="" method="post">
-                            <button name="removeProduct-btn">Удалить</button>
-                        </form>
-                    </td>
-                </tr>
-            }
+
         </tbody>
     </table>
 
-    <button>Показать следующие</button>
+    <button id="nextAjax-btn">Показать следующие</button>
 
 </section>
 
 <section id="modal" class="modal">
     <form id="modal-window" action="" method="get" class="model-window">
         <input type="text" id="modal-id" name="id" value="" hidden="hidden" />
-        <input type="text" id="modal-name" name="name" value="" placeholder="Введите имя" required />
+        <select id="modal-product" name="product">
+            <option value="-1" selected="selected">Продукт не выбран</option>
+            @foreach (var product in products)
+            {
+                <option value="@product.Id">@product.Name</option>
+            }
+        </select>
+        <input type="number" id="modal-price" name="price" value="" placeholder="Введите цену" required />
+        <select id="modal-store" name="store">
+            <option value="-1" selected="selected">Склад не выбран</option>
+            @foreach (var store in stors)
+            {
+                <option value="@store.Id">@store.Name</option>
+            }
+        </select>
+        <select id="modal-vendor" name="vendor">
+            <option value="-1" selected="selected">Поставщик не выбран</option>
+            @foreach (var vendor in vendors)
+            {
+                <option value="@vendor.Id">@vendor.Name</option>
+            }
+        </select>
+        <select id="modal-status" name="status">
+            <option value="-1" selected="selected">Статус не выбран</option>
+            @foreach (var status in statuses)
+            {
+                <option value="@status.Id">@status.Name</option>
+            }
+        </select>
         <div class="btn">
             <button id="add-btn">Добавить</button>
             <input id="close-btn" type="button" name="close-btn" value="Закрыть" />

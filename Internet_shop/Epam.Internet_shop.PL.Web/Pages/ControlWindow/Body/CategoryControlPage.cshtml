@@ -13,6 +13,13 @@
 
     logger.Info("PL: CategoryControlPage request received");
 
+    if (!User.IsInRole("admin"))
+    {
+        logger.Warn("PL: No access right " + User.Identity.Name);
+
+        Response.Redirect("~/Pages/MainPage/Body/ShowcasePage.cshtml");
+    }
+
     if (IsPost)
     {
         logger.Info("PL: Post request received");
@@ -27,10 +34,29 @@
 
         switch (modalType)
         {
+            case "remove":
+                if (int.TryParse(modalId, out id))
+                {
+                    categoryBll.RemoveCategory(id);
+
+                    logger.Info("PL: Category id=" + id + " removed");
+
+                    Response.Redirect("~/Pages/ControlWindow/Body/CategoryControlPage.cshtml");
+                }
+                else
+                {
+                    logger.Error("PL: Incorrect modalId for remove");
+
+                    throw new ArgumentNullException("Incorrect modalId");
+                }
+                break;
             case "add":
                 id = categoryBll.SetCategory(new Category(null, modalName));
 
                 logger.Info("PL: Category id=" + id + " created");
+
+                Response.Redirect("~/Pages/ControlWindow/Body/CategoryControlPage.cshtml");
+
                 break;
             case "change":
                 if (int.TryParse(modalId, out id))
@@ -38,6 +64,8 @@
                     categoryBll.SetCategory(new Category(id, modalName));
 
                     logger.Info("PL: Category id=" + id + " changed");
+
+                    Response.Redirect("~/Pages/ControlWindow/Body/CategoryControlPage.cshtml");
                 }
                 else
                 {
@@ -60,7 +88,7 @@
 
     <nav class="nav-bar">
         <button id="addCategory-btn">Добавить</button>
-        <button id="updateCatgory-btn">Обновить</button>
+        @*<button id="updateCatgory-btn">Обновить</button>*@
     </nav>
 
     <table>
@@ -82,6 +110,8 @@
                     <td name="bnts">
                         <button name="changeCategory-btn">Изменить</button>
                         <form action="" method="post">
+                            <input type="text" id="modal-type" name="type" value="remove" hidden="hidden" />
+                            <input type="text" id="modal-id" name="id" value="@category.Id" hidden="hidden" />
                             <button name="removeCategory-btn">Удалить</button>
                         </form>
                     </td>

@@ -121,6 +121,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ProductAjaxHandler.ashx.cs">
+      <DependentUpon>ProductAjaxHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\ShowcaseAjaxHandler.ashx.cs">
       <DependentUpon>ShowcaseAjaxHandler.ashx</DependentUpon>
     </Compile>
@@ -129,6 +132,7 @@
   <ItemGroup>
     <Content Include="Index.cshtml" />
     <Content Include="Handlers\ShowcaseAjaxHandler.ashx" />
+    <Content Include="Handlers\ProductAjaxHandler.ashx" />
     <None Include="packages.config" />
     <Content Include="Pages\MainPage\AuthenticatedSection.cshtml" />
     <Content Include="Pages\MainPage\NotAuthenticatedSection.cshtml" />

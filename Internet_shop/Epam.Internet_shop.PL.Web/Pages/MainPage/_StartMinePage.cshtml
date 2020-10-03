@@ -16,7 +16,7 @@
 
     int? SessionCatalogue = Session["Catalogue"] as int?;
 
-    logger.Info("PL: Data acquisition - " + nameof(CatalogueId) + " and " + nameof(SearchStr));
+    logger.Info("PL: Data acquisition " + nameof(CatalogueId) + " and " + nameof(SearchStr));
 
     if (SessionCatalogue != null)
     {
