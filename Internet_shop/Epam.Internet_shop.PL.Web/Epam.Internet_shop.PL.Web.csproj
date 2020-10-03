@@ -127,12 +127,16 @@
     <Compile Include="Handlers\ShowcaseAjaxHandler.ashx.cs">
       <DependentUpon>ShowcaseAjaxHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\UserAjaxHandler.ashx.cs">
+      <DependentUpon>UserAjaxHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Index.cshtml" />
     <Content Include="Handlers\ShowcaseAjaxHandler.ashx" />
     <Content Include="Handlers\ProductAjaxHandler.ashx" />
+    <Content Include="Handlers\UserAjaxHandler.ashx" />
     <None Include="packages.config" />
     <Content Include="Pages\MainPage\AuthenticatedSection.cshtml" />
     <Content Include="Pages\MainPage\NotAuthenticatedSection.cshtml" />

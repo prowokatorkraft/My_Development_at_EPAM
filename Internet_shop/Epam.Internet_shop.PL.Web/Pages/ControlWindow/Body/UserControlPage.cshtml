@@ -1,8 +1,104 @@
-﻿@{
+﻿@using Epam.Internet_shop.PL.Web.Handlers
+@using Epam.Internet_shop.Common
+@using Epam.Internet_shop.Common.Entities.User
+@using Epam.Internet_shop.Logger.Contracts
+@using Epam.Internet_shop.BLL.Contracts
+@{
     Layout = "~/Pages/ControlWindow/_StartControlPage.cshtml";
 
     Page.Title = "Users";
     Page.TitleRus = "Пользователи";
+
+    UserAjaxHandler.HttpSession = Session;
+
+    ILogger logger = DependencyResolver.Logger;
+    IUserBll userBll = DependencyResolver.UserBll;
+    IRoleBll roleBll = DependencyResolver.RoleBll;
+
+    logger.Info("PL: UserControlPage request received");
+
+    if (User.IsInRole("admin"))// || !User.IsInRole("manager"))
+    {
+        logger.Warn("PL: No access right " + User.Identity.Name);
+
+        Response.Redirect("~/Pages/MainPage/Body/ShowcasePage.cshtml");
+    }
+
+    #region Form Hendler
+
+    int id;
+
+    if (int.TryParse(Request["id"], out id))
+    {
+        string type = Request["type"];
+
+        logger.Info("PL: Received data from id = " + id + ", type = " + type);
+
+        if (type == "add" || type == "change")
+        {
+            string login = Request["login"];
+            string password = Request["password"];
+            string roleIdStr = Request["role"];
+            string name = Request["name"];
+
+            int roleId;
+            Role role = null;
+            if (int.TryParse(roleIdStr, out roleId))
+            {
+                role = roleBll.GetRoleOrNull(roleId);
+            }
+
+            if (id == -1)
+            {
+                logger.Info("PL: Adding a user");
+
+                int idUser = userBll.SetUser(new Epam.Internet_shop.Common.Entities.User.User(null, login, password, role, name));
+
+                logger.Info("PL: Added user id = " + idUser);
+            }
+            else
+            {
+                logger.Info("PL: user change");
+
+                int idUser = userBll.SetUser(new Epam.Internet_shop.Common.Entities.User.User(id, login, password, role, name));
+
+                logger.Info("PL: user changed id = " + idUser);
+            }
+        }
+        else if (type == "remove")
+        {
+            userBll.RemoveUser(id);
+
+            logger.Info("PL: user removed id = " + id);
+        }
+        else
+        {
+            logger.Error("PL: Incorrect type = " + type);
+
+            throw new ArgumentException("Incorrect type");
+        }
+    }
+
+    #endregion
+
+    #region Session Data
+
+    string SearchStr = Request["search"] as string ?? "";
+
+    logger.Info("PL: Data acquisition " + nameof(SearchStr));
+
+    Session.Remove("Enumerator");
+
+    if ((Session["Search"] as string) != SearchStr)
+    {
+        Session["Search"] = SearchStr;
+
+        logger.Info("PL: The search has changed to " + SearchStr);
+    }
+
+    #endregion
+
+    IEnumerable<Role> roles = roleBll.GetAllRoles();
 }
 
 <link href="~/Styles/ControlWindow/Body/UserControlStyle.css" rel="stylesheet" />
@@ -11,9 +107,8 @@
 
     <nav class="nav-bar">
         <button id="addUser-btn">Добавить</button>
-        <button id="updateUser-btn">Обновить</button>
         <form action="" method="get">
-            <input id="search-text" type="text" name="search" value="" />
+            <input id="search-text" type="search" name="search" value="@SearchStr" />
             <button id="searchUser-btn">Найти</button>
         </form>
     </nav>
@@ -22,34 +117,32 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Логин</th>
+                <th>Роль</th>
                 <th>Имя</th>
                 <th>Опции</th>
             </tr>
         </thead>
-        <tbody id="table-body">
-            @for (int i = 1; i < 10; i++)
-            {
-                <tr id="@i">
-                    <td name="id">@i</td>
-                    <td name="name">Пользователь @i</td>
-                    <td name="bnts">
-                        <button name="changeUser-btn">Изменить</button>
-                        <form action="" method="post">
-                            <button name="removeUser-btn">Удалить</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
+        <tbody id="table-body"></tbody>
     </table>
 
-    <button>Показать следующие</button>
+    <button id="nextAjax-btn">Показать следующие</button>
 
 </section>
 
 <section id="modal" class="modal">
     <form id="modal-window" action="" method="get" class="model-window">
+        <input type="text" id="modal-type" name="type" value="" hidden="hidden" />
         <input type="text" id="modal-id" name="id" value="" hidden="hidden" />
+        <input type="text" id="modal-login" name="login" value="" placeholder="Введите логин" required />
+        <input type="password" id="modal-password" name="password" value="" placeholder="Введите пароль" required />
+        <select id="modal-role" name="role">
+            <option value="-1" selected="selected">Роль не выбрана</option>
+            @foreach (var role in roles)
+            {
+                <option value="@role.Id">@role.Name</option>
+            }
+        </select>
         <input type="text" id="modal-name" name="name" value="" placeholder="Введите имя" required />
         <div class="btn">
             <button id="add-btn">Добавить</button>

@@ -31,6 +31,8 @@ th, td {
 }
 
     .modal .model-window {
+        display: flex;
+        flex-direction: column;
         align-self: center;
         background-color: white;
         padding: 20px;
@@ -45,7 +47,9 @@ th, td {
             justify-content: space-between;
         }
 
-        .modal .model-window input[type=text] {
+        .modal .model-window input[type=text],
+        .modal .model-window input[type=password],
+        .modal .model-window select {
             margin-bottom: 10px;
         }
 

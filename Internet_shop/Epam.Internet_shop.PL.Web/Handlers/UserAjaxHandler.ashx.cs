@@ -3,39 +3,39 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
-using Epam.Internet_shop.Common.Entities.CommodityUnit;
+using Epam.Internet_shop.Common.Entities.User;
 using Epam.Internet_shop.Common;
 using Epam.Internet_shop.Logger.Contracts;
 using Epam.Internet_shop.BLL.Contracts;
 
 namespace Epam.Internet_shop.PL.Web.Handlers
 {
-    public class ProductAjaxHandler : IHttpHandler
+    public class UserAjaxHandler : IHttpHandler
     {
         public static HttpSessionStateBase HttpSession { get; set; } = null;
 
         private static ILogger _logger = DependencyResolver.Logger;
-        private static ICommodityUnitBll _commodityUnitBll = DependencyResolver.CommodityUnitBll;
+        private static IUserBll _userBll = DependencyResolver.UserBll;
 
         public void ProcessRequest(HttpContext context)
         {
-            _logger.Info($"PL.{nameof(ProductAjaxHandler)}: Request received");
+            _logger.Info($"PL.{nameof(UserAjaxHandler)}: Request received");
 
-            IEnumerator<CommodityUnit> enumerator = HttpSession["Enumerator"] as IEnumerator<CommodityUnit>;
+            IEnumerator<User> enumerator = HttpSession["Enumerator"] as IEnumerator<User>;
 
             if (enumerator == null)
             {
-                _logger.Info($"PL.{nameof(ProductAjaxHandler)}: Creating the enumerator");
+                _logger.Info($"PL.{nameof(UserAjaxHandler)}: Creating the enumerator");
 
                 string searchStr = (string)HttpSession["Search"];
 
-                enumerator = _commodityUnitBll.GetAllCommodityUnits()
-                    .Where(unit => string.IsNullOrEmpty(searchStr) ? true : (unit.Product.Name == searchStr))
+                enumerator = _userBll.GetAllUsers()
+                    .Where(user => string.IsNullOrEmpty(searchStr) ? true : (user.Login == searchStr))
                     .GetEnumerator();
 
-                    HttpSession.Add("Enumerator", enumerator);
+                HttpSession.Add("Enumerator", enumerator);
 
-                    _logger.Info($"PL.{nameof(ProductAjaxHandler)}: The enumerator was created");
+                _logger.Info($"PL.{nameof(UserAjaxHandler)}: The enumerator was created");
             }
 
             var list = GetList(enumerator, 15);
@@ -44,7 +44,7 @@ namespace Epam.Internet_shop.PL.Web.Handlers
 
             context.Response.Write(JsonConvert.SerializeObject(list));
 
-            _logger.Info($"PL.{nameof(ProductAjaxHandler)}: Sent to client a Json");
+            _logger.Info($"PL.{nameof(UserAjaxHandler)}: Sent to client a Json");
         }
 
         public bool IsReusable
@@ -57,7 +57,7 @@ namespace Epam.Internet_shop.PL.Web.Handlers
 
         private List<T> GetList<T>(IEnumerator<T> enumerator, int count)
         {
-            _logger.Info($"PL.{nameof(ProductAjaxHandler)}.{nameof(GetList)}: Receiving a list of commodity items");
+            _logger.Info($"PL.{nameof(UserAjaxHandler)}.{nameof(GetList)}: Receiving a list of commodity items");
 
             List<T> list = new List<T>();
 
@@ -66,7 +66,7 @@ namespace Epam.Internet_shop.PL.Web.Handlers
                 list.Add(enumerator.Current);
             }
 
-            _logger.Info($"PL.{nameof(ProductAjaxHandler)}.{nameof(GetList)}: Received a list of commodityUnits in the amount of " + list.Count);
+            _logger.Info($"PL.{nameof(UserAjaxHandler)}.{nameof(GetList)}: Received a list of commodityUnits in the amount of " + list.Count);
 
             return list;
         }
