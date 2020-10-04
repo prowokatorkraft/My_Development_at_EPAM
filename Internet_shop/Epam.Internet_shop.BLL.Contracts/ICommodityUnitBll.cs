@@ -11,9 +11,13 @@ namespace Epam.Internet_shop.BLL.Contracts
         IEnumerable<CommodityUnit> GetAllCommodityUnits();
 
         IEnumerable<CommodityUnit> GetCommodityUnitsByProduct(int id);
+
         IEnumerable<CommodityUnit> GetCommodityUnitsByCategory(int id);
+
         IEnumerable<CommodityUnit> GetCommodityUnitsByStore(int id);
+
         IEnumerable<CommodityUnit> GetCommodityUnitsByVendor(int id);
+
         IEnumerable<CommodityUnit> GetCommodityUnitsByStatus(int id);
 
         int SetCommodityUnit(CommodityUnit commodityUnit);
