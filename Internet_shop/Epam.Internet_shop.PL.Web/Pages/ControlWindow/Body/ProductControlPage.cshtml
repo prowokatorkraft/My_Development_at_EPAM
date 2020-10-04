@@ -1,4 +1,7 @@
-﻿@using Epam.Internet_shop.PL.Web.Handlers
+﻿@using System
+@using System.Drawing
+@using System.Drawing.Imaging
+@using Epam.Internet_shop.PL.Web.Handlers
 @using Epam.Internet_shop.Common
 @using Epam.Internet_shop.Common.Entities.CommodityUnit
 @using Epam.Internet_shop.Logger.Contracts
@@ -14,13 +17,14 @@
     ILogger logger = DependencyResolver.Logger;
     ICommodityUnitBll commodityUnitBll = DependencyResolver.CommodityUnitBll;
     IProductBll productBll = DependencyResolver.ProductBll;
+    ICategoryBll categoryBll = DependencyResolver.CategoryBll;
     IStoreBll storeBll = DependencyResolver.StoreBll;
     IVendorBll vendorBll = DependencyResolver.VendorBll;
     IStatusBll statusBll = DependencyResolver.StatusBll;
 
     logger.Info("PL: ProductControlPage request received");
 
-    if (User.IsInRole("admin"))// || !User.IsInRole("manager"))
+    if (User.IsInRole("admin"))// || !User.IsInRole("manager")) //TODO: (!)
     {
         logger.Warn("PL: No access right " + User.Identity.Name);
 
@@ -45,29 +49,56 @@
         Product product = null;
         if (int.TryParse(ProductIdStr, out ProductId) && ProductId != -1)
         {
-            product = productBll.GetProductOrNull(ProductId);
+            if (ProductId == -2)
+            {
+                logger.Info("PL: Сreation of a new product");
+
+                int categoryId;
+                Category category = null;
+                if (int.TryParse(Request["productCategory"], out categoryId) && categoryId != -1)
+                {
+                    category = categoryBll.GetCategoryOrNull(categoryId);
+                }
+
+                var fileImage = Request.Files["productImage"].InputStream;
+
+                byte[] butes = new byte[fileImage.Length];
+
+                fileImage.Read(butes, 0, (int)fileImage.Length);
+
+                string base64ImageStr = "data:image/png;base64," + Convert.ToBase64String(butes);
+
+                product = new Product(null, Request["productName"], base64ImageStr, Request["productDiscription"], category);
+            }
+            else
+            {
+                product = productBll.GetProductOrNull(ProductId);
+
+                logger.Info("PL: Selected product id = " + ProductId);
+            }
         }
+
 
         decimal Price = 0;
         decimal.TryParse(PriceStr, out Price);
 
         int StoreId;
         Store store = null;
-        if (int.TryParse(StoreIdStr, out StoreId))
+        if (int.TryParse(StoreIdStr, out StoreId) && StoreId != -1)
         {
             store = storeBll.GetStoreOrNull(StoreId);
         }
 
         int VendorId;
         Vendor vendor = null;
-        if (int.TryParse(VendorIdStr, out VendorId))
+        if (int.TryParse(VendorIdStr, out VendorId) && VendorId != -1)
         {
             vendor = vendorBll.GetVendorOrNull(VendorId);
         }
 
         int StatusId;
         Status status = null;
-        if (int.TryParse(StatusIdStr, out StatusId))
+        if (int.TryParse(StatusIdStr, out StatusId) && StatusId != -1)
         {
             status = statusBll.GetStatusOrNull(StatusId);
         }
@@ -76,7 +107,7 @@
         {
             logger.Info("PL: Adding a unit");
 
-            int idUnit = commodityUnitBll.SetCommodityUnit(new CommodityUnit( null, product, store, vendor, status, Price));
+            int idUnit = commodityUnitBll.SetCommodityUnit(new CommodityUnit(null, product, store, vendor, status, Price));
 
             logger.Info("PL: Added unit id = " + idUnit);
         }
@@ -110,6 +141,7 @@
     #endregion
 
     IEnumerable<Product> products = productBll.GetAllProducts();
+    IEnumerable<Category> categories = categoryBll.GetAllCategories();
     IEnumerable<Store> stors = storeBll.GetAllStores();
     IEnumerable<Vendor> vendors = vendorBll.GetAllVendors();
     IEnumerable<Status> statuses = statusBll.GetAllStatuses();
@@ -140,9 +172,7 @@
                 <th>Опции</th>
             </tr>
         </thead>
-        <tbody id="table-body">
-
-        </tbody>
+        <tbody id="table-body"></tbody>
     </table>
 
     <button id="nextAjax-btn">Показать следующие</button>
@@ -150,13 +180,24 @@
 </section>
 
 <section id="modal" class="modal">
-    <form id="modal-window" action="" method="get" class="model-window">
+    <form id="modal-window" action="" enctype="multipart/form-data" method="post" class="model-window">
         <input type="text" id="modal-id" name="id" value="" hidden="hidden" />
         <select id="modal-product" name="product">
             <option value="-1" selected="selected">Продукт не выбран</option>
+            <option value="-2">Создать новый продукт</option>
             @foreach (var product in products)
             {
                 <option value="@product.Id">@product.Name</option>
+            }
+        </select>
+        <input type="text" id="modal-productName" name="productName" value="" placeholder="Введите имя продукта" />
+        <input type="file" id="modal-productImage" name="productImage" accept="image/png"/>
+        <textarea id="modal-productDiscription" name="productDiscription" placeholder="Введите описание продукта"></textarea>
+        <select id="modal-productCategory" name="productCategory">
+            <option value="-1" selected="selected">Категория не выбрана</option>
+            @foreach (var category in categories)
+            {
+                <option value="@category.Id">@category.Name</option>
             }
         </select>
         <input type="number" id="modal-price" name="price" value="" placeholder="Введите цену" required />

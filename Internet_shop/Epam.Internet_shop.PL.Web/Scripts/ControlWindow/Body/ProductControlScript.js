@@ -148,3 +148,32 @@ TBody.onclick = function () {
         }
     }
 }
+
+ModalProduct.onchange = function () {
+    if (event.target.value == -2) {
+        ModalProductName.style.display = "flex";
+        ModalProductName.setAttribute("required", "");
+
+        ModalProductDiscription.style.display = "flex";
+        ModalProductDiscription.setAttribute("required", "");
+
+        ModalProductCategory.style.display = "flex";
+        ModalProductCategory.setAttribute("required", "");
+
+        ModalProductImage.style.display = "flex";
+        ModalProductImage.setAttribute("required", "");
+    }
+    else {
+        ModalProductName.style.display = "none";
+        ModalProductName.removeAttribute("required");
+
+        ModalProductDiscription.style.display = "none";
+        ModalProductDiscription.removeAttribute("required");
+
+        ModalProductCategory.style.display = "none";
+        ModalProductCategory.removeAttribute("required");
+
+        ModalProductImage.style.display = "none";
+        ModalProductImage.removeAttribute("required");
+    }
+}

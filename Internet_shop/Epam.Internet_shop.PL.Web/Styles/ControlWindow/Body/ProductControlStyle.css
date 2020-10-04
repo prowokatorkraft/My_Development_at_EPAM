@@ -47,7 +47,9 @@ th, td {
             justify-content: space-between;
         }
 
+        .modal .model-window textarea, 
         .modal .model-window input[type=text], 
+        .modal .model-window input[type=file], 
         .modal .model-window input[type=number], 
         .modal .model-window select {
             outline: none;
@@ -56,4 +58,11 @@ th, td {
 
 #search-text {
     margin-left: 10px;
+}
+
+#modal-productImage,
+#modal-productCategory,
+#modal-productDiscription,
+#modal-productName {
+    display: none;
 }

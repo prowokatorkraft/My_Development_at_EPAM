@@ -11,3 +11,8 @@ const ModalVendor = document.getElementById("modal-vendor");
 const ModalStatus = document.getElementById("modal-status");
 const ModalAddBtn = document.getElementById("add-btn");
 const ModalCloseBtn = document.getElementById("close-btn");
+
+const ModalProductName = document.getElementById("modal-productName");
+const ModalProductDiscription = document.getElementById("modal-productDiscription");
+const ModalProductCategory = document.getElementById("modal-productCategory");
+const ModalProductImage = document.getElementById("modal-productImage");

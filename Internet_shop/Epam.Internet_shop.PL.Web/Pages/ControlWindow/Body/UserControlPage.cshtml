@@ -17,7 +17,7 @@
 
     logger.Info("PL: UserControlPage request received");
 
-    if (User.IsInRole("admin"))// || !User.IsInRole("manager"))
+    if (User.IsInRole("admin")) // TODO: (!)
     {
         logger.Warn("PL: No access right " + User.Identity.Name);
 
@@ -43,7 +43,7 @@
 
             int roleId;
             Role role = null;
-            if (int.TryParse(roleIdStr, out roleId))
+            if (int.TryParse(roleIdStr, out roleId) && roleId != -1)
             {
                 role = roleBll.GetRoleOrNull(roleId);
             }
