@@ -14,10 +14,11 @@ namespace Epam.Internet_shop.BLL
         private readonly IProductDao _productDao;
         private readonly ICommodityUnitDao _commodityUnitDao;
 
-        public ProductBll(ILogger logger, IProductDao productDao)
+        public ProductBll(ILogger logger, IProductDao productDao, ICommodityUnitDao commodityUnitDao)
         {
             _logger = logger;
             _productDao = productDao;
+            _commodityUnitDao = commodityUnitDao;
         }
 
         public IEnumerable<Product> GetAllProducts()

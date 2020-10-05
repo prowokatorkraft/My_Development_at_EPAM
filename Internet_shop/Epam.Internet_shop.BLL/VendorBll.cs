@@ -14,10 +14,10 @@ namespace Epam.Internet_shop.BLL
         private readonly IVendorDao _vendorDao;
         private readonly ICommodityUnitDao _commodityUnitDao;
 
-        public VendorBll(ILogger logger, IVendorBll vendorBll, ICommodityUnitDao commodityUnitDao)
+        public VendorBll(ILogger logger, IVendorDao vendorDao, ICommodityUnitDao commodityUnitDao)
         {
             _logger = logger;
-            _vendorDao = vendorBll;
+            _vendorDao = vendorDao;
             _commodityUnitDao = commodityUnitDao;
         }
 
