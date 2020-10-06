@@ -37,9 +37,13 @@ namespace Epam.Internet_shop.DAL.DataBase
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
 
+                    int? RoleID = null;
+
+                    RoleID = user?.Role.Id;
+
                     command.Parameters.AddWithValue("@Login", user.Login);
                     command.Parameters.AddWithValue("@Password", user.Password);
-                    command.Parameters.AddWithValue("@RoleID", user.Role.Id);
+                    command.Parameters.AddWithValue("@RoleID", RoleID);
                     command.Parameters.AddWithValue("@Name", user.Name);
 
                     connection.Open();
@@ -296,7 +300,7 @@ namespace Epam.Internet_shop.DAL.DataBase
 
         public void RemoveUser(int id)
         {
-            _logger.Info($"DAL.{nameof(UserDao)}.{nameof(RemoveUser)}: Remove User by id = {id}");
+            _logger.Info($"DAL.{nameof(UserDao)}.{nameof(RemoveUser)}: Remove user by id = {id}");
 
             try
             {
