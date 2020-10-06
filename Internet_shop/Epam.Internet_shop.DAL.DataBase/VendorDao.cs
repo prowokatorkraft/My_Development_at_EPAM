@@ -9,20 +9,21 @@ using Epam.Internet_shop.Common.Entities.CommodityUnit;
 
 namespace Epam.Internet_shop.DAL.DataBase
 {
-    public class CategoryDao : ICategoryDao
+    public class VendorDao : IVendorDao
     {
         private readonly ILogger _logger;
         private readonly string _connectionString;
 
-        public CategoryDao(ILogger logger)
+        public VendorDao(ILogger logger)
         {
             _logger = logger;
+
             _connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
         }
 
-        public int AddCategory(Category category)
+        public int AddVendor(Vendor vendor)
         {
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(AddCategory)}: Adding a category");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(AddVendor)}: Adding a vendor");
 
             int id;
 
@@ -30,83 +31,83 @@ namespace Epam.Internet_shop.DAL.DataBase
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    SqlCommand command = new SqlCommand("dbo.Category_AddCategory", connection)
+                    SqlCommand command = new SqlCommand("dbo.Vendor_AddVendor", connection)
                     {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
 
-                    command.Parameters.AddWithValue("@Name", category.Name);
+                    command.Parameters.AddWithValue("@Name", vendor.Name);
 
                     connection.Open();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(AddCategory)}: Connected to database");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(AddVendor)}: Connected to database");
 
                     int.TryParse(command.ExecuteScalar().ToString(), out id);
                 }
             }
             catch (InvalidOperationException ex)
             {
-                _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(AddCategory)}: Not connected to database: " + ex.Message);
+                _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(AddVendor)}: Not connected to database: " + ex.Message);
 
                 throw new SystemException("Connection error", ex);
             }
 
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(AddCategory)}: Category id = {id} added");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(AddVendor)}: Vendor id = {id} added");
 
             return id;
         }
 
-        public int ChangeCategory(Category category)
+        public int ChangeVendor(Vendor vendor)
         {
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(ChangeCategory)}: Category change");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(ChangeVendor)}: Vendor change");
 
-            int id = category.Id ?? -1;
+            int id = vendor.Id ?? -1;
 
             if (id == -1)
             {
-                _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(ChangeCategory)}: category.Id cannot be null");
+                _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(ChangeVendor)}: vendor.Id cannot be null");
 
-                throw new ArgumentNullException("category.Id cannot be null");
+                throw new ArgumentNullException("vendor.Id cannot be null");
             }
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    SqlCommand command = new SqlCommand("dbo.Category_ChangeCategory", connection)
+                    SqlCommand command = new SqlCommand("dbo.Vendor_ChangeVendor", connection)
                     {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
 
-                    command.Parameters.AddWithValue("@Id", category.Id);
-                    command.Parameters.AddWithValue("@Name", category.Name);
+                    command.Parameters.AddWithValue("@Id", vendor.Id);
+                    command.Parameters.AddWithValue("@Name", vendor.Name);
 
                     connection.Open();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(ChangeCategory)}: Connected to database");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(ChangeVendor)}: Connected to database");
 
                     command.ExecuteScalar();
                 }
             }
             catch (InvalidOperationException ex)
             {
-                _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(ChangeCategory)}: Not connected to database: " + ex.Message);
+                _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(ChangeVendor)}: Not connected to database: " + ex.Message);
 
                 throw new SystemException("Connection error", ex);
             }
 
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(ChangeCategory)}: Category id = {id} changed");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(ChangeVendor)}: Vendor id = {id} changed");
 
             return id;
         }
 
-        public IEnumerable<Category> GetAllCategories()
+        public IEnumerable<Vendor> GetAllVendors()
         {
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(GetAllCategories)}: Getting all categories");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(GetAllVendors)}: Getting all vendors");
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand("dbo.Category_GetAllCategories", connection)
+                SqlCommand command = new SqlCommand("dbo.Vendor_GetAllVendors", connection)
                 {
                     CommandType = System.Data.CommandType.StoredProcedure
                 };
@@ -119,35 +120,35 @@ namespace Epam.Internet_shop.DAL.DataBase
 
                     reader = command.ExecuteReader();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(GetAllCategories)}: Connected to database");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(GetAllVendors)}: Connected to database");
                 }
                 catch (InvalidOperationException ex)
                 {
-                    _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(GetAllCategories)}: Not connected to database: " + ex.Message);
+                    _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(GetAllVendors)}: Not connected to database: " + ex.Message);
 
                     throw new SystemException("Connection error", ex);
                 }
 
                 while (reader.Read())
                 {
-                    yield return new Category((int?)reader["Id"], (string)reader["Name"]);
+                    yield return new Vendor((int?)reader["Id"], (string)reader["Name"]);
                 }
             }
 
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(GetAllCategories)}: All categories received");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(GetAllVendors)}: All vendor received");
 
             yield break;
         }
 
-        public Category GetCategory(int id)
+        public Vendor GetVendor(int id)
         {
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(GetCategory)}: Getting category by id = {id}");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(GetVendor)}: Getting category by id = {id}");
 
-            Category category;
+            Vendor vendor;
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand("dbo.Category_GetCategory", connection)
+                SqlCommand command = new SqlCommand("dbo.Vendor_GetVendor", connection)
                 {
                     CommandType = System.Data.CommandType.StoredProcedure
                 };
@@ -162,32 +163,32 @@ namespace Epam.Internet_shop.DAL.DataBase
 
                     reader = command.ExecuteReader();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(GetCategory)}: Connected to database");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(GetVendor)}: Connected to database");
                 }
                 catch (InvalidOperationException ex)
                 {
-                    _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(GetCategory)}: Not connected to database: " + ex.Message);
+                    _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(GetVendor)}: Not connected to database: " + ex.Message);
 
                     throw new SystemException("Connection error", ex);
                 }
 
                 reader.Read();
 
-                category = new Category((int?)reader["Id"], (string)reader["Name"]);
+                vendor = new Vendor((int?)reader["Id"], (string)reader["Name"]);
             }
 
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(GetCategory)}: Category by id = {id} obtained");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(GetVendor)}: Vendor by id = {id} obtained");
 
-            return category;
+            return vendor;
         }
 
-        public bool IsCategory(int id)
+        public bool IsVendor(int id)
         {
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(IsCategory)}: Checking the category by id = {id}");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(IsVendor)}: Checking the vendor by id = {id}");
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand("dbo.Category_GetCategory", connection)
+                SqlCommand command = new SqlCommand("dbo.Vendor_GetVendor", connection)
                 {
                     CommandType = System.Data.CommandType.StoredProcedure
                 };
@@ -202,37 +203,37 @@ namespace Epam.Internet_shop.DAL.DataBase
 
                     reader = command.ExecuteReader();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(IsCategory)}: Connected to database");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(IsVendor)}: Connected to database");
                 }
                 catch (InvalidOperationException ex)
                 {
-                    _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(IsCategory)}: Not connected to database: " + ex.Message);
+                    _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(IsVendor)}: Not connected to database: " + ex.Message);
 
                     throw new SystemException("Connection error", ex);
                 }
 
                 if (reader.Read())
                 {
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(IsCategory)}: Category by id = {id} found");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(IsVendor)}: Vendor by id = {id} found");
 
                     return true;
                 }
 
-                _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(IsCategory)}: Category by id = {id} not found");
+                _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(IsVendor)}: Vendor by id = {id} not found");
 
                 return false;
             }
         }
 
-        public void RemoveCategory(int id)
+        public void RemoveVendor(int id)
         {
-            _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(RemoveCategory)}: Remove category by id = {id}");
+            _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(RemoveVendor)}: Remove vendor by id = {id}");
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    SqlCommand command = new SqlCommand("dbo.Category_RemoveCategory", connection)
+                    SqlCommand command = new SqlCommand("dbo.Vendor_RemoveVendor", connection)
                     {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
@@ -241,16 +242,16 @@ namespace Epam.Internet_shop.DAL.DataBase
 
                     connection.Open();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(RemoveCategory)}: Connected to database");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(RemoveVendor)}: Connected to database");
 
                     command.ExecuteNonQuery();
 
-                    _logger.Info($"DAL.{nameof(CategoryDao)}.{nameof(RemoveCategory)}: Category id = {id} removed");
+                    _logger.Info($"DAL.{nameof(VendorDao)}.{nameof(RemoveVendor)}: Vendor id = {id} removed");
                 }
             }
             catch (InvalidOperationException ex)
             {
-                _logger.Error($"DAL.{nameof(CategoryDao)}.{nameof(RemoveCategory)}: Not connected to database: " + ex.Message);
+                _logger.Error($"DAL.{nameof(VendorDao)}.{nameof(RemoveVendor)}: Not connected to database: " + ex.Message);
 
                 throw new SystemException("Connection error", ex);
             }
