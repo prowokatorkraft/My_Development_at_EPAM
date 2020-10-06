@@ -115,13 +115,13 @@ namespace Epam.Internet_shop.BLL
 
             if (user.Role != null)
             {
-                _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: Role discovered");
+                _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: User discovered");
 
                 user.Role.Id = _roleBll.SetRole(user.Role);
             }
             else
             {
-                _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: Role not discovered");
+                _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: User not discovered");
             }
 
             if (user.Id != null)
