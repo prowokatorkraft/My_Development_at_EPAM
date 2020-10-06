@@ -17,7 +17,7 @@
 
     logger.Info("PL: UserControlPage request received");
 
-    if (User.IsInRole("admin")) // TODO: (!)
+    if (!User.IsInRole("admin"))
     {
         logger.Warn("PL: No access right " + User.Identity.Name);
 

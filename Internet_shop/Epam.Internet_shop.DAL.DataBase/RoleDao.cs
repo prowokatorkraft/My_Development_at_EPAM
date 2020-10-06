@@ -95,7 +95,7 @@ namespace Epam.Internet_shop.DAL.DataBase
                 throw new SystemException("Connection error", ex);
             }
 
-            _logger.Info($"DAL.{nameof(RoleDao)}.{nameof(ChangeRole)}: Role id = {id} added");
+            _logger.Info($"DAL.{nameof(RoleDao)}.{nameof(ChangeRole)}: Role id = {id} changed");
 
             return id;
         }
