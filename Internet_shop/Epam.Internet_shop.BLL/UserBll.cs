@@ -11,11 +11,13 @@ namespace Epam.Internet_shop.BLL
     public class UserBll : IUserBll
     {
         private readonly ILogger _logger;
+        private readonly IRoleBll _roleBll;
         private readonly IUserDao _userDao;
 
-        public UserBll(ILogger logger, IUserDao userDao)
+        public UserBll(ILogger logger, IRoleBll roleBll, IUserDao userDao)
         {
             _logger = logger;
+            _roleBll = roleBll;
             _userDao = userDao;
         }
 
@@ -110,6 +112,17 @@ namespace Epam.Internet_shop.BLL
         public int SetUser(User user)
         {
             _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: Retention of the user");
+
+            if (user.Role != null)
+            {
+                _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: Role discovered");
+
+                user.Role.Id = _roleBll.SetRole(user.Role);
+            }
+            else
+            {
+                _logger.Info($"BLL.{nameof(UserBll)}.{nameof(SetUser)}: Role not discovered");
+            }
 
             if (user.Id != null)
             {
