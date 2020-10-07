@@ -254,7 +254,7 @@ namespace Epam.Internet_shop.DAL.DataBase
                 }
             }
 
-            _logger.Info($"DAL.{nameof(ProductDao)}.{nameof(GetProductsByCategory)}: All products received");
+            _logger.Info($"DAL.{nameof(ProductDao)}.{nameof(GetProductsByCategory)}: Products by category received");
 
             yield break;
         }

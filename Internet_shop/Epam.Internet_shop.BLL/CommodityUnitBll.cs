@@ -5,27 +5,28 @@ using Epam.Internet_shop.Logger.Contracts;
 using Epam.Internet_shop.BLL.Contracts;
 using Epam.Internet_shop.DAL.Contracts;
 using Epam.Internet_shop.Common.Entities.CommodityUnit;
+using System;
 
 namespace Epam.Internet_shop.BLL
 {
     public class CommodityUnitBll : ICommodityUnitBll
     {
         private readonly ILogger _logger;
-        private readonly ICategoryDao _categoryDao;
-        private readonly IProductDao _productDao;
-        private readonly IStatusDao _statusDao;
-        private readonly IStoreDao _storeDao;
-        private readonly IVendorDao _vendorDao;
+        private readonly ICategoryBll _categoryBll;
+        private readonly IProductBll _productBll;
+        private readonly IStatusBll _statusBll;
+        private readonly IStoreBll _storeBll;
+        private readonly IVendorBll _vendorBll;
         private readonly ICommodityUnitDao _commodityUnitDao;
 
-        public CommodityUnitBll(ILogger logger, ICategoryDao categoryDao, IProductDao productDao, IStatusDao statusDao, IStoreDao storeDao, IVendorDao vendorDao, ICommodityUnitDao commodityUnitDao)
+        public CommodityUnitBll(ILogger logger, ICategoryBll categoryBll, IProductBll productBll, IStatusBll statusBll, IStoreBll storeBll, IVendorBll vendorBll, ICommodityUnitDao commodityUnitDao)
         {
             _logger = logger;
-            _categoryDao = categoryDao;
-            _productDao = productDao;
-            _statusDao = statusDao;
-            _storeDao = storeDao;
-            _vendorDao = vendorDao;
+            _categoryBll = categoryBll;
+            _productBll = productBll;
+            _statusBll = statusBll;
+            _storeBll = storeBll;
+            _vendorBll = vendorBll;
             _commodityUnitDao = commodityUnitDao;
         }
 
@@ -115,6 +116,61 @@ namespace Epam.Internet_shop.BLL
         {
             _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Retention of commodity unit");
 
+            if (commodityUnit.Product != null)
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Product discovered");
+
+                commodityUnit.Product.Id = _productBll.SetProduct(commodityUnit.Product);
+
+                if (commodityUnit.Product.Category != null)
+                {
+                    _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Category discovered");
+
+                    commodityUnit.Product.Category.Id = _categoryBll.SetCategory(commodityUnit.Product.Category);
+                }
+                else
+                {
+                    _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Category not discovered");
+                }
+            }
+            else
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Product not discovered");
+            }
+
+            if (commodityUnit.Status != null)
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Status discovered");
+
+                commodityUnit.Status.Id = _statusBll.SetStatus(commodityUnit.Status);
+            }
+            else
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Status not discovered");
+            }
+
+            if (commodityUnit.Store != null)
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Store discovered");
+
+                commodityUnit.Store.Id = _storeBll.SetStore(commodityUnit.Store);
+            }
+            else
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Store not discovered");
+            }
+
+            if (commodityUnit.Vendor != null)
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Vendor discovered");
+
+                commodityUnit.Vendor.Id = _vendorBll.SetVendor(commodityUnit.Vendor);
+            }
+            else
+            {
+                _logger.Info($"BLL.{nameof(CommodityUnitBll)}.{nameof(SetCommodityUnit)}: Vendor not discovered");
+            }
+
             if (commodityUnit.Id != null)
             {
                 int id = _commodityUnitDao.ChangeCommodityUnit(commodityUnit);
@@ -132,5 +188,6 @@ namespace Epam.Internet_shop.BLL
                 return id;
             }
         }
+
     }
 }

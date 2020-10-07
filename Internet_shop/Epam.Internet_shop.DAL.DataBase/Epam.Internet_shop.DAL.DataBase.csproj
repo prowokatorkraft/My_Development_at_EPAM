@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,12 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryDao.cs" />
+    <Compile Include="CommodityUnitDao.cs" />
+    <Compile Include="ProductDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleDao.cs" />
+    <Compile Include="StatusDao.cs" />
+    <Compile Include="StoreDao.cs" />
+    <Compile Include="UserDao.cs" />
+    <Compile Include="VendorDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Epam.Internet_shop.Common.Entities\Epam.Internet_shop.Common.Entities.csproj">
       <Project>{f1865e0c-fd71-4a34-b58a-84ec1c8df7f9}</Project>
       <Name>Epam.Internet_shop.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.DAL.Contracts\Epam.Internet_shop.DAL.Contracts.csproj">
+      <Project>{59827f6b-4637-496e-833e-577d5108dd47}</Project>
+      <Name>Epam.Internet_shop.DAL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Internet_shop.Logger.Contracts\Epam.Internet_shop.Logger.Contracts.csproj">
+      <Project>{d43e3eda-af14-48d7-95e3-94e14893b887}</Project>
+      <Name>Epam.Internet_shop.Logger.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

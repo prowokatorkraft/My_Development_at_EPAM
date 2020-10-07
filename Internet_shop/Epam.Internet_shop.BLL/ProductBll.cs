@@ -11,12 +11,14 @@ namespace Epam.Internet_shop.BLL
     public class ProductBll : IProductBll
     {
         private readonly ILogger _logger;
+        private readonly ICategoryBll _categoryBll;
         private readonly IProductDao _productDao;
         private readonly ICommodityUnitDao _commodityUnitDao;
 
-        public ProductBll(ILogger logger, IProductDao productDao, ICommodityUnitDao commodityUnitDao)
+        public ProductBll(ILogger logger, ICategoryBll categoryBll, IProductDao productDao, ICommodityUnitDao commodityUnitDao)
         {
             _logger = logger;
+            _categoryBll = categoryBll;
             _productDao = productDao;
             _commodityUnitDao = commodityUnitDao;
         }
@@ -146,6 +148,17 @@ namespace Epam.Internet_shop.BLL
         public int SetProduct(Product product)
         {
             _logger.Info($"BLL.{nameof(ProductBll)}.{nameof(SetProduct)}: Retention of the product");
+
+            if (product.Category != null)
+            {
+                _logger.Info($"BLL.{nameof(ProductBll)}.{nameof(SetProduct)}: Category discovered");
+
+                product.Category.Id = _categoryBll.SetCategory(product.Category);
+            }
+            else
+            {
+                _logger.Info($"BLL.{nameof(ProductBll)}.{nameof(SetProduct)}: Category not discovered");
+            }
 
             if (product.Id != null)
             {
