@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using Newtonsoft.Json;
 
@@ -30,7 +31,8 @@ namespace Epam.Internet_shop.PL.Web.Handlers
                 string searchStr = (string)HttpSession["Search"];
 
                 enumerator = _commodityUnitBll.GetAllCommodityUnits()
-                    .Where(unit => string.IsNullOrEmpty(searchStr) ? true : (unit.Product.Name == searchStr))
+                    .Where(unit => string.IsNullOrEmpty(searchStr) ? true : Regex.IsMatch(unit.Product.Id.ToString(), searchStr.ToLower()) ||
+                                                                            Regex.IsMatch(unit.Product.Name.ToLower(), searchStr.ToLower()))
                     .GetEnumerator();
 
                     HttpSession.Add("Enumerator", enumerator);

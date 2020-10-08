@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using Newtonsoft.Json;
 
@@ -30,7 +31,9 @@ namespace Epam.Internet_shop.PL.Web.Handlers
                 string searchStr = (string)HttpSession["Search"];
 
                 enumerator = _userBll.GetAllUsers()
-                    .Where(user => string.IsNullOrEmpty(searchStr) ? true : (user.Login == searchStr))
+                    .Where(user => string.IsNullOrEmpty(searchStr) ? true : Regex.IsMatch(user.Id.ToString(), searchStr.ToLower()) || 
+                                                                            Regex.IsMatch(user.Login.ToLower(), searchStr.ToLower()) ||
+                                                                            Regex.IsMatch(user.Name.ToLower(), searchStr.ToLower()))
                     .GetEnumerator();
 
                 HttpSession.Add("Enumerator", enumerator);

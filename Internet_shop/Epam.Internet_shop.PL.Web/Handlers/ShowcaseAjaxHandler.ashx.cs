@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using Newtonsoft.Json;
 
@@ -32,9 +33,11 @@ namespace Epam.Internet_shop.PL.Web.Handlers
                 int? catalogueId = (int) HttpSession["Catalogue"];
                 string searchStr = (string) HttpSession["Search"];
 
+                //Regex.IsMatch(, searchStr);
+
                 enumerator = _commodityUnitBll.GetCommodityUnitsByStatus(_status?.Id ?? 0)
                             .Where(unit => catalogueId == 0 ? true : (unit.Product.Category.Id == catalogueId))
-                            .Where(unit => string.IsNullOrEmpty(searchStr) ? true : (unit.Product.Name == searchStr))
+                            .Where(unit => string.IsNullOrEmpty(searchStr) ? true : Regex.IsMatch(unit.Product.Name.ToLower(), searchStr.ToLower()))
                             .GetEnumerator();
 
                 HttpSession.Add("Enumerator", enumerator);
@@ -42,7 +45,7 @@ namespace Epam.Internet_shop.PL.Web.Handlers
                 _logger.Info($"PL.{nameof(ShowcaseAjaxHandler)}: The enumerator was created");
             }
 
-            var list = GetList(enumerator, 9);
+            var list = GetList(enumerator, 8);
             
             context.Response.ContentType = "application/json";
 
