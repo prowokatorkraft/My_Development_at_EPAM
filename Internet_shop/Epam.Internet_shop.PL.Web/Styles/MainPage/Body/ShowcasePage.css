@@ -21,6 +21,7 @@
 .showcase-element img {
     width: 100%;
     height: 200px;
+    border-radius: 8px;
 }
 
 .showcase-element h4 {

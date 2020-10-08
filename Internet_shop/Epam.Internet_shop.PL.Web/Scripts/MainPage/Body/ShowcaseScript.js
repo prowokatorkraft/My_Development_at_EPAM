@@ -1,4 +1,5 @@
 ﻿let xhr = new XMLHttpRequest();
+let jsonObjectArray = new Array();
 
 xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
@@ -8,6 +9,8 @@ xhr.onreadystatechange = function () {
 
                 for (let i of jsonObject) {
                     drawShowcaseObject(i);
+
+                    jsonObjectArray.push(i);
                 }
             }
         }
@@ -35,7 +38,7 @@ function drawShowcaseObject(ShowcaseObject) {
     Name.textContent = ShowcaseObject.Product.Name;
 
     let Price = document.createElement("h4");
-    Price.textContent = ShowcaseObject.Price + " Руб";
+    Price.textContent = ShowcaseObject.Price + " руб";
 
     let Point = document.createElement("li");
     Point.textContent = ShowcaseObject.Product.Discription;
@@ -52,6 +55,8 @@ function drawShowcaseObject(ShowcaseObject) {
     FormButton.appendChild(BayBtn);
 
     let Div = document.createElement("div");
+    Div.setAttribute("id", ShowcaseObject.Id);
+    Div.setAttribute("name", "element");
     Div.setAttribute("class", "showcase-element");
     Div.appendChild(Image);
     Div.appendChild(Name);
@@ -61,3 +66,39 @@ function drawShowcaseObject(ShowcaseObject) {
 
     Showcase.appendChild(Div);
 }
+
+function onClichShowcase() {
+    Modal.style.display = "flex";
+
+    var a = event.target;
+
+    while (a) {
+        if (a.getAttribute("name") == 'element') {
+            let id = a.getAttribute("id");
+            for (let item of jsonObjectArray) {
+                if (item.Id == id) {
+                    ModalShowcaseProductImage.setAttribute("src", item.Product.ImageInBase64Src);
+                    ModalShowcaseProductName.textContent = item.Product.Name;
+                    ModalShowcasePrice.textContent = item.Price + ' руб';
+                    ModalShowcaseProductDiscription.textContent = item.Product.Discription;
+                    ModalShowcaseCategoryName.textContent = item.Product.Category.Name;
+                    ModalShowcaseStatusName.textContent = item.Status.Name;
+                    ModalShowcaseStoreName.textContent = item.Store.Name;
+                    ModalShowcaseVendorName.textContent = item.Vendor.Name;
+                    
+                    break;
+                }
+            }
+            //ModalShowcaseName.textContent = jsonObjectArray[id].Product.Name;
+
+            break;
+        }
+        else {
+            a = a.parentNode;
+        }
+    }
+}
+
+Showcase.addEventListener("click", onClichShowcase, false)
+
+
