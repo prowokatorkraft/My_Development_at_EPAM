@@ -134,7 +134,7 @@
 
     <script src="~/Scripts/MainPage/ConstantStartMain.js"></script>
     @RenderSection("Body", false)
-    @if (User.IsInRole("admin"))
+    @if (User.IsInRole("admin") || User.IsInRole("manager"))
     {
         <link href="~/Styles/MainPage/RoleAdminStyle.css" rel="stylesheet" />
     }

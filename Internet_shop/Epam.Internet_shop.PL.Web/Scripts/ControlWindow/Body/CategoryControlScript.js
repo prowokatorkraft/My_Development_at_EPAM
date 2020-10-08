@@ -20,7 +20,7 @@ CategoryTBody.onclick = function () {
         }
         if (event.target.name == "removeCategory-btn") {
             let id = ModalCategoryId.value = event.target.parentNode.parentNode.parentNode.id;
-            if (!confirm("Действительно хотите удалить?")) {
+            if (!confirm("Действительно хотите удалить id =" + id + "?")) {
                 event.preventDefault();
             }
         }

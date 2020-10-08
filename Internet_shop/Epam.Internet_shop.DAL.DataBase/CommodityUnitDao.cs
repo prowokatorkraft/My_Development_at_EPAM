@@ -43,23 +43,23 @@ namespace Epam.Internet_shop.DAL.DataBase
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
 
-                    int? ProductID, StatusID, StoreID, VendorID = null;
+                    object ProductID, StatusID, StoreID, VendorID = null;
 
-                    ProductID = commodityUnit?.Product.Id;
-                    StatusID = commodityUnit?.Status.Id;
-                    StoreID = commodityUnit?.Store.Id;
-                    VendorID = commodityUnit?.Vendor.Id;
+                    ProductID = commodityUnit?.Product?.Id;
+                    StatusID = commodityUnit?.Status?.Id;
+                    StoreID = commodityUnit?.Store?.Id;
+                    VendorID = commodityUnit?.Vendor?.Id;
 
-                    command.Parameters.AddWithValue("@ProductID", ProductID);
-                    command.Parameters.AddWithValue("@StatusID", StatusID);
-                    command.Parameters.AddWithValue("@StoreID", StoreID);
-                    command.Parameters.AddWithValue("@VendorID", VendorID);
+                    command.Parameters.AddWithValue("@ProductID", ProductID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@StatusID", StatusID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@StoreID", StoreID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@VendorID", VendorID ?? DBNull.Value);
                     command.Parameters.AddWithValue("@Price", commodityUnit.Price);
 
                     connection.Open();
 
                     _logger.Info($"DAL.{nameof(CommodityUnitDao)}.{nameof(AddCommodityUnit)}: Connected to database");
-
+                    
                     int.TryParse(command.ExecuteScalar().ToString(), out id);
                 }
             }
@@ -97,18 +97,18 @@ namespace Epam.Internet_shop.DAL.DataBase
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
 
-                    int? ProductID, StatusID, StoreID, VendorID = null;
+                    object ProductID, StatusID, StoreID, VendorID = null;
 
-                    ProductID = commodityUnit?.Product.Id;
-                    StatusID = commodityUnit?.Status.Id;
-                    StoreID = commodityUnit?.Store.Id;
-                    VendorID = commodityUnit?.Vendor.Id;
+                    ProductID = commodityUnit?.Product?.Id;
+                    StatusID = commodityUnit?.Status?.Id;
+                    StoreID = commodityUnit?.Store?.Id;
+                    VendorID = commodityUnit?.Vendor?.Id;
 
                     command.Parameters.AddWithValue("@Id", commodityUnit.Id);
-                    command.Parameters.AddWithValue("@ProductID", ProductID);
-                    command.Parameters.AddWithValue("@StatusID", StatusID);
-                    command.Parameters.AddWithValue("@StoreID", StoreID);
-                    command.Parameters.AddWithValue("@VendorID", VendorID);
+                    command.Parameters.AddWithValue("@ProductID", ProductID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@StatusID", StatusID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@StoreID", StoreID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@VendorID", VendorID ?? DBNull.Value);
                     command.Parameters.AddWithValue("@Price", commodityUnit.Price);
 
                     connection.Open();

@@ -24,7 +24,7 @@
 
     logger.Info("PL: ProductControlPage request received");
 
-    if (User.IsInRole("admin"))// || !User.IsInRole("manager")) //TODO: (!)
+    if (!User.IsInRole("admin") && !User.IsInRole("manager"))
     {
         logger.Warn("PL: No access right " + User.Identity.Name);
 
@@ -66,7 +66,7 @@
 
                 fileImage.Read(butes, 0, (int)fileImage.Length);
 
-                string base64ImageStr = "data:image/png;base64," + Convert.ToBase64String(butes);
+                string base64ImageStr = "data:image/jpag;base64," + Convert.ToBase64String(butes);
 
                 product = new Product(null, Request["productName"], base64ImageStr, Request["productDiscription"], category);
             }
@@ -191,7 +191,7 @@
             }
         </select>
         <input type="text" id="modal-productName" name="productName" value="" placeholder="Введите имя продукта" />
-        <input type="file" id="modal-productImage" name="productImage" accept="image/png"/>
+        <input type="file" id="modal-productImage" name="productImage" accept="image/jpag"/>
         <textarea id="modal-productDiscription" name="productDiscription" placeholder="Введите описание продукта"></textarea>
         <select id="modal-productCategory" name="productCategory">
             <option value="-1" selected="selected">Категория не выбрана</option>

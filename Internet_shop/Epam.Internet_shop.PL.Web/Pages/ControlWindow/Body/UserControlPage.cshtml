@@ -132,18 +132,18 @@
 
 <section id="modal" class="modal">
     <form id="modal-window" action="" method="get" class="model-window">
-        <input type="text" id="modal-type" name="type" value="" hidden="hidden" />
-        <input type="text" id="modal-id" name="id" value="" hidden="hidden" />
-        <input type="text" id="modal-login" name="login" value="" placeholder="Введите логин" required />
-        <input type="password" id="modal-password" name="password" value="" placeholder="Введите пароль" required />
-        <select id="modal-role" name="role">
+        <input type="text" id="modal-UserType" name="type" value="" hidden="hidden" />
+        <input type="text" id="modal-UserId" name="id" value="" hidden="hidden" />
+        <input type="text" id="modal-UserLogin" name="login" value="" placeholder="Введите логин" required />
+        <input type="password" id="modal-UserPassword" name="password" value="" placeholder="Введите пароль" required />
+        <select id="modal-UserRole" name="role">
             <option value="-1" selected="selected">Роль не выбрана</option>
             @foreach (var role in roles)
             {
                 <option value="@role.Id">@role.Name</option>
             }
         </select>
-        <input type="text" id="modal-name" name="name" value="" placeholder="Введите имя" required />
+        <input type="text" id="modal-UserName" name="name" value="" placeholder="Введите имя" required />
         <div class="btn">
             <button id="add-btn">Добавить</button>
             <input id="close-btn" type="button" name="close-btn" value="Закрыть" />

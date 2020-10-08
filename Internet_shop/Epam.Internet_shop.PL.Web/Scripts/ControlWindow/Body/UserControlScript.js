@@ -141,3 +141,9 @@ TBody.onclick = function () {
         }
     }
 }
+
+ModalAddBtn.onclick = function () {
+    if (ModalRole.value == -1) {
+        event.preventDefault();
+    }
+}

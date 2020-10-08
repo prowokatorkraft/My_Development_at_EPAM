@@ -141,13 +141,13 @@ namespace Epam.Internet_shop.DAL.DataBase
 
         public Store GetStore(int id)
         {
-            _logger.Info($"DAL.{nameof(StoreDao)}.{nameof(GetStore)}: Getting category by id = {id}");
+            _logger.Info($"DAL.{nameof(StoreDao)}.{nameof(GetStore)}: Getting store by id = {id}");
 
             Store store;
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand("dbo.Category_GetCategory", connection)
+                SqlCommand command = new SqlCommand("dbo.Store_GetStore", connection)
                 {
                     CommandType = System.Data.CommandType.StoredProcedure
                 };

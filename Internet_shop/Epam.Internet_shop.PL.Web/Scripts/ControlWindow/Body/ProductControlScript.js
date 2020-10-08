@@ -177,3 +177,9 @@ ModalProduct.onchange = function () {
         ModalProductImage.removeAttribute("required");
     }
 }
+
+ModalAddBtn.onclick = function () {
+    if (ModalProduct.value == -1 || ModalStore.value == -1 || ModalVendor.value == -1 || ModalStatus.value == -1) {
+        event.preventDefault();
+    }
+}

@@ -23,13 +23,13 @@ namespace Epam.Internet_shop.Common
 
         public static IRoleBll RoleBll { get; }
         public static IUserBll UserBll { get; }
-        public static IAuthenticationBll AuthenticationBll { get; }
         public static ICategoryBll CategoryBll { get; }
         public static IProductBll ProductBll { get; }
         public static IStoreBll StoreBll { get; }
         public static IVendorBll VendorBll { get; }
         public static IStatusBll StatusBll { get; }
         public static ICommodityUnitBll CommodityUnitBll { get; }
+        public static IAuthenticationBll AuthenticationBll { get; }
 
         static DependencyResolver()
         {
@@ -37,18 +37,23 @@ namespace Epam.Internet_shop.Common
 
             RoleDao = new RoleDao(Logger);
             UserDao = new UserDao(Logger, RoleDao);
+            CategoryDao = new CategoryDao(Logger);
+            ProductDao = new ProductDao(Logger, CategoryDao);
+            StoreDao = new StoreDao(Logger);
+            VendorDao = new VendorDao(Logger);
+            StatusDao = new StatusDao(Logger);
+            CommodityUnitDao = new CommodityUnitDao(Logger, ProductDao, StatusDao, StoreDao, VendorDao);
 
             RoleBll = new RoleBll(Logger, RoleDao);
             UserBll = new UserBll(Logger, RoleBll, UserDao);
+            CategoryBll = new CategoryBll(Logger, CategoryDao, CommodityUnitDao);
+            ProductBll = new ProductBll(Logger, CategoryBll, ProductDao, CommodityUnitDao);
+            StoreBll = new StoreBll(Logger, StoreDao, CommodityUnitDao);
+            VendorBll = new VendorBll(Logger, VendorDao, CommodityUnitDao);
+            StatusBll = new StatusBll(Logger, StatusDao, CommodityUnitDao);
+            CommodityUnitBll = new CommodityUnitBll(Logger, CategoryBll, ProductBll, StatusBll, StoreBll, VendorBll, CommodityUnitDao);
 
             AuthenticationBll = new AuthenticationBll(UserBll);
-
-            //CategoryBll = new TestCategoryBll();
-            //ProductBll = new TestProductBll();
-            //StoreBll = new TestStoreBll();
-            //VendorBll = new TestVendorBll();
-            //StatusBll = new TestStatusBll();
-            //CommodityUnitBll = new TestCommodityUnitBll();
         }
     }
 }
