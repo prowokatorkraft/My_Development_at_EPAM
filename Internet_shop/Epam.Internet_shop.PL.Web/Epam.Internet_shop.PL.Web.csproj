@@ -161,10 +161,6 @@
       <Project>{ea67bf1f-f800-43f6-9755-384dfee4c957}</Project>
       <Name>Epam.Internet_shop.BLL.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Epam.Internet_shop.BLL.TestForPL\Epam.Internet_shop.BLL.TestForPL.csproj">
-      <Project>{6c02dc1b-9847-4004-b96f-4e7f76b06756}</Project>
-      <Name>Epam.Internet_shop.BLL.TestForPL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Epam.Internet_shop.BLL\Epam.Internet_shop.BLL.csproj">
       <Project>{f84be68f-7d5b-4030-ae33-045e18e5cf87}</Project>
       <Name>Epam.Internet_shop.BLL</Name>

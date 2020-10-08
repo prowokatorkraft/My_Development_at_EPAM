@@ -3,7 +3,6 @@ using Epam.Internet_shop.Logger.Contracts;
 using Epam.Internet_shop.DAL.Contracts;
 using Epam.Internet_shop.DAL.DataBase;
 using Epam.Internet_shop.BLL.Contracts;
-using Epam.Internet_shop.BLL.TestForPL;
 using Epam.Internet_shop.BLL;
 
 namespace Epam.Internet_shop.Common
